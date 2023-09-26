@@ -123,7 +123,12 @@ public class JogoMobile : MonoBehaviour
     System.Random random = new System.Random();
 
     void Start()
-    {
+    {   
+        Debug.Log("[JogoMobile] Start - Inicio");
+        CarregaDados.Load(this);
+        Debug.Log("[JogoMobile] Quantidade itens: " + CarregaDados.listaDados.Count);
+        Debug.Log("[JogoMobile] Start - Fim");
+
         #if UNITY_ANDROID
             Screen.orientation = ScreenOrientation.LandscapeLeft;
             //Screen.fullScreen = false;
@@ -190,7 +195,7 @@ public class JogoMobile : MonoBehaviour
     
     private void InicializarJogo()
     {
-        CarregaDados.Load();
+        //carregaDados.Load();
         //Debug.Log("Quantidade itens: " + CarregaDados.listaDados.Count);
         dificuldade_tela.text = "NÍVEL FÁCIL";
         pular_agora = NAO;

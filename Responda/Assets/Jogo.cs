@@ -129,9 +129,14 @@ public class Jogo : MonoBehaviour
     float timer_for_double_click;
 
     float delay = 5.0f;
-
+    
     void Start()
     {
+        Debug.Log("[Jogo] Start - Inicio");
+        CarregaDados.Load(this);
+        Debug.Log("[Jogo] Quantidade itens: " + CarregaDados.listaDados.Count);
+        Debug.Log("[Jogo] Start - Fim");
+        
         #if UNITY_ANDROID
             Screen.orientation = ScreenOrientation.LandscapeLeft;
             //Screen.fullScreen = false;
@@ -216,8 +221,7 @@ public class Jogo : MonoBehaviour
     
     private void InicializarJogo()
     {
-        CarregaDados.Load();
-        //Debug.Log("Quantidade itens: " + CarregaDados.listaDados.Count);
+        // carregaDados.Load();
         dificuldade_tela.text = "NÍVEL FÁCIL";
         pular_agora = NAO;
         Informacoes.SetStatusPular(NAO);
@@ -230,6 +234,8 @@ public class Jogo : MonoBehaviour
         quantidade_facil = 0;
         quantidade_medio = 0;
         quantidade_dificil = 0;
+        Debug.Log("[Jogo] listaDados.Count = " + CarregaDados.listaDados.Count);
+
         for(int i = 0; i < CarregaDados.listaDados.Count; i++)
         {
             if(CarregaDados.listaDados[i].nivel == "facil"){
@@ -272,7 +278,10 @@ public class Jogo : MonoBehaviour
         for(int i = 0; i < quantidade_facil; i++){
             DadosJogo aux = new DadosJogo();
             int limite = quantidade_facil - 1;
-            int randomIndex = GerarNumero(i, limite);
+
+            // int randomIndex = random.Next(i, limite); // Gera número entre i e limite - 1
+            int randomIndex = GeraNumero(i, limite);
+
             if(randomIndex != i){
                 aux = CarregaDados.listaDados[i];
                 CarregaDados.listaDados[i] = CarregaDados.listaDados[randomIndex];
@@ -282,7 +291,8 @@ public class Jogo : MonoBehaviour
         for(int i = quantidade_facil; i < quantidade_facil + quantidade_medio; i++){
             DadosJogo aux = new DadosJogo();
             int limite = quantidade_facil + quantidade_medio - 1;
-            int randomIndex = GerarNumero(i, limite);
+            // int randomIndex = random.Next(i, limite); // Gera número entre i e limite - 1
+            int randomIndex = GeraNumero(i, limite);
             if(randomIndex != i){
                 aux = CarregaDados.listaDados[i];
                 CarregaDados.listaDados[i] = CarregaDados.listaDados[randomIndex];
@@ -292,7 +302,8 @@ public class Jogo : MonoBehaviour
         for(int i = quantidade_facil + quantidade_medio; i < quantidade_facil + quantidade_medio + quantidade_dificil; i++){
             DadosJogo aux = new DadosJogo();
             int limite = quantidade_facil + quantidade_medio + quantidade_dificil - 1;
-            int randomIndex = GerarNumero(i, limite);
+            // int randomIndex = random.Next(i, limite); // Gera número entre i e limite - 1
+            int randomIndex = GeraNumero(i, limite);
             if(randomIndex != i){
                 aux = CarregaDados.listaDados[i];
                 CarregaDados.listaDados[i] = CarregaDados.listaDados[randomIndex];
@@ -379,8 +390,10 @@ public class Jogo : MonoBehaviour
         {
             string aux_s;
             string aux_audio;
-            int troca1 = GerarNumero(0, 4);
-            int troca2 = GerarNumero(0, 4);
+            // int troca1 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
+            // int troca2 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
+            int troca1 = GeraNumero(0, 4);
+            int troca2 = GeraNumero(0, 4);
             if (respostas_facil[i] == troca1)
             {
                 respostas_facil[i] = troca2;
@@ -402,8 +415,10 @@ public class Jogo : MonoBehaviour
         {
             string aux_s;
             string aux_audio;
-            int troca1 = GerarNumero(0, 4);
-            int troca2 = GerarNumero(0, 4);
+            // int troca1 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
+            // int troca2 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
+            int troca1 = GeraNumero(0, 4);
+            int troca2 = GeraNumero(0, 4);
             if (respostas_medio[i] == troca1)
             {
                 respostas_medio[i] = troca2;
@@ -425,8 +440,10 @@ public class Jogo : MonoBehaviour
         {
             string aux_s;
             string aux_audio;
-            int troca1 = GerarNumero(0, 4);
-            int troca2 = GerarNumero(0, 4);
+            // int troca1 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
+            // int troca2 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
+            int troca1 = GeraNumero(0, 4);
+            int troca2 = GeraNumero(0, 4);
             if (respostas_dificil[i] == troca1)
             {
                 respostas_dificil[i] = troca2;
@@ -610,20 +627,20 @@ public class Jogo : MonoBehaviour
     }
 
     public IEnumerator carregarAudios(){
-        #if UNITY_ANDROID
-            string wwwPlayerFilePath = Application.streamingAssetsPath + "/audios/" + txt_audio_pergunta + ".wav";
-            string wwwPlayerFilePathB = Application.streamingAssetsPath + "/audios/" + txt_audio_a0 + ".wav";
-            string wwwPlayerFilePathC = Application.streamingAssetsPath + "/audios/" + txt_audio_a1 + ".wav";
-            string wwwPlayerFilePathD = Application.streamingAssetsPath + "/audios/" + txt_audio_a2 + ".wav";
-            string wwwPlayerFilePathE = Application.streamingAssetsPath + "/audios/" + txt_audio_a3 + ".wav";
-            string wwwPlayerFilePathF = Application.streamingAssetsPath + "/audios/" + txt_audio_dica + ".wav";
-        #else
+        #if UNITY_STANDALONE
             string wwwPlayerFilePath = "file://" + Application.streamingAssetsPath + "/audios/" + txt_audio_pergunta + ".wav";
             string wwwPlayerFilePathB = "file://" + Application.streamingAssetsPath + "/audios/" + txt_audio_a0 + ".wav";
             string wwwPlayerFilePathC = "file://" + Application.streamingAssetsPath + "/audios/" + txt_audio_a1 + ".wav";
             string wwwPlayerFilePathD = "file://" + Application.streamingAssetsPath + "/audios/" + txt_audio_a2 + ".wav";
             string wwwPlayerFilePathE = "file://" + Application.streamingAssetsPath + "/audios/" + txt_audio_a3 + ".wav";
             string wwwPlayerFilePathF = "file://" + Application.streamingAssetsPath + "/audios/" + txt_audio_dica + ".wav";
+        #else
+            string wwwPlayerFilePath = Application.streamingAssetsPath + "/audios/" + txt_audio_pergunta + ".wav";
+            string wwwPlayerFilePathB = Application.streamingAssetsPath + "/audios/" + txt_audio_a0 + ".wav";
+            string wwwPlayerFilePathC = Application.streamingAssetsPath + "/audios/" + txt_audio_a1 + ".wav";
+            string wwwPlayerFilePathD = Application.streamingAssetsPath + "/audios/" + txt_audio_a2 + ".wav";
+            string wwwPlayerFilePathE = Application.streamingAssetsPath + "/audios/" + txt_audio_a3 + ".wav";
+            string wwwPlayerFilePathF = Application.streamingAssetsPath + "/audios/" + txt_audio_dica + ".wav";
         #endif
          
         Debug.Log(wwwPlayerFilePathF);
@@ -757,15 +774,20 @@ public class Jogo : MonoBehaviour
                 selecionou5050 = SIM;
                 confirmar.interactable = false;
 
-                tirar_1 = GerarNumero(0, 4);
+                // tirar_1 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
+                tirar_1 = GeraNumero(0, 4);
+
                 while (tirar_1 == alternativa_correta)
                 {
-                    tirar_1 = GerarNumero(0, 4);
+                    // tirar_1 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
+                    tirar_1 = GeraNumero(0, 4);
                 }
-                tirar_2 = GerarNumero(0, 4);
+                // tirar_2 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
+                tirar_2 = GeraNumero(0, 4);
                 while (tirar_1 == tirar_2 || tirar_2 == alternativa_correta)
                 {
-                    tirar_2 = GerarNumero(0, 4);
+                    // tirar_2 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
+                    tirar_2 = GeraNumero(0, 4);
                 }
                 alternativas[tirar_1].interactable = false;
                 alternativas[tirar_2].interactable = false;
@@ -786,15 +808,20 @@ public class Jogo : MonoBehaviour
             selecionou5050 = SIM;
             confirmar.interactable = false;
 
-            tirar_1 = GerarNumero(0, 4);
+            // tirar_1 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
+            tirar_1 = GeraNumero(0, 4);
+
             while (tirar_1 == alternativa_correta)
             {
-                tirar_1 = GerarNumero(0, 4);
+                // tirar_1 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
+                tirar_1 = GeraNumero(0, 4);
             }
-            tirar_2 = GerarNumero(0, 4);
+            // tirar_2 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
+            tirar_2 = GeraNumero(0, 4);
             while (tirar_1 == tirar_2 || tirar_2 == alternativa_correta)
             {
-                tirar_2 = GerarNumero(0, 4);
+                // tirar_2 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
+                tirar_2 = GeraNumero(0, 4);
             }
             alternativas[tirar_1].interactable = false;
             alternativas[tirar_2].interactable = false;
@@ -873,11 +900,6 @@ public class Jogo : MonoBehaviour
             AtualizarPerguntaTela();
             alternativas[0].Select();
         #endif
-    }
-
-    private int GerarNumero(int min, int max)
-    {
-        return random.Next(min, max);
     }
 
     private void SomarPontuacao()
@@ -1291,5 +1313,13 @@ public class Jogo : MonoBehaviour
             barra_medio[i].SetActive(false);
             barra_dificil[i].SetActive(false);
         }
+    }
+
+    private int GeraNumero(int min, int max) {
+        int valor = min;
+        if (min < max - 1) {
+            valor = min + random.Next(0, Int32.MaxValue) % (max - min);
+        }
+        return valor;
     }
 }

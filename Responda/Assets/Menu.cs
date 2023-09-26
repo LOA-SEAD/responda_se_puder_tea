@@ -17,11 +17,16 @@ public class Menu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("[Menu] Start - Inicio");
+        CarregaDados.Load(this);
+        Debug.Log("[Menu] Quantidade itens: " + CarregaDados.listaDados.Count);
+
         #if UNITY_ANDROID
             Screen.orientation = ScreenOrientation.LandscapeLeft;
             //Screen.fullScreen = false;
         #endif
         Informacoes.SetOrigem(ORIGEM_MENU);
+        Debug.Log("[Menu] Start - Fim");
     }
 
     // Update is called once per frame
