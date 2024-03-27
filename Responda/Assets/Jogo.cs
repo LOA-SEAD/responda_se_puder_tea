@@ -25,6 +25,7 @@ public class Jogo : MonoBehaviour
     public Text alternativa3_tela;
     public Text alternativa4_tela;
     public Text pontuacao_tela;
+    public Text valorQuestao;
     public Text dificuldade_tela;
     public Text numero_questao_tela;
     public TextMeshProUGUI panel_title;
@@ -1023,6 +1024,7 @@ public class Jogo : MonoBehaviour
         alternativa4_tela.text = respostas_possiveis_facil[questao_x_de_y, 3];
 
         pontuacao_tela.text = "Pontos: " + pontuacao.ToString();
+        valorQuestao.text = "Valendo: 10";
     }
 
     private void ExibirNaTelaMedio()
@@ -1041,6 +1043,7 @@ public class Jogo : MonoBehaviour
         alternativa4_tela.text = respostas_possiveis_medio[questao_x_de_y, 3];
 
         pontuacao_tela.text = "Pontos: " + pontuacao.ToString();
+        valorQuestao.text = "Valendo: 15";
     }
 
     private void ExibirNaTelaDificil()
@@ -1059,6 +1062,7 @@ public class Jogo : MonoBehaviour
         alternativa4_tela.text = respostas_possiveis_dificil[questao_x_de_y, 3];
 
         pontuacao_tela.text = "Pontos: " + pontuacao.ToString();
+        valorQuestao.text = "Valendo: 20";
     }
 
     private void PegarProximaQuestao()
