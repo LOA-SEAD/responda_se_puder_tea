@@ -1326,4 +1326,8 @@ public class Jogo : MonoBehaviour
         }
         return valor;
     }
+
+    public void TocarPergunta(){
+        audio_pergunta.Play();
+    }
 }
