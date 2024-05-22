@@ -19,6 +19,9 @@ public class Jogo : MonoBehaviour
     private Rect janelaErrado = new Rect (0, 0, Screen.width, Screen.height);
     private bool showErrado = false;
 
+    // Adicionado Bonus
+    public bool Acerto_Consecutivo = false;
+
     public Text pergunta_tela;
     public Text alternativa1_tela;
     public Text alternativa2_tela;
@@ -506,6 +509,9 @@ public class Jogo : MonoBehaviour
         Informacoes.SetAudiosAlternativas(audios_alternativas);
         Informacoes.SetAudiosDicas(audios_dicas);
 
+        Informacoes.SetAcertoConsecutivo(Acerto_Consecutivo);
+        Informacoes.SetPontosGanhos(pontos_ganhos);
+
         Informacoes.SetNumeroQuestao(questao_x_de_y);
     }
     
@@ -540,7 +546,7 @@ public class Jogo : MonoBehaviour
         volume_efeitos = Informacoes.GetValueEfeitos();
         volume_musica = Informacoes.GetValueEfeitos();
         volume_texto = Informacoes.GetValueLeituraTexto();
-
+        Acerto_Consecutivo = Informacoes.GetAcertoConsecutivo();
         audios_perguntas = Informacoes.GetAudiosPerguntas();
         audios_alternativas = Informacoes.GetAudiosAlternativas();
         audios_dicas = Informacoes.GetAudiosDicas();
@@ -756,7 +762,7 @@ public class Jogo : MonoBehaviour
 
     public void NaoConfirmarAlternativa(){
         EsconderPanelConfirmar();
-        alternativas[alternativa_escolhida].Select();
+        // alternativas[alternativa_escolhida].Select(); Não precisa falar duas vezes
     }
 
     public void Funcao5050()
@@ -905,37 +911,65 @@ public class Jogo : MonoBehaviour
 
     private void SomarPontuacao()
     {
+
         if (nivel_atual == FACIL)
         {
             if(alternativa_escolhida == respostas_facil[questao_x_de_y])
             {
                 pontos_ganhos = 10;
+
+                if(Acerto_Consecutivo){
+                    pontos_ganhos += 5;
+                }
+                else{
+                    Acerto_Consecutivo = true;
+                }
             }
             else
             {
                 pontos_ganhos = 0;
+
+                Acerto_Consecutivo = false;
             }
         }
         else if (nivel_atual == MEDIO)
         {
             if(alternativa_escolhida == respostas_medio[questao_x_de_y])
             {
-                pontos_ganhos = 10;
+                pontos_ganhos = 15;
+
+                if(Acerto_Consecutivo){
+                    pontos_ganhos += 5;
+                }
+                else{
+                    Acerto_Consecutivo = true;
+                }
             }
             else
             {
                 pontos_ganhos = 0;
+
+                Acerto_Consecutivo = false;
             }
         }
         else
         {
             if(alternativa_escolhida == respostas_dificil[questao_x_de_y])
             {
-                pontos_ganhos = 10;
+                pontos_ganhos = 20;
+
+                if(Acerto_Consecutivo){
+                    pontos_ganhos += 5;
+                }
+                else{
+                    Acerto_Consecutivo = true;
+                }
             }
             else
             {
                 pontos_ganhos = 0;
+
+                Acerto_Consecutivo = false;
             }
         }
         
@@ -1024,7 +1058,14 @@ public class Jogo : MonoBehaviour
         alternativa4_tela.text = respostas_possiveis_facil[questao_x_de_y, 3];
 
         pontuacao_tela.text = "Pontos: " + pontuacao.ToString();
-        valorQuestao.text = "Valendo: 10";
+
+        if(Acerto_Consecutivo){
+            valorQuestao.text = "Valendo: 10 + 5";
+        }
+        else{
+            valorQuestao.text = "Valendo: 10";
+        }
+
     }
 
     private void ExibirNaTelaMedio()
@@ -1043,7 +1084,14 @@ public class Jogo : MonoBehaviour
         alternativa4_tela.text = respostas_possiveis_medio[questao_x_de_y, 3];
 
         pontuacao_tela.text = "Pontos: " + pontuacao.ToString();
-        valorQuestao.text = "Valendo: 15";
+
+        if(Acerto_Consecutivo){
+            valorQuestao.text = "Valendo: 15 + 5";
+        }
+        else{
+            valorQuestao.text = "Valendo: 15";
+        }
+
     }
 
     private void ExibirNaTelaDificil()
@@ -1062,7 +1110,14 @@ public class Jogo : MonoBehaviour
         alternativa4_tela.text = respostas_possiveis_dificil[questao_x_de_y, 3];
 
         pontuacao_tela.text = "Pontos: " + pontuacao.ToString();
-        valorQuestao.text = "Valendo: 20";
+
+        if(Acerto_Consecutivo){
+            valorQuestao.text = "Valendo: 20 + 5";
+        }
+        else{
+            valorQuestao.text = "Valendo: 20";
+        }
+
     }
 
     private void PegarProximaQuestao()
@@ -1215,7 +1270,7 @@ public class Jogo : MonoBehaviour
     {
         estado = JANELA;
         botao_panel.Select();
-        if (pontos_ganhos == 10)
+        if (alternativa_escolhida == respostas_facil[questao_x_de_y])
         {
             showCerto = true;
             CriarJanelaCerto();
