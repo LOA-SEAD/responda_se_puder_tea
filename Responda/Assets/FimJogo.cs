@@ -13,13 +13,30 @@ public class FimJogo : MonoBehaviour
     public Text pular;
     public Text pontos_final;
     public Button botao;
+    public Button prosseguir;
+
+    public Text texto_prosseguir;
+
+    public CanvasGroup canvasGroup;
+
+
+    public Image imagem;
+    public Sprite[] spritearray;
 
     double bonus_d;
     int pontuacao;
     int bonus;
 
+    private bool fadein;
+
     void Start()
     {
+        
+        // imagem.SetActive(false);
+
+        canvasGroup.alpha = 0;
+        fadein = false;
+
         pontuacao = Informacoes.GetPontos();
         CalcularBonus();
         botao.onClick.AddListener(() => Voltar());
@@ -32,12 +49,67 @@ public class FimJogo : MonoBehaviour
     private void ColocarPontuacao()
     {
         pontos.text = pontuacao.ToString();
+        
     }
+
+    void Update()
+    {
+
+        if (fadein)
+        {
+            canvasGroup.alpha += Time.deltaTime;
+        }
+
+        if (canvasGroup.alpha >= 1)
+        {
+            fadein = false;
+        }
+
+        ColocarPontuacao();
+
+    }
+
+    public void Finalizar()
+    {
+
+        fadein = true;
+
+        pontuacao = Informacoes.GetPontos();
+        pontuacao = 0;
+
+        if (pontuacao == 0)
+        {
+            imagem.sprite = spritearray[0];
+        }
+        else if (pontuacao == 1)
+        {
+            imagem.sprite = spritearray[1];
+        }
+        else if (pontuacao == 2)
+        {
+            imagem.sprite = spritearray[2];
+        }
+        else if (pontuacao == 3)
+        {
+            imagem.sprite = spritearray[3];
+        }
+
+        prosseguir.enabled = false;
+        texto_prosseguir.text = "";
+    }
+
+    public void MenuVoltar(){
+        Informacoes.SetStatus(0);
+        SceneManager.LoadScene("Menu");
+    
+    }
+
 
     private void CalcularBonus()
     {
-        bonus_d = (Informacoes.GetQuantidadeFacil() + Informacoes.GetQuantidadeMedio() + Informacoes.GetQuantidadeDificil()) * 0.2;
-        bonus = Convert.ToInt32(bonus_d) * 10;
+        // bonus_d = (Informacoes.GetQuantidadeFacil() + Informacoes.GetQuantidadeMedio() + Informacoes.GetQuantidadeDificil()) * 0.2;
+        // bonus = Convert.ToInt32(bonus_d) * 10;
+        bonus = 10;
         if (Informacoes.GetStatus5050() == 0 || Informacoes.GetStatusPular() == 0)
         {
             bonus_tela.text = "Você desbloqueou conquistas e ganhou bônus na pontuação.\n\n";
@@ -53,6 +125,7 @@ public class FimJogo : MonoBehaviour
                 pontuacao = pontuacao + bonus;
             }
             pontos_final.text = "Pontuação atualizada: " + pontuacao.ToString();
+            Informacoes.SetPontos(pontuacao);
         }
     }
 }

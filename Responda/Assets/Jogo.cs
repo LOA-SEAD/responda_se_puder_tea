@@ -812,6 +812,7 @@ public class Jogo : MonoBehaviour
                 }
             }
         #else
+            audio_5050.Play();
             selecionou5050 = SIM;
             confirmar.interactable = false;
 
@@ -867,11 +868,15 @@ public class Jogo : MonoBehaviour
                 CriarJanelaDica();
             }
         #else
+            
             confirmar.interactable = false;
             estado = JANELA;
-            audio_dica.Play();
             botao_panel.Select();
+            audio_dica.Play();
+            
+            //botao_panel.Select();
             CriarJanelaDica();
+            audio_botao_dica.Play();
         #endif
     }
 
@@ -898,6 +903,7 @@ public class Jogo : MonoBehaviour
                 alternativas[0].Select();
             }
         #else
+            audio_pular.Play();
             Informacoes.SetStatusPular(SIM);
             selecionou_pular = SIM;
             confirmar.interactable = false;
