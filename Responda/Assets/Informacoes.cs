@@ -44,8 +44,21 @@
     private static string[] audios_perguntas = new string[33];
     private static string[,] audios_alternativas = new string[33, 4];
     private static string[] audios_dicas = new string[33];
+    
 
     private static int numero_questao;
+
+    private static int pergunta_atual;
+
+    public static void SetPerguntaAtual(int pergunta)
+    {
+        pergunta_atual = pergunta;
+    }
+
+    public static int GetPerguntaAtual()
+    {
+        return pergunta_atual;
+    }
 
     // Adicionado
     public static void SetAcertoConsecutivo(bool acerto)

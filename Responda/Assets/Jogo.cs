@@ -134,12 +134,25 @@ public class Jogo : MonoBehaviour
 
     float delay = 5.0f;
     
+    // Declaracao de Variaveis
+    public Image[] images;
+    public Shader[] shaders;
+
+    private int pergunta_atual;
+
+    
+
     void Start()
     {
         Debug.Log("[Jogo] Start - Inicio");
         CarregaDados.Load(this);
         Debug.Log("[Jogo] Quantidade itens: " + CarregaDados.listaDados.Count);
         Debug.Log("[Jogo] Start - Fim");
+        pergunta_atual = 0;
+
+        AttImagem(pergunta_atual, false);
+        DesativaBarras();
+    
         
         #if UNITY_ANDROID
             Screen.orientation = ScreenOrientation.LandscapeLeft;
@@ -195,6 +208,53 @@ public class Jogo : MonoBehaviour
                 one_click = false;
             }
         }
+    }
+
+    // Implementação da Barra de Perguntas
+
+    void AttImagem(int i, bool correta){
+
+        if(i == 0){
+            images[i].material.shader = shaders[0];
+        }else{
+            if(correta){
+                images[i].material.shader = shaders[1];
+            }else{
+                images[i].material.shader = shaders[2];
+            }
+
+            images[i-1].material.shader = shaders[0];
+        }
+    }
+
+    void DesativaBarras(){
+
+        
+        
+        if(quantidade_facil < 5){
+
+            for(int i = 5; i > quantidade_facil; i--){
+                images[i].material.shader = shaders[3];
+            }
+
+        }
+
+        if(quantidade_medio < 5){
+
+            for(int i = 5; i > quantidade_medio; i--){
+                images[i + 5].material.shader = shaders[3];
+            }
+
+        }
+
+        if(quantidade_dificil < 5){
+
+            for(int i = 5; i > quantidade_dificil; i--){
+                images[i + 10].material.shader = shaders[3];
+            }
+
+        }
+
     }
 
     void pausarAudios()
@@ -513,6 +573,7 @@ public class Jogo : MonoBehaviour
         Informacoes.SetPontosGanhos(pontos_ganhos);
 
         Informacoes.SetNumeroQuestao(questao_x_de_y);
+        Informacoes.SetPerguntaAtual(pergunta_atual);
     }
     
     private void PegarInfosSalvas()
@@ -550,6 +611,7 @@ public class Jogo : MonoBehaviour
         audios_perguntas = Informacoes.GetAudiosPerguntas();
         audios_alternativas = Informacoes.GetAudiosAlternativas();
         audios_dicas = Informacoes.GetAudiosDicas();
+        pergunta_atual = Informacoes.GetPerguntaAtual();
     }
 
     public void TocarHighlight(int alternativa)
@@ -1279,11 +1341,14 @@ public class Jogo : MonoBehaviour
         if (alternativa_escolhida == respostas_facil[questao_x_de_y])
         {
             showCerto = true;
+            AttImagem(pergunta_atual,true);
             CriarJanelaCerto();
+
         }
         else
         {
             showErrado = true;
+            AttImagem(pergunta_atual,false);
             CriarJanelaErrado();
         }
     }
