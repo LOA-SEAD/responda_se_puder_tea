@@ -10,13 +10,10 @@ public class audioManager : MonoBehaviour
     public AudioClip[] adClips;
     public Button instrucoes; 
 
-    private IEnumerator coroutine;
-
     // Start is called before the first frame update
     void Start()
     {
-        coroutine = playAudioSequentially();
-        StartCoroutine(coroutine);
+        StartCoroutine(playAudioSequentially());
     }
 
     IEnumerator playAudioSequentially(){
@@ -40,10 +37,5 @@ public class audioManager : MonoBehaviour
             //5. Go back to #2 and play the next audio in the adClips array
         }
         instrucoes.Select();
-    }
-
-    public void StopAudio(){
-        
-        StopCoroutine(coroutine);
     }
 }

@@ -7045,7 +7045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcca19dee1cea6b4a933806b0200c2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Acerto_Consecutivo: 0
+  AcertoConsecutivo: 0
   pergunta_tela: {fileID: 1529795546}
   alternativa1_tela: {fileID: 1125419952}
   alternativa2_tela: {fileID: 1284720109}
@@ -14229,11 +14229,6 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 453269447}
-    - target: {fileID: 570421369650086147, guid: d151bc655ea6b544799d19e374761bb0,
-        type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 570421369650086168, guid: d151bc655ea6b544799d19e374761bb0,
         type: 3}
       propertyPath: m_Name
