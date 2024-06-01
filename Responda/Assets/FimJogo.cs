@@ -27,6 +27,9 @@ public class FimJogo : MonoBehaviour
     int pontuacao;
     int bonus;
 
+    int bonus_5050;
+    int bonus_pular;
+
     private bool fadein;
 
     void Start()
@@ -110,18 +113,27 @@ public class FimJogo : MonoBehaviour
         // bonus_d = (Informacoes.GetQuantidadeFacil() + Informacoes.GetQuantidadeMedio() + Informacoes.GetQuantidadeDificil()) * 0.2;
         // bonus = Convert.ToInt32(bonus_d) * 10;
         bonus = 10;
-        if (Informacoes.GetStatus5050() == 0 || Informacoes.GetStatusPular() == 0)
+
+        //Teste
+        // Informacoes.SetQuantidade5050(2);
+        // Informacoes.SetQuantidadePular(1);
+
+        bonus_5050 = Informacoes.GetQuantidade5050() * bonus;
+        bonus_pular = Informacoes.GetQuantidadePular() * bonus;
+
+        if (Informacoes.GetQuantidade5050() > 0 || Informacoes.GetQuantidadePular() > 0)
         {
             bonus_tela.text = "Você desbloqueou conquistas e ganhou bônus na pontuação.\n\n";
             bonus_tela.text += "Bônus acumulados: ";
-            if (Informacoes.GetStatus5050() == 0)
+
+            if (Informacoes.GetQuantidade5050() != 0)
             {
-                x5050.text = "Não usou a ajuda 5050: + " + bonus.ToString() + " pontos!";
+                x5050.text = "Não usou a ajuda 5050: + " + bonus_5050.ToString() + " pontos!";
                 pontuacao = pontuacao + bonus;
             }
-            if (Informacoes.GetStatusPular() == 0)
+            if (Informacoes.GetQuantidadePular() != 0)
             {
-                pular.text = "Não usou a ajuda Pular: + " + bonus.ToString() + " pontos!";
+                pular.text = "Não usou a ajuda Pular: + " + bonus_pular.ToString() + " pontos!";
                 pontuacao = pontuacao + bonus;
             }
             pontos_final.text = "Pontuação atualizada: " + pontuacao.ToString();

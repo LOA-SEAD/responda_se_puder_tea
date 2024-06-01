@@ -453,6 +453,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1144039883}
+        m_TargetAssemblyTypeName: Jogo, Assembly-CSharp
+        m_MethodName: Teste
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1144039883}
         m_TargetAssemblyTypeName: 
         m_MethodName: ConfirmarAlternativa
         m_Mode: 1
@@ -7307,6 +7319,7 @@ MonoBehaviour:
   quantidade_facil: 0
   quantidade_medio: 0
   quantidade_dificil: 0
+  nivel_atual: 0
   audio_pergunta: {fileID: 2107408075}
   audio_a0: {fileID: 2060841879}
   audio_a1: {fileID: 573441986}
@@ -9509,6 +9522,12 @@ PrefabInstance:
       propertyPath: m_SpriteState.m_PressedSprite
       value: 
       objectReference: {fileID: 21300000, guid: 9d67480c3519a31438b0fbef83ce3721,
+        type: 3}
+    - target: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
+        type: 3}
+      propertyPath: m_SpriteState.m_DisabledSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 81818dc14ffe7ed4c9a2ebcf06ee86c8,
         type: 3}
     - target: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
         type: 3}
@@ -14458,6 +14477,12 @@ PrefabInstance:
       propertyPath: m_SpriteState.m_PressedSprite
       value: 
       objectReference: {fileID: 21300000, guid: 9d67480c3519a31438b0fbef83ce3721,
+        type: 3}
+    - target: {fileID: 6806848036839663048, guid: 96cc07791a18a904581f13b65b23f063,
+        type: 3}
+      propertyPath: m_SpriteState.m_DisabledSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 81818dc14ffe7ed4c9a2ebcf06ee86c8,
         type: 3}
     - target: {fileID: 6806848036839663048, guid: 96cc07791a18a904581f13b65b23f063,
         type: 3}

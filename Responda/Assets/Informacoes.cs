@@ -52,6 +52,30 @@
 
     private static int[] perguntas_respondidas;
 
+    private static int quantidade_5050;
+    private static int quantidade_pular;
+
+
+    public static void SetQuantidade5050(int quantidade)
+    {
+        quantidade_5050 = quantidade;
+    }
+
+    public static int GetQuantidade5050()
+    {
+        return quantidade_5050;
+    }
+
+    public static void SetQuantidadePular(int quantidade)
+    {
+        quantidade_pular = quantidade;
+    }
+
+    public static int GetQuantidadePular()
+    {
+        return quantidade_pular;
+    }
+    
     public static void SetPerguntasRespondidas(int[] perguntas)
     {
         perguntas_respondidas = perguntas;
