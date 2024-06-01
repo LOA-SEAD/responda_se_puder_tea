@@ -68,9 +68,9 @@ public class Jogo : MonoBehaviour
     const int JANELA = 1;
     const int JOGANDO = 0;
 
-    int quantidade_facil;
-    int quantidade_medio;
-    int quantidade_dificil;
+    public int quantidade_facil;
+    public int quantidade_medio;
+    public int quantidade_dificil;
     string[] perguntas_facil = new string[11];
     string[] perguntas_medio = new string[11];
     string[] perguntas_dificil = new string[11];
@@ -136,9 +136,13 @@ public class Jogo : MonoBehaviour
     
     // Declaracao de Variaveis
     public Image[] images;
-    public Shader[] shaders;
+    //public Shader[] shaders;
 
-    private int pergunta_atual;
+    public Sprite[] sprites_variacoes;
+
+    public int pergunta_atual;
+
+    public int[] perguntas_bool;
 
     
 
@@ -149,9 +153,6 @@ public class Jogo : MonoBehaviour
         Debug.Log("[Jogo] Quantidade itens: " + CarregaDados.listaDados.Count);
         Debug.Log("[Jogo] Start - Fim");
         pergunta_atual = 0;
-
-        AttImagem(pergunta_atual, false);
-        DesativaBarras();
     
         
         #if UNITY_ANDROID
@@ -184,6 +185,11 @@ public class Jogo : MonoBehaviour
 
     void Update()
     {
+        DesativarImagens();
+        AttImagem();
+        DesativaBarras();
+        MostraAtual();
+
         if(estado == JOGANDO)
         {
             //Esc
@@ -212,48 +218,50 @@ public class Jogo : MonoBehaviour
 
     // Implementação da Barra de Perguntas
 
-    void AttImagem(int i, bool correta){
-
-        if(i == 0){
-            images[i].material.shader = shaders[0];
-        }else{
-            if(correta){
-                images[i].material.shader = shaders[1];
-            }else{
-                images[i].material.shader = shaders[2];
-            }
-
-            images[i-1].material.shader = shaders[0];
+    void DesativarImagens(){
+        for(int a =0; a <15; a++){
+            images[a].sprite = sprites_variacoes[4];
         }
+    }
+    void MostraAtual(){
+        pergunta_atual = Informacoes.GetPerguntaAtual();
+        images[pergunta_atual].sprite = sprites_variacoes[0];
+    }
+
+    void AttImagem(){
+
+        for(int j = 0; j < pergunta_atual; j++){
+            if(perguntas_bool[j] == 1){
+                images[j].sprite = sprites_variacoes[1];
+            }else if(perguntas_bool[j] == 2){
+                images[j].sprite = sprites_variacoes[2];
+            }
+        }
+            
     }
 
     void DesativaBarras(){
 
+        if(quantidade_facil != 5){
+
+            for(int i = 4;i >= quantidade_facil; i--){
+                images[i].sprite = sprites_variacoes[3];
+            }
+        }
+
+        if(quantidade_medio != 5){
+            for(int i = 9;i >= quantidade_medio + 5; i--){
+                images[i].sprite = sprites_variacoes[3];
+            }
+        }
+
+        if(quantidade_dificil != 5){
+            for(int i = 14;i >= quantidade_dificil + 10; i--){
+                images[i].sprite = sprites_variacoes[3];
+            }
+        }
+
         
-        
-        if(quantidade_facil < 5){
-
-            for(int i = 5; i > quantidade_facil; i--){
-                images[i].material.shader = shaders[3];
-            }
-
-        }
-
-        if(quantidade_medio < 5){
-
-            for(int i = 5; i > quantidade_medio; i--){
-                images[i + 5].material.shader = shaders[3];
-            }
-
-        }
-
-        if(quantidade_dificil < 5){
-
-            for(int i = 5; i > quantidade_dificil; i--){
-                images[i + 10].material.shader = shaders[3];
-            }
-
-        }
 
     }
 
@@ -335,6 +343,10 @@ public class Jogo : MonoBehaviour
         quantidade_facil--;
         quantidade_medio--;
         quantidade_dificil--;
+
+        perguntas_bool = new int[quantidade_facil + quantidade_medio + quantidade_dificil];
+
+
     }
 
     private void MixLista()
@@ -574,6 +586,8 @@ public class Jogo : MonoBehaviour
 
         Informacoes.SetNumeroQuestao(questao_x_de_y);
         Informacoes.SetPerguntaAtual(pergunta_atual);
+        Informacoes.SetPerguntasRespondidas(perguntas_bool);
+
     }
     
     private void PegarInfosSalvas()
@@ -612,6 +626,7 @@ public class Jogo : MonoBehaviour
         audios_alternativas = Informacoes.GetAudiosAlternativas();
         audios_dicas = Informacoes.GetAudiosDicas();
         pergunta_atual = Informacoes.GetPerguntaAtual();
+        perguntas_bool = Informacoes.GetPerguntasRespondidas();
     }
 
     public void TocarHighlight(int alternativa)
@@ -817,6 +832,7 @@ public class Jogo : MonoBehaviour
     public void ConfirmarAlternativa()
     {
         confirmar.interactable = false;
+
         SomarPontuacao();
         ExibirCertoOuErrado();
         EsconderPanelConfirmar();
@@ -1334,22 +1350,86 @@ public class Jogo : MonoBehaviour
         SceneManager.LoadScene("respostaErrada");
     }
 
+    
+
+    private void VerificarIntervalo(){
+         if(pergunta_atual >= quantidade_facil && nivel_atual == FACIL){
+            pergunta_atual += (5 - quantidade_facil);
+        }
+
+        if(pergunta_atual >= (quantidade_medio + 5) && nivel_atual == MEDIO){
+            pergunta_atual += (5 - quantidade_medio);
+        }
+    }
+
     private void ExibirCertoOuErrado()
     {
         estado = JANELA;
         botao_panel.Select();
-        if (alternativa_escolhida == respostas_facil[questao_x_de_y])
+
+
+        if (nivel_atual == FACIL)
+        {
+            if (alternativa_escolhida == respostas_facil[questao_x_de_y])
         {
             showCerto = true;
-            AttImagem(pergunta_atual,true);
+            perguntas_bool[pergunta_atual] = 1;
+            pergunta_atual += 1;
+            VerificarIntervalo();
             CriarJanelaCerto();
 
         }
         else
         {
             showErrado = true;
-            AttImagem(pergunta_atual,false);
+            perguntas_bool[pergunta_atual] = 2;
+            pergunta_atual += 1;
+            VerificarIntervalo();
             CriarJanelaErrado();
+        }
+        }
+        else if (nivel_atual == MEDIO)
+        {
+
+        if (alternativa_escolhida == respostas_medio[questao_x_de_y])
+        {
+            showCerto = true;
+            perguntas_bool[pergunta_atual] = 1;
+            pergunta_atual += 1;
+            VerificarIntervalo();
+            CriarJanelaCerto();
+
+        }
+        else
+        {
+            showErrado = true;
+            perguntas_bool[pergunta_atual] = 2;
+            pergunta_atual += 1;
+            VerificarIntervalo();
+            CriarJanelaErrado();
+        }
+
+        }
+        else
+        {
+
+        if (alternativa_escolhida == respostas_dificil[questao_x_de_y])
+        {
+            showCerto = true;
+            perguntas_bool[pergunta_atual] = 1;
+            pergunta_atual += 1;
+            VerificarIntervalo();
+            CriarJanelaCerto();
+
+        }
+        else
+        {
+            showErrado = true;
+            perguntas_bool[pergunta_atual] = 2;
+            pergunta_atual += 1;
+            VerificarIntervalo();
+            CriarJanelaErrado();
+        }
         }
     }
 

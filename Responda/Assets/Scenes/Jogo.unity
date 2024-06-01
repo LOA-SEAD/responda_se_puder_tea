@@ -6247,7 +6247,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030940465}
   m_LocalRotation: {x: -0, y: -0, z: 0.7056721, w: 0.7085387}
-  m_LocalPosition: {x: -401, y: -53, z: 0}
+  m_LocalPosition: {x: -437.6, y: -48.3, z: 0}
   m_LocalScale: {x: 40.31728, y: 77.71, z: 40.9}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7304,6 +7304,9 @@ MonoBehaviour:
   arquivo_texto: {fileID: 4900000, guid: 901afec2135dc2948a377cb762babd34, type: 3}
   Panel_anim: {fileID: 552239528}
   Panel_confirmar_anim: {fileID: 1604381990}
+  quantidade_facil: 0
+  quantidade_medio: 0
+  quantidade_dificil: 0
   audio_pergunta: {fileID: 2107408075}
   audio_a0: {fileID: 2060841879}
   audio_a1: {fileID: 573441986}
@@ -7314,8 +7317,30 @@ MonoBehaviour:
   audio_botao_dica: {fileID: 453269447}
   audio_5050: {fileID: 868194090}
   audio_pular: {fileID: 300035035}
-  images: []
-  shaders: []
+  images:
+  - {fileID: 1813792627}
+  - {fileID: 193846046}
+  - {fileID: 999922691}
+  - {fileID: 1410122834}
+  - {fileID: 1520772721}
+  - {fileID: 1066750750}
+  - {fileID: 1209772413}
+  - {fileID: 2047330926}
+  - {fileID: 157420831}
+  - {fileID: 477799072}
+  - {fileID: 163549213}
+  - {fileID: 1303343084}
+  - {fileID: 1413253545}
+  - {fileID: 488353774}
+  - {fileID: 1758579486}
+  sprites_variacoes:
+  - {fileID: 21300000, guid: 9678f7833f54e294b8756ea4a672105a, type: 3}
+  - {fileID: 21300000, guid: 23037cbd9930d6a40bc46e94886bcd10, type: 3}
+  - {fileID: 21300000, guid: 578109d2a2627c94ebf3329d3aab2fea, type: 3}
+  - {fileID: 21300000, guid: 5dc4e49d99190894d81233bfc4a38fce, type: 3}
+  - {fileID: 21300000, guid: e69ff0ec55dba1e438aa1bb4dafc3091, type: 3}
+  pergunta_atual: 0
+  perguntas_bool: 
 --- !u!114 &1144039884
 MonoBehaviour:
   m_ObjectHideFlags: 0

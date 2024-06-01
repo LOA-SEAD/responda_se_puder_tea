@@ -50,6 +50,17 @@
 
     private static int pergunta_atual;
 
+    private static int[] perguntas_respondidas;
+
+    public static void SetPerguntasRespondidas(int[] perguntas)
+    {
+        perguntas_respondidas = perguntas;
+    }
+
+    public static int[] GetPerguntasRespondidas()
+    {
+        return perguntas_respondidas;
+    }
     public static void SetPerguntaAtual(int pergunta)
     {
         pergunta_atual = pergunta;
