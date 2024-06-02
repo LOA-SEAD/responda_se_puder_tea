@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -116,7 +116,7 @@ public class FimJogo : MonoBehaviour
 
         //Teste
         // Informacoes.SetQuantidade5050(2);
-        // Informacoes.SetQuantidadePular(1);
+        //  Informacoes.SetQuantidadePular(1);
 
         bonus_5050 = Informacoes.GetQuantidade5050() * bonus;
         bonus_pular = Informacoes.GetQuantidadePular() * bonus;

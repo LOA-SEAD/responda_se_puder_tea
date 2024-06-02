@@ -92,14 +92,14 @@ public class Jogo : MonoBehaviour
     int alternativa_escolhida;
     int tirar_1;
     int tirar_2;
-    int pular_agora;
+    public int pular_agora;
 
     int questao_x_de_y;
     int selecionou5050 = NAO;
 
     int quantidade_5050 = 2;
     int quantidade_pular = 1;
-    int selecionou_pular = NAO;
+    public int selecionou_pular = SIM;
     public int nivel_atual = FACIL;
     int pontuacao;
 
@@ -176,6 +176,7 @@ public class Jogo : MonoBehaviour
             if(Informacoes.GetStatus() == STATUSOPCOES){
                 questao_x_de_y--;
             }
+
         }
          Debug.Log("qst" + questao_x_de_y);
           Debug.Log("nvl" + nivel_atual);
@@ -347,6 +348,7 @@ public class Jogo : MonoBehaviour
         MisturarRespostas();
 
         quantidade_facil--;
+        quantidade_medio--;
         quantidade_medio--;
         quantidade_dificil--;
 
@@ -607,7 +609,14 @@ public class Jogo : MonoBehaviour
         else{
             questao_x_de_y = -1;
         }
-        pular_agora = NAO;
+        
+
+        if(Informacoes.GetQuantidadePular() != 0){
+            pular_agora = NAO;
+        }else{
+            pular_agora = SIM;
+        }
+
         quantidade_facil = Informacoes.GetQuantidadeFacil();
         quantidade_medio = Informacoes.GetQuantidadeMedio();
         quantidade_dificil = Informacoes.GetQuantidadeDificil();
@@ -1116,6 +1125,11 @@ public class Jogo : MonoBehaviour
             {
                 Informacoes.SetStatus(MEIO);
                 nivel_atual = MEDIO;
+
+                if(quantidade_pular == 0){
+                    selecionou_pular = SIM;
+                }
+
                 SalvarInfos();
                 return MUDOU_NIVEL;
             }
@@ -1123,6 +1137,11 @@ public class Jogo : MonoBehaviour
             {
                 Informacoes.SetStatus(MEIO);
                 nivel_atual = DIFICIL;
+
+                if(quantidade_pular == 0){
+                    selecionou_pular = SIM;
+                }
+
                 SalvarInfos();
                 return MUDOU_NIVEL;
             }
@@ -1154,10 +1173,10 @@ public class Jogo : MonoBehaviour
     private void ExibirNaTelaFacil()
     {
         dificuldade_tela.text = "NÍVEL FÁCIL";
-        if (pular_agora == SIM)
-            numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + quantidade_facil.ToString();
+        if (pular_agora == SIM){
+            numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + (quantidade_facil).ToString();}
         else
-            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + quantidade_facil.ToString();
+            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + (quantidade_facil).ToString();
         pergunta_tela.text = perguntas_facil[questao_x_de_y];
         alternativa_correta = respostas_facil[questao_x_de_y];
         
@@ -1180,8 +1199,10 @@ public class Jogo : MonoBehaviour
     private void ExibirNaTelaMedio()
     {
         dificuldade_tela.text = "NÍVEL MÉDIO";
-        if (pular_agora == SIM)
+        if (pular_agora == SIM && selecionou_pular == NAO)
             numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + quantidade_medio.ToString();
+        else if (pular_agora == SIM && selecionou_pular == SIM)
+            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + quantidade_medio.ToString();
         else
             numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + quantidade_medio.ToString();
         pergunta_tela.text = perguntas_medio[questao_x_de_y];
@@ -1206,8 +1227,10 @@ public class Jogo : MonoBehaviour
     private void ExibirNaTelaDificil()
     {
         dificuldade_tela.text = "NÍVEL DIFÍCIL";
-        if (pular_agora == SIM)
+        if (pular_agora == SIM && selecionou_pular == NAO)
             numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + quantidade_dificil.ToString();
+        else if (pular_agora == SIM && selecionou_pular == SIM)
+            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + quantidade_dificil.ToString();
         else
             numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + quantidade_dificil.ToString();
         pergunta_tela.text = perguntas_dificil[questao_x_de_y];
@@ -1232,6 +1255,7 @@ public class Jogo : MonoBehaviour
     private void PegarProximaQuestao()
     {
         questao_x_de_y ++;
+
     }
 
     private void ConfigurarBotoes()
