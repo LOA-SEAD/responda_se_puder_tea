@@ -94,12 +94,12 @@ public class Jogo : MonoBehaviour
     int tirar_2;
     public int pular_agora;
 
-    int questao_x_de_y;
+    public int questao_x_de_y;
     int selecionou5050 = NAO;
 
     int quantidade_5050 = 2;
     int quantidade_pular = 1;
-    public int selecionou_pular = SIM;
+    public int selecionou_pular = 0;
     public int nivel_atual = FACIL;
     int pontuacao;
 
@@ -303,8 +303,12 @@ public class Jogo : MonoBehaviour
         // carregaDados.Load();
         dificuldade_tela.text = "NÍVEL FÁCIL";
         pular_agora = NAO;
+        quantidade_pular = 1;
+        quantidade_5050 = 2;
         Informacoes.SetStatusPular(NAO);
         pontuacao = 0;
+        pergunta_atual = 0;
+        Informacoes.SetPerguntaAtual(0);
         SortearPerguntas();
     }
 
@@ -348,7 +352,6 @@ public class Jogo : MonoBehaviour
         MisturarRespostas();
 
         quantidade_facil--;
-        quantidade_medio--;
         quantidade_medio--;
         quantidade_dificil--;
 
@@ -598,6 +601,7 @@ public class Jogo : MonoBehaviour
 
         Informacoes.SetQuantidade5050(quantidade_5050);
         Informacoes.SetQuantidadePular(quantidade_pular);
+        Informacoes.SetStatusPular(selecionou_pular);
 
     }
     
@@ -611,7 +615,7 @@ public class Jogo : MonoBehaviour
         }
         
 
-        if(Informacoes.GetQuantidadePular() != 0){
+        if(Informacoes.GetQuantidadePular() != 0 ){
             pular_agora = NAO;
         }else{
             pular_agora = SIM;
@@ -1002,7 +1006,7 @@ public class Jogo : MonoBehaviour
                 one_click = false;
 
                 Informacoes.SetStatusPular(SIM);
-                // selecionou_pular = SIM;
+                //selecionou_pular = SIM;
                 confirmar.interactable = false;
                 pular.interactable = false;
                 pular_agora = SIM;
@@ -1119,17 +1123,33 @@ public class Jogo : MonoBehaviour
             SalvarInfos();
             return NAO_MUDOU_NIVEL;
         }
+        else if(selecionou_pular == 2){
+
+            if (nivel_atual == FACIL && questao_x_de_y >= quantidade_facil-1)
+            {
+                Informacoes.SetStatus(MEIO);
+                nivel_atual = MEDIO;
+                SalvarInfos();
+                return MUDOU_NIVEL;
+            }
+            else if (nivel_atual == MEDIO && questao_x_de_y >= quantidade_medio-1)
+            {
+                Informacoes.SetStatus(MEIO);
+                nivel_atual = DIFICIL;
+                SalvarInfos();
+                return MUDOU_NIVEL;
+            }
+            SalvarInfos();
+            return NAO_MUDOU_NIVEL;
+
+        }
         else
         {
             if (nivel_atual == FACIL && questao_x_de_y >= quantidade_facil)
             {
                 Informacoes.SetStatus(MEIO);
                 nivel_atual = MEDIO;
-
-                if(quantidade_pular == 0){
-                    selecionou_pular = SIM;
-                }
-
+                selecionou_pular = 2;
                 SalvarInfos();
                 return MUDOU_NIVEL;
             }
@@ -1137,11 +1157,7 @@ public class Jogo : MonoBehaviour
             {
                 Informacoes.SetStatus(MEIO);
                 nivel_atual = DIFICIL;
-
-                if(quantidade_pular == 0){
-                    selecionou_pular = SIM;
-                }
-
+                selecionou_pular = 2;
                 SalvarInfos();
                 return MUDOU_NIVEL;
             }
@@ -1153,8 +1169,6 @@ public class Jogo : MonoBehaviour
 
     private void ExibirNaTela()
     {
-        for(int i = 0; i < 4; i++)
-            risco[i].SetActive(false);
 
         if (nivel_atual == FACIL)
         {
@@ -1199,10 +1213,10 @@ public class Jogo : MonoBehaviour
     private void ExibirNaTelaMedio()
     {
         dificuldade_tela.text = "NÍVEL MÉDIO";
-        if (pular_agora == SIM && selecionou_pular == NAO)
-            numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + quantidade_medio.ToString();
-        else if (pular_agora == SIM && selecionou_pular == SIM)
+        if (selecionou_pular == 2)
             numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + quantidade_medio.ToString();
+        else if (pular_agora == SIM)
+            numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + quantidade_medio.ToString();
         else
             numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + quantidade_medio.ToString();
         pergunta_tela.text = perguntas_medio[questao_x_de_y];
@@ -1227,10 +1241,10 @@ public class Jogo : MonoBehaviour
     private void ExibirNaTelaDificil()
     {
         dificuldade_tela.text = "NÍVEL DIFÍCIL";
-        if (pular_agora == SIM && selecionou_pular == NAO)
-            numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + quantidade_dificil.ToString();
-        else if (pular_agora == SIM && selecionou_pular == SIM)
+        if (selecionou_pular == 2)
             numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + quantidade_dificil.ToString();
+        else if (pular_agora == SIM)
+            numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + quantidade_dificil.ToString();
         else
             numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + quantidade_dificil.ToString();
         pergunta_tela.text = perguntas_dificil[questao_x_de_y];
@@ -1313,6 +1327,19 @@ public class Jogo : MonoBehaviour
     private int VerificarFim()
     {
         if (pular_agora == NAO)
+        {
+            if (questao_x_de_y == quantidade_dificil && nivel_atual == DIFICIL)
+            {
+                Informacoes.SetPontos(pontuacao);
+                SceneManager.LoadScene("Fim");
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        else if(selecionou_pular == 2)
         {
             if (questao_x_de_y == quantidade_dificil && nivel_atual == DIFICIL)
             {
@@ -1415,7 +1442,6 @@ public class Jogo : MonoBehaviour
     {
         estado = JANELA;
         botao_panel.Select();
-
 
         if (nivel_atual == FACIL)
         {

@@ -129,12 +129,12 @@ public class FimJogo : MonoBehaviour
             if (Informacoes.GetQuantidade5050() != 0)
             {
                 x5050.text = "Não usou a ajuda 5050: + " + bonus_5050.ToString() + " pontos!";
-                pontuacao = pontuacao + bonus;
+                pontuacao = pontuacao + bonus_5050;
             }
             if (Informacoes.GetQuantidadePular() != 0)
             {
                 pular.text = "Não usou a ajuda Pular: + " + bonus_pular.ToString() + " pontos!";
-                pontuacao = pontuacao + bonus;
+                pontuacao = pontuacao + bonus_pular;
             }
             pontos_final.text = "Pontuação atualizada: " + pontuacao.ToString();
             Informacoes.SetPontos(pontuacao);

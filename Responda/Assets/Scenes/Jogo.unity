@@ -3265,7 +3265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530636114}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -351, y: -45.07, z: 0}
+  m_LocalPosition: {x: -362, y: -46, z: 0}
   m_LocalScale: {x: 44.98906, y: 52.259293, z: 44.98906}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6259,7 +6259,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030940465}
   m_LocalRotation: {x: -0, y: -0, z: 0.7056721, w: 0.7085387}
-  m_LocalPosition: {x: -437.6, y: -48.3, z: 0}
+  m_LocalPosition: {x: -320, y: -46, z: 0}
   m_LocalScale: {x: 40.31728, y: 77.71, z: 40.9}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7319,6 +7319,8 @@ MonoBehaviour:
   quantidade_facil: 0
   quantidade_medio: 0
   quantidade_dificil: 0
+  pular_agora: 0
+  selecionou_pular: 1
   nivel_atual: 0
   audio_pergunta: {fileID: 2107408075}
   audio_a0: {fileID: 2060841879}
