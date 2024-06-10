@@ -147,6 +147,8 @@ public class Jogo : MonoBehaviour
 
     public int[] perguntas_bool;
 
+    public int caminhos;
+
     
 
     void Start()
@@ -164,6 +166,8 @@ public class Jogo : MonoBehaviour
         #endif
         //TirarBarras();
         AtualizarVolume();
+
+        caminhos = Informacoes.GetCaminhos();
 
         if (Informacoes.GetStatus() == INICIO)
         {
@@ -309,7 +313,47 @@ public class Jogo : MonoBehaviour
         pontuacao = 0;
         pergunta_atual = 0;
         Informacoes.SetPerguntaAtual(0);
-        SortearPerguntas();
+
+        if(caminhos == 1){
+            Recomecar();
+            Informacoes.SetCaminhos(0);
+        }else{
+            SortearPerguntas();
+        }
+
+    }
+
+    private void Recomecar()
+    {
+        quantidade_facil = Informacoes.GetQuantidadeFacil();
+        quantidade_medio = Informacoes.GetQuantidadeMedio();
+        quantidade_dificil = Informacoes.GetQuantidadeDificil();
+        questao_x_de_y = 0;
+        nivel_atual = FACIL;
+        perguntas_facil = Informacoes.GetPerguntasFacil();
+        respostas_facil = Informacoes.GetRespostasFacil();
+        respostas_possiveis_facil = Informacoes.GetRespostasPossiveisFacil();
+        dicas_facil = Informacoes.GetDicasFacil();
+        perguntas_medio = Informacoes.GetPerguntasMedio();
+        respostas_medio = Informacoes.GetRespostasMedio();
+        respostas_possiveis_medio = Informacoes.GetRespostasPossiveisMedio();
+        dicas_medio = Informacoes.GetDicasMedio();
+        perguntas_dificil = Informacoes.GetPerguntasDificil();
+        respostas_dificil = Informacoes.GetRespostasDificil();
+        respostas_possiveis_dificil = Informacoes.GetRespostasPossiveisDificil();
+        dicas_dificil = Informacoes.GetDicasDificil();
+        selecionou5050 = 0;
+        selecionou_pular = 0;
+        Acerto_Consecutivo = false;
+        audios_perguntas = Informacoes.GetAudiosPerguntas();
+        audios_alternativas = Informacoes.GetAudiosAlternativas();
+        audios_dicas = Informacoes.GetAudiosDicas();
+        perguntas_bool = new int[15];
+        
+        MixLista();
+        AtualizarVariaveis();
+        MisturarRespostas();
+
     }
 
     private void SortearPerguntas()
@@ -347,6 +391,7 @@ public class Jogo : MonoBehaviour
             }
         //Debug.Log(CarregaDados.listaDados[i].audio_pergunta);    
         }
+        
         MixLista();
         AtualizarVariaveis();
         MisturarRespostas();
@@ -604,6 +649,7 @@ public class Jogo : MonoBehaviour
         Informacoes.SetStatusPular(selecionou_pular);
 
     }
+    
     
     private void PegarInfosSalvas()
     {

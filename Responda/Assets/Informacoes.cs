@@ -55,6 +55,17 @@
     private static int quantidade_5050;
     private static int quantidade_pular;
 
+    private static int caminho;
+
+    public static void SetCaminhos(int caminhoNovo)
+    {
+        caminho = caminhoNovo;
+    }
+
+    public static int GetCaminhos()
+    {
+        return caminho;
+    }
 
     public static void SetQuantidade5050(int quantidade)
     {

@@ -39,8 +39,8 @@ public class FimJogo : MonoBehaviour
 
         canvasGroup.alpha = 0;
         fadein = false;
-
         pontuacao = Informacoes.GetPontos();
+        Informacoes.SetCaminhos(1);
         CalcularBonus();
         botao.onClick.AddListener(() => Voltar());
     }
