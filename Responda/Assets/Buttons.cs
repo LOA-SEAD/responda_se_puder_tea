@@ -14,15 +14,22 @@ public class Buttons : MonoBehaviour {
 		volume_efeitos = Informacoes.GetValueEfeitos();
         volume_musica = Informacoes.GetValueEfeitos();
         volume_texto = Informacoes.GetValueLeituraTexto();
-	}
+        Informacoes.SetNivel(0);
+    }
 
 	public void Sair()
 	{
+
 		Application.Quit();
 	}
 	
 	public void MudarTela(string tela)
 	{
+		if(tela=="JogoTutorial")
+		{
+			tela = "Nivel";
+			Informacoes.SetNivel(99);
+		}
 		SceneManager.LoadScene(tela);
 	}
 
@@ -41,7 +48,7 @@ public class Buttons : MonoBehaviour {
 
 	public void IniciarJogo()
 	{
-		Informacoes.SetNivel(0);
+		
 		SceneManager.LoadScene("Nivel");
 	}
 }

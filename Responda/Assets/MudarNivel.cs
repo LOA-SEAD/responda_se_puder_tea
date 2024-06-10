@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class MudarNivel : MonoBehaviour
 {
+    private const int TUTORIAL = 99;
     private const int FACIL = 0;
     private const int MEDIO = 1;
 
@@ -18,7 +19,14 @@ public class MudarNivel : MonoBehaviour
     void Start()
     {
         int nivel = Informacoes.GetNivel();
-        if (nivel == FACIL)
+        if(nivel == TUTORIAL)
+        {
+            Informacoes.SetStatus(99);
+            nivel_tela.text = "Tutorial";
+            nivel_tela.color = new Color(0.03f, 0.26f, .10f);
+            audiosSeq[0] = audioClips[0];
+        }
+        else if (nivel == FACIL)
         {
             Informacoes.SetStatus(0);
             nivel_tela.text = "Nível fácil";

@@ -10,7 +10,15 @@ public class carregarTelaJogo : MonoBehaviour
         #if UNITY_ANDROID
             SceneManager.LoadScene("JogoPaisagem");
         #else
-            SceneManager.LoadScene("Jogo");
+            if(Informacoes.GetNivel() != 99) //TUTORIAL
+            {
+                SceneManager.LoadScene("Jogo");
+            }
+            else
+            {
+            SceneManager.LoadScene("JogoTutorial");
+        }
+            
         #endif
 
     }
