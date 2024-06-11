@@ -19,16 +19,12 @@ public class Jogo : MonoBehaviour
     private Rect janelaErrado = new Rect (0, 0, Screen.width, Screen.height);
     private bool showErrado = false;
 
-    // Adicionado Bonus
-    public bool Acerto_Consecutivo = false;
-
     public Text pergunta_tela;
     public Text alternativa1_tela;
     public Text alternativa2_tela;
     public Text alternativa3_tela;
     public Text alternativa4_tela;
     public Text pontuacao_tela;
-    public Text valorQuestao;
     public Text dificuldade_tela;
     public Text numero_questao_tela;
     public TextMeshProUGUI panel_title;
@@ -68,9 +64,9 @@ public class Jogo : MonoBehaviour
     const int JANELA = 1;
     const int JOGANDO = 0;
 
-    public int quantidade_facil;
-    public int quantidade_medio;
-    public int quantidade_dificil;
+    int quantidade_facil;
+    int quantidade_medio;
+    int quantidade_dificil;
     string[] perguntas_facil = new string[11];
     string[] perguntas_medio = new string[11];
     string[] perguntas_dificil = new string[11];
@@ -92,15 +88,12 @@ public class Jogo : MonoBehaviour
     int alternativa_escolhida;
     int tirar_1;
     int tirar_2;
-    public int pular_agora;
+    int pular_agora;
 
-    public int questao_x_de_y;
-    public int selecionou5050 = NAO;
-
-    public int quantidade_5050 = 2;
-    int quantidade_pular = 1;
-    public int selecionou_pular = 0;
-    public int nivel_atual = FACIL;
+    int questao_x_de_y;
+    int selecionou5050 = NAO;
+    int selecionou_pular = NAO;
+    int nivel_atual = FACIL;
     int pontuacao;
 
     int estado;
@@ -127,8 +120,6 @@ public class Jogo : MonoBehaviour
     public AudioSource audio_botao_dica;
     public AudioSource audio_5050;
     public AudioSource audio_pular;
-
-    public AudioSource audio_confirmar;
     
     System.Random random = new System.Random();
 
@@ -139,35 +130,19 @@ public class Jogo : MonoBehaviour
 
     float delay = 5.0f;
     
-    // Declaracao de Variaveis
-    public Image[] images;
-    //public Shader[] shaders;
-
-    public Sprite[] sprites_variacoes;
-
-    public int pergunta_atual;
-
-    public int[] perguntas_bool;
-
-    public int caminhos;
-
-
     void Start()
     {
         Debug.Log("[Jogo] Start - Inicio");
         CarregaDados.Load(this);
         Debug.Log("[Jogo] Quantidade itens: " + CarregaDados.listaDados.Count);
         Debug.Log("[Jogo] Start - Fim");
-        pergunta_atual = 0;
-    
         
         #if UNITY_ANDROID
             Screen.orientation = ScreenOrientation.LandscapeLeft;
             //Screen.fullScreen = false;
         #endif
         //TirarBarras();
-
-        caminhos = Informacoes.GetCaminhos();
+        AtualizarVolume();
 
         if (Informacoes.GetStatus() == INICIO)
         {
@@ -180,7 +155,6 @@ public class Jogo : MonoBehaviour
             if(Informacoes.GetStatus() == STATUSOPCOES){
                 questao_x_de_y--;
             }
-
         }
          Debug.Log("qst" + questao_x_de_y);
           Debug.Log("nvl" + nivel_atual);
@@ -188,24 +162,11 @@ public class Jogo : MonoBehaviour
          if (VerificarFim() == 0){
             AtualizarPerguntaTela();
         }
-
-        if(selecionou5050 == SIM){
-
-            alternativas[tirar_1].interactable = false;
-            alternativas[tirar_2].interactable = false;
-            ajuda5050.interactable = false;
-            
-        }
         
     }
 
     void Update()
     {
-        AtualizarVolume();
-        DesativaBarras();
-        AttImagem();
-        MostraAtual();
-
         if(estado == JOGANDO)
         {
             //Esc
@@ -230,59 +191,6 @@ public class Jogo : MonoBehaviour
                 one_click = false;
             }
         }
-
-    }
-
-    // Implementação da Barra de Perguntas
-
-    void MostraAtual(){
-        pergunta_atual = Informacoes.GetPerguntaAtual();
-        images[pergunta_atual].sprite = sprites_variacoes[0];
-    }
-
-    void AttImagem(){
-
-        for(int j = 0; j < 15; j++){
-            if(perguntas_bool[j] == 1){
-                images[j].sprite = sprites_variacoes[1];
-            }else if(perguntas_bool[j] == 2){
-                images[j].sprite = sprites_variacoes[2];
-            }else if(perguntas_bool[j] == 0){
-                images[j].sprite = sprites_variacoes[4];
-            }else if(perguntas_bool[j] == 3){
-                images[j].sprite = sprites_variacoes[3];
-            }
-        }
-            
-    }
-
-
-    void DesativaBarras(){
-
-        if(quantidade_facil != 5){
-
-            for(int i = 4;i >= quantidade_facil; i--){
-                //images[i].sprite = sprites_variacoes[3];
-                perguntas_bool[i] = 3;
-            }
-        }
-
-        if(quantidade_medio != 5){
-            for(int i = 9;i >= quantidade_medio + 5; i--){
-                // images[i].sprite = sprites_variacoes[3];
-                perguntas_bool[i] = 3;
-            }
-        }
-
-        if(quantidade_dificil != 5){
-            for(int i = 14;i >= quantidade_dificil + 10; i--){
-                // images[i].sprite = sprites_variacoes[3];
-                perguntas_bool[i] = 3;
-            }
-        }
-
-        
-
     }
 
     void pausarAudios()
@@ -309,10 +217,6 @@ public class Jogo : MonoBehaviour
         audio_a3.volume = Informacoes.GetValueLeituraTexto();
         audio_dica.volume = Informacoes.GetValueLeituraTexto();
         audio_pergunta.volume = Informacoes.GetValueLeituraTexto();
-        audio_pular.volume = Informacoes.GetValueLeituraTexto();
-        audio_5050.volume = Informacoes.GetValueLeituraTexto();
-        audio_botao_dica.volume = Informacoes.GetValueLeituraTexto();
-        audio_confirmar.volume = Informacoes.GetValueLeituraTexto();
     }
     
     private void InicializarJogo()
@@ -320,53 +224,9 @@ public class Jogo : MonoBehaviour
         // carregaDados.Load();
         dificuldade_tela.text = "NÍVEL FÁCIL";
         pular_agora = NAO;
-        quantidade_pular = 1;
-        quantidade_5050 = 2;
         Informacoes.SetStatusPular(NAO);
         pontuacao = 0;
-        pergunta_atual = 0;
-        Informacoes.SetPerguntaAtual(0);
-
-        if(caminhos == 1){
-            Recomecar();
-            Informacoes.SetCaminhos(0);
-        }else{
-            SortearPerguntas();
-        }
-
-    }
-
-    private void Recomecar()
-    {
-        quantidade_facil = Informacoes.GetQuantidadeFacil();
-        quantidade_medio = Informacoes.GetQuantidadeMedio();
-        quantidade_dificil = Informacoes.GetQuantidadeDificil();
-        questao_x_de_y = 0;
-        nivel_atual = FACIL;
-        perguntas_facil = Informacoes.GetPerguntasFacil();
-        respostas_facil = Informacoes.GetRespostasFacil();
-        respostas_possiveis_facil = Informacoes.GetRespostasPossiveisFacil();
-        dicas_facil = Informacoes.GetDicasFacil();
-        perguntas_medio = Informacoes.GetPerguntasMedio();
-        respostas_medio = Informacoes.GetRespostasMedio();
-        respostas_possiveis_medio = Informacoes.GetRespostasPossiveisMedio();
-        dicas_medio = Informacoes.GetDicasMedio();
-        perguntas_dificil = Informacoes.GetPerguntasDificil();
-        respostas_dificil = Informacoes.GetRespostasDificil();
-        respostas_possiveis_dificil = Informacoes.GetRespostasPossiveisDificil();
-        dicas_dificil = Informacoes.GetDicasDificil();
-        selecionou5050 = 0;
-        selecionou_pular = 0;
-        Acerto_Consecutivo = false;
-        audios_perguntas = Informacoes.GetAudiosPerguntas();
-        audios_alternativas = Informacoes.GetAudiosAlternativas();
-        audios_dicas = Informacoes.GetAudiosDicas();
-        perguntas_bool = new int[15];
-        
-        MixLista();
-        AtualizarVariaveis();
-        MisturarRespostas();
-
+        SortearPerguntas();
     }
 
     private void SortearPerguntas()
@@ -404,7 +264,6 @@ public class Jogo : MonoBehaviour
             }
         //Debug.Log(CarregaDados.listaDados[i].audio_pergunta);    
         }
-        
         MixLista();
         AtualizarVariaveis();
         MisturarRespostas();
@@ -412,10 +271,6 @@ public class Jogo : MonoBehaviour
         quantidade_facil--;
         quantidade_medio--;
         quantidade_dificil--;
-
-        perguntas_bool = new int[15];
-
-
     }
 
     private void MixLista()
@@ -650,22 +505,8 @@ public class Jogo : MonoBehaviour
         Informacoes.SetAudiosAlternativas(audios_alternativas);
         Informacoes.SetAudiosDicas(audios_dicas);
 
-        Informacoes.SetAcertoConsecutivo(Acerto_Consecutivo);
-        Informacoes.SetPontosGanhos(pontos_ganhos);
-
         Informacoes.SetNumeroQuestao(questao_x_de_y);
-        Informacoes.SetPerguntaAtual(pergunta_atual);
-        Informacoes.SetPerguntasRespondidas(perguntas_bool);
-
-        Informacoes.SetQuantidade5050(quantidade_5050);
-        Informacoes.SetQuantidadePular(quantidade_pular);
-        Informacoes.SetStatusPular(selecionou_pular);
-
-        if(selecionou5050 == SIM)
-            Informacoes.SetTirar(tirar_1, tirar_2);
-
     }
-    
     
     private void PegarInfosSalvas()
     {
@@ -675,14 +516,7 @@ public class Jogo : MonoBehaviour
         else{
             questao_x_de_y = -1;
         }
-        
-
-        if(Informacoes.GetQuantidadePular() != 0 ){
-            pular_agora = NAO;
-        }else{
-            pular_agora = SIM;
-        }
-
+        pular_agora = NAO;
         quantidade_facil = Informacoes.GetQuantidadeFacil();
         quantidade_medio = Informacoes.GetQuantidadeMedio();
         quantidade_dificil = Informacoes.GetQuantidadeDificil();
@@ -705,19 +539,10 @@ public class Jogo : MonoBehaviour
         volume_efeitos = Informacoes.GetValueEfeitos();
         volume_musica = Informacoes.GetValueEfeitos();
         volume_texto = Informacoes.GetValueLeituraTexto();
-        Acerto_Consecutivo = Informacoes.GetAcertoConsecutivo();
+
         audios_perguntas = Informacoes.GetAudiosPerguntas();
         audios_alternativas = Informacoes.GetAudiosAlternativas();
         audios_dicas = Informacoes.GetAudiosDicas();
-        pergunta_atual = Informacoes.GetPerguntaAtual();
-        perguntas_bool = Informacoes.GetPerguntasRespondidas();
-        quantidade_5050 = Informacoes.GetQuantidade5050();
-        quantidade_pular = Informacoes.GetQuantidadePular();
-
-        if(selecionou5050 == SIM){
-            tirar_1 = Informacoes.GetTirar1();
-            tirar_2 = Informacoes.GetTirar2();
-        }
     }
 
     public void TocarHighlight(int alternativa)
@@ -922,12 +747,7 @@ public class Jogo : MonoBehaviour
     
     public void ConfirmarAlternativa()
     {
-        //confirmar.interactable = false;
-
-        if(selecionou5050 == SIM){
-            selecionou5050 = NAO;
-        }
-
+        confirmar.interactable = false;
         SomarPontuacao();
         ExibirCertoOuErrado();
         EsconderPanelConfirmar();
@@ -935,13 +755,12 @@ public class Jogo : MonoBehaviour
 
     public void NaoConfirmarAlternativa(){
         EsconderPanelConfirmar();
-        // alternativas[alternativa_escolhida].Select(); Não precisa falar duas vezes
+        alternativas[alternativa_escolhida].Select();
     }
 
     public void Funcao5050()
     {
-        if(quantidade_5050 > 0){
-            #if UNITY_ANDROID
+        #if UNITY_ANDROID
             if(!one_click){
                 one_click = true;
                 timer_for_double_click = Time.time;
@@ -973,6 +792,9 @@ public class Jogo : MonoBehaviour
                 alternativas[tirar_1].interactable = false;
                 alternativas[tirar_2].interactable = false;
 
+                risco[tirar_1].SetActive(true);
+                risco[tirar_2].SetActive(true);
+
                 ajuda5050.interactable = false;
                 for(int i=0; i<4; i++){
                     if(alternativas[i].interactable)
@@ -983,8 +805,6 @@ public class Jogo : MonoBehaviour
                 }
             }
         #else
-            
-            audio_5050.Play();
             selecionou5050 = SIM;
             confirmar.interactable = false;
 
@@ -1018,14 +838,6 @@ public class Jogo : MonoBehaviour
                 }
             }
         #endif
-
-            quantidade_5050--;
-        }else{
-            ajuda5050.interactable = false;
-            
-        }
-
-        
     }
 
     public void FuncaoDica()
@@ -1048,24 +860,17 @@ public class Jogo : MonoBehaviour
                 CriarJanelaDica();
             }
         #else
-            
             confirmar.interactable = false;
             estado = JANELA;
-            botao_panel.Select();
-            
             audio_dica.Play();
-            
-            //botao_panel.Select();
+            botao_panel.Select();
             CriarJanelaDica();
-
-            audio_botao_dica.Play();
         #endif
     }
 
     public void FuncaoPular()
     {
-        if(quantidade_pular >0){
-            #if UNITY_ANDROID
+        #if UNITY_ANDROID
             if(!one_click){
                 one_click = true;
                 timer_for_double_click = Time.time;
@@ -1086,9 +891,6 @@ public class Jogo : MonoBehaviour
                 alternativas[0].Select();
             }
         #else
-
-            audio_pular.Play();
-
             Informacoes.SetStatusPular(SIM);
             selecionou_pular = SIM;
             confirmar.interactable = false;
@@ -1097,82 +899,42 @@ public class Jogo : MonoBehaviour
             PegarProximaQuestao();
             AtualizarPerguntaTela();
             alternativas[0].Select();
-
-            if(selecionou5050 == SIM && quantidade_5050 > 0){
-            alternativas[tirar_1].interactable = true;
-            alternativas[tirar_2].interactable = true;
-            ajuda5050.interactable = true;
-            selecionou5050 = NAO;
-            }
-
         #endif
-            quantidade_pular--;
-        }else{
-            pular.interactable = false;
-        }
     }
 
     private void SomarPontuacao()
     {
-
         if (nivel_atual == FACIL)
         {
             if(alternativa_escolhida == respostas_facil[questao_x_de_y])
             {
                 pontos_ganhos = 10;
-
-                if(Acerto_Consecutivo){
-                    pontos_ganhos += 5;
-                }
-                else{
-                    Acerto_Consecutivo = true;
-                }
             }
             else
             {
                 pontos_ganhos = 0;
-
-                Acerto_Consecutivo = false;
             }
         }
         else if (nivel_atual == MEDIO)
         {
             if(alternativa_escolhida == respostas_medio[questao_x_de_y])
             {
-                pontos_ganhos = 15;
-
-                if(Acerto_Consecutivo){
-                    pontos_ganhos += 5;
-                }
-                else{
-                    Acerto_Consecutivo = true;
-                }
+                pontos_ganhos = 10;
             }
             else
             {
                 pontos_ganhos = 0;
-
-                Acerto_Consecutivo = false;
             }
         }
         else
         {
             if(alternativa_escolhida == respostas_dificil[questao_x_de_y])
             {
-                pontos_ganhos = 20;
-
-                if(Acerto_Consecutivo){
-                    pontos_ganhos += 5;
-                }
-                else{
-                    Acerto_Consecutivo = true;
-                }
+                pontos_ganhos = 10;
             }
             else
             {
                 pontos_ganhos = 0;
-
-                Acerto_Consecutivo = false;
             }
         }
         
@@ -1204,33 +966,12 @@ public class Jogo : MonoBehaviour
             SalvarInfos();
             return NAO_MUDOU_NIVEL;
         }
-        else if(selecionou_pular == 2){
-
-            if (nivel_atual == FACIL && questao_x_de_y >= quantidade_facil-1)
-            {
-                Informacoes.SetStatus(MEIO);
-                nivel_atual = MEDIO;
-                SalvarInfos();
-                return MUDOU_NIVEL;
-            }
-            else if (nivel_atual == MEDIO && questao_x_de_y >= quantidade_medio-1)
-            {
-                Informacoes.SetStatus(MEIO);
-                nivel_atual = DIFICIL;
-                SalvarInfos();
-                return MUDOU_NIVEL;
-            }
-            SalvarInfos();
-            return NAO_MUDOU_NIVEL;
-
-        }
         else
         {
             if (nivel_atual == FACIL && questao_x_de_y >= quantidade_facil)
             {
                 Informacoes.SetStatus(MEIO);
                 nivel_atual = MEDIO;
-                selecionou_pular = 2;
                 SalvarInfos();
                 return MUDOU_NIVEL;
             }
@@ -1238,7 +979,6 @@ public class Jogo : MonoBehaviour
             {
                 Informacoes.SetStatus(MEIO);
                 nivel_atual = DIFICIL;
-                selecionou_pular = 2;
                 SalvarInfos();
                 return MUDOU_NIVEL;
             }
@@ -1250,6 +990,8 @@ public class Jogo : MonoBehaviour
 
     private void ExibirNaTela()
     {
+        for(int i = 0; i < 4; i++)
+            risco[i].SetActive(false);
 
         if (nivel_atual == FACIL)
         {
@@ -1268,10 +1010,10 @@ public class Jogo : MonoBehaviour
     private void ExibirNaTelaFacil()
     {
         dificuldade_tela.text = "NÍVEL FÁCIL";
-        if (pular_agora == SIM){
-            numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + (quantidade_facil).ToString();}
+        if (pular_agora == SIM)
+            numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + quantidade_facil.ToString();
         else
-            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + (quantidade_facil).ToString();
+            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + quantidade_facil.ToString();
         pergunta_tela.text = perguntas_facil[questao_x_de_y];
         alternativa_correta = respostas_facil[questao_x_de_y];
         
@@ -1281,22 +1023,12 @@ public class Jogo : MonoBehaviour
         alternativa4_tela.text = respostas_possiveis_facil[questao_x_de_y, 3];
 
         pontuacao_tela.text = "Pontos: " + pontuacao.ToString();
-
-        if(Acerto_Consecutivo){
-            valorQuestao.text = "Valendo: 10 + 5";
-        }
-        else{
-            valorQuestao.text = "Valendo: 10";
-        }
-
     }
 
     private void ExibirNaTelaMedio()
     {
         dificuldade_tela.text = "NÍVEL MÉDIO";
-        if (selecionou_pular == 2)
-            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + quantidade_medio.ToString();
-        else if (pular_agora == SIM)
+        if (pular_agora == SIM)
             numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + quantidade_medio.ToString();
         else
             numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + quantidade_medio.ToString();
@@ -1309,22 +1041,12 @@ public class Jogo : MonoBehaviour
         alternativa4_tela.text = respostas_possiveis_medio[questao_x_de_y, 3];
 
         pontuacao_tela.text = "Pontos: " + pontuacao.ToString();
-
-        if(Acerto_Consecutivo){
-            valorQuestao.text = "Valendo: 15 + 5";
-        }
-        else{
-            valorQuestao.text = "Valendo: 15";
-        }
-
     }
 
     private void ExibirNaTelaDificil()
     {
         dificuldade_tela.text = "NÍVEL DIFÍCIL";
-        if (selecionou_pular == 2)
-            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + quantidade_dificil.ToString();
-        else if (pular_agora == SIM)
+        if (pular_agora == SIM)
             numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + quantidade_dificil.ToString();
         else
             numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + quantidade_dificil.ToString();
@@ -1337,20 +1059,11 @@ public class Jogo : MonoBehaviour
         alternativa4_tela.text = respostas_possiveis_dificil[questao_x_de_y, 3];
 
         pontuacao_tela.text = "Pontos: " + pontuacao.ToString();
-
-        if(Acerto_Consecutivo){
-            valorQuestao.text = "Valendo: 20 + 5";
-        }
-        else{
-            valorQuestao.text = "Valendo: 20";
-        }
-
     }
 
     private void PegarProximaQuestao()
     {
         questao_x_de_y ++;
-
     }
 
     private void ConfigurarBotoes()
@@ -1360,11 +1073,11 @@ public class Jogo : MonoBehaviour
             alternativas[i].interactable = true;
         }
         confirmar.interactable = false;
-        if (quantidade_5050 == 0)
+        if (selecionou5050 == SIM)
         {
             ajuda5050.interactable = false;
         }
-        if (quantidade_pular == 0)
+        if (selecionou_pular == SIM)
         {
             pular.interactable = false;
         }
@@ -1408,19 +1121,6 @@ public class Jogo : MonoBehaviour
     private int VerificarFim()
     {
         if (pular_agora == NAO)
-        {
-            if (questao_x_de_y == quantidade_dificil && nivel_atual == DIFICIL)
-            {
-                Informacoes.SetPontos(pontuacao);
-                SceneManager.LoadScene("Fim");
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-        else if(selecionou_pular == 2)
         {
             if (questao_x_de_y == quantidade_dificil && nivel_atual == DIFICIL)
             {
@@ -1507,87 +1207,20 @@ public class Jogo : MonoBehaviour
         SceneManager.LoadScene("respostaErrada");
     }
 
-    
-
-    private void VerificarIntervalo(){
-         if(pergunta_atual >= quantidade_facil && nivel_atual == FACIL){
-            pergunta_atual += (5 - quantidade_facil);
-        }
-
-        if(pergunta_atual >= (quantidade_medio + 5) && nivel_atual == MEDIO){
-            pergunta_atual += (5 - quantidade_medio);
-        }
-    }
-
     private void ExibirCertoOuErrado()
     {
         estado = JANELA;
         botao_panel.Select();
-
-        if (nivel_atual == FACIL)
-        {
-            if (alternativa_escolhida == respostas_facil[questao_x_de_y])
+        if (pontos_ganhos == 10)
         {
             showCerto = true;
-            perguntas_bool[pergunta_atual] = 1;
-            pergunta_atual += 1;
-            VerificarIntervalo();
             CriarJanelaCerto();
-
         }
         else
         {
             showErrado = true;
-            perguntas_bool[pergunta_atual] = 2;
-            pergunta_atual += 1;
-            VerificarIntervalo();
             CriarJanelaErrado();
         }
-        }
-        else if (nivel_atual == MEDIO)
-        {
-
-        if (alternativa_escolhida == respostas_medio[questao_x_de_y])
-        {
-            showCerto = true;
-            perguntas_bool[pergunta_atual] = 1;
-            pergunta_atual += 1;
-            VerificarIntervalo();
-            CriarJanelaCerto();
-
-        }
-        else
-        {
-            showErrado = true;
-            perguntas_bool[pergunta_atual] = 2;
-            pergunta_atual += 1;
-            VerificarIntervalo();
-            CriarJanelaErrado();
-        }
-
-        }
-        else if(nivel_atual == DIFICIL)
-        {
-
-        if (alternativa_escolhida == respostas_dificil[questao_x_de_y])
-        {
-            showCerto = true;
-            perguntas_bool[pergunta_atual] = 1;
-            pergunta_atual += 1;
-            VerificarIntervalo();
-            CriarJanelaCerto();
-
-        }
-        else
-        {
-            showErrado = true;
-            perguntas_bool[pergunta_atual] = 2;
-            pergunta_atual += 1;
-            VerificarIntervalo();
-            CriarJanelaErrado();
-        }
-        }
-        
     }
 
     private void ExibirTransicaoDeNivel()
@@ -1688,9 +1321,5 @@ public class Jogo : MonoBehaviour
             valor = min + random.Next(0, Int32.MaxValue) % (max - min);
         }
         return valor;
-    }
-
-    public void TocarPergunta(){
-        audio_pergunta.Play();
     }
 }

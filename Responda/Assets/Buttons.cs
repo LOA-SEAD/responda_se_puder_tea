@@ -41,13 +41,7 @@ public class Buttons : MonoBehaviour {
 
 	public void IniciarJogo()
 	{
-		
-			Informacoes.SetStatus(0);
-			Informacoes.SetNivel(0);
-			SceneManager.LoadScene("Nivel");
-		
-		
-		//SceneManager.LoadScene("Jogo");
-		//SceneManager.LoadScene("Nivel");
+		Informacoes.SetNivel(0);
+		SceneManager.LoadScene("Nivel");
 	}
 }
