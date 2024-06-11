@@ -41,20 +41,12 @@ public class Buttons : MonoBehaviour {
 
 	public void IniciarJogo()
 	{
-		//Informacoes.SetNivel(0);
-		if(Informacoes.GetCaminhos() == 0)
-		{
+		
 			Informacoes.SetStatus(0);
 			Informacoes.SetNivel(0);
 			SceneManager.LoadScene("Nivel");
-		}
-		else if(Informacoes.GetCaminhos() == 2)
-			SceneManager.LoadScene("Jogo");
-		else{
-			Informacoes.SetStatus(0);
-			Informacoes.SetNivel(0);
-			SceneManager.LoadScene("Nivel");
-		}
+		
+		
 		//SceneManager.LoadScene("Jogo");
 		//SceneManager.LoadScene("Nivel");
 	}

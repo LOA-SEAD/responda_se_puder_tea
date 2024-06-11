@@ -49,8 +49,11 @@ public class Opcoes : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
-    public void menu(){
-        Informacoes.SetCaminhos(2);
-        SceneManager.LoadScene("Menu");
+    public void Recomecar(){
+        Informacoes.SetCaminhos(1);
+        Informacoes.SetStatus(0);
+		Informacoes.SetNivel(0);
+		SceneManager.LoadScene("Nivel");
+        //SceneManager.LoadScene("Menu");
     }
 }

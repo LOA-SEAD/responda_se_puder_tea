@@ -57,6 +57,25 @@
 
     private static int caminho;
 
+    private static int tirar_1;
+    private static int tirar_2;
+
+    public static void SetTirar(int tirar1, int tirar2)
+    {
+        tirar_1 = tirar1;
+        tirar_2 = tirar2;
+    }
+    
+    public static int GetTirar1()
+    {
+        return tirar_1;
+    }
+
+    public static int GetTirar2()
+    {
+        return tirar_2;
+    }
+    
     public static void SetCaminhos(int caminhoNovo)
     {
         caminho = caminhoNovo;

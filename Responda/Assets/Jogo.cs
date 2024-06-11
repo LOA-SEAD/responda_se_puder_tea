@@ -222,6 +222,14 @@ public class Jogo : MonoBehaviour
                 one_click = false;
             }
         }
+
+        if(selecionou5050 == SIM){
+
+            alternativas[tirar_1].interactable = false;
+            alternativas[tirar_2].interactable = false;
+            ajuda5050.interactable = false;
+            
+        }
     }
 
     // Implementação da Barra de Perguntas
@@ -648,6 +656,9 @@ public class Jogo : MonoBehaviour
         Informacoes.SetQuantidadePular(quantidade_pular);
         Informacoes.SetStatusPular(selecionou_pular);
 
+        if(selecionou5050 == SIM)
+            Informacoes.SetTirar(tirar_1, tirar_2);
+
     }
     
     
@@ -697,6 +708,11 @@ public class Jogo : MonoBehaviour
         perguntas_bool = Informacoes.GetPerguntasRespondidas();
         quantidade_5050 = Informacoes.GetQuantidade5050();
         quantidade_pular = Informacoes.GetQuantidadePular();
+
+        if(selecionou5050 == SIM){
+            tirar_1 = Informacoes.GetTirar1();
+            tirar_2 = Informacoes.GetTirar2();
+        }
     }
 
     public void TocarHighlight(int alternativa)
@@ -903,6 +919,10 @@ public class Jogo : MonoBehaviour
     {
         //confirmar.interactable = false;
 
+        if(selecionou5050 == SIM){
+            selecionou5050 = NAO;
+        }
+
         SomarPontuacao();
         ExibirCertoOuErrado();
         EsconderPanelConfirmar();
@@ -948,9 +968,6 @@ public class Jogo : MonoBehaviour
                 alternativas[tirar_1].interactable = false;
                 alternativas[tirar_2].interactable = false;
 
-                risco[tirar_1].SetActive(true);
-                risco[tirar_2].SetActive(true);
-
                 ajuda5050.interactable = false;
                 for(int i=0; i<4; i++){
                     if(alternativas[i].interactable)
@@ -962,7 +979,7 @@ public class Jogo : MonoBehaviour
             }
         #else
             audio_5050.Play();
-            // selecionou5050 = SIM;
+            selecionou5050 = SIM;
             confirmar.interactable = false;
 
             // tirar_1 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
