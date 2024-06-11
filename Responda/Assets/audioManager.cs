@@ -10,9 +10,16 @@ public class audioManager : MonoBehaviour
     public AudioClip[] adClips;
     public Button instrucoes; 
 
+    public AudioSource plateia;
+
     private IEnumerator coroutine;
 
     // Start is called before the first frame update
+
+    private void AtualizarAudios(AudioSource p){
+        plateia.volume = Informacoes.GetValueEfeitos();
+        p.volume = Informacoes.GetValueLeituraTexto();
+    }
     void Start()
     {
         coroutine = playAudioSequentially();
@@ -29,6 +36,7 @@ public class audioManager : MonoBehaviour
             adSource.clip = adClips[i];
 
             //3.Play Audio
+            AtualizarAudios(adSource);
             adSource.Play();
 
             //4.Wait for it to finish playing

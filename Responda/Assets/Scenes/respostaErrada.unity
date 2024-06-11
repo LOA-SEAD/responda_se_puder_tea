@@ -821,6 +821,15 @@ MonoBehaviour:
   arquivo_texto: {fileID: 0}
   Panel_anim: {fileID: 0}
   Panel_confirmar_anim: {fileID: 0}
+  quantidade_facil: 0
+  quantidade_medio: 0
+  quantidade_dificil: 0
+  pular_agora: 0
+  questao_x_de_y: 0
+  selecionou5050: 0
+  quantidade_5050: 2
+  selecionou_pular: 0
+  nivel_atual: 0
   audio_pergunta: {fileID: 0}
   audio_a0: {fileID: 0}
   audio_a1: {fileID: 0}
@@ -831,6 +840,12 @@ MonoBehaviour:
   audio_botao_dica: {fileID: 0}
   audio_5050: {fileID: 0}
   audio_pular: {fileID: 0}
+  audio_confirmar: {fileID: 0}
+  images: []
+  sprites_variacoes: []
+  pergunta_atual: 0
+  perguntas_bool: 
+  caminhos: 0
 --- !u!4 &190764513
 Transform:
   m_ObjectHideFlags: 0
@@ -1116,6 +1131,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e41ee8e7be6288648b49fdc8107c118b, type: 3}
   - {fileID: 8300000, guid: aed8e874180c73a4c8cab7341ce6a423, type: 3}
   instrucoes: {fileID: 0}
+  plateia: {fileID: 2052126151}
 --- !u!82 &703653470
 AudioSource:
   m_ObjectHideFlags: 0

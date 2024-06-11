@@ -7321,6 +7321,8 @@ MonoBehaviour:
   quantidade_dificil: 0
   pular_agora: 0
   questao_x_de_y: 0
+  selecionou5050: 0
+  quantidade_5050: 2
   selecionou_pular: 1
   nivel_atual: 0
   audio_pergunta: {fileID: 2107408075}
@@ -7333,6 +7335,7 @@ MonoBehaviour:
   audio_botao_dica: {fileID: 453269447}
   audio_5050: {fileID: 868194090}
   audio_pular: {fileID: 300035035}
+  audio_confirmar: {fileID: 1497468169}
   images:
   - {fileID: 1813792627}
   - {fileID: 193846046}
@@ -7357,6 +7360,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e69ff0ec55dba1e438aa1bb4dafc3091, type: 3}
   pergunta_atual: 0
   perguntas_bool: 
+  caminhos: 0
 --- !u!114 &1144039884
 MonoBehaviour:
   m_ObjectHideFlags: 0

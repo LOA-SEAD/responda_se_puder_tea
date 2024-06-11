@@ -95,9 +95,9 @@ public class Jogo : MonoBehaviour
     public int pular_agora;
 
     public int questao_x_de_y;
-    int selecionou5050 = NAO;
+    public int selecionou5050 = NAO;
 
-    int quantidade_5050 = 2;
+    public int quantidade_5050 = 2;
     int quantidade_pular = 1;
     public int selecionou_pular = 0;
     public int nivel_atual = FACIL;
@@ -127,6 +127,8 @@ public class Jogo : MonoBehaviour
     public AudioSource audio_botao_dica;
     public AudioSource audio_5050;
     public AudioSource audio_pular;
+
+    public AudioSource audio_confirmar;
     
     System.Random random = new System.Random();
 
@@ -149,7 +151,6 @@ public class Jogo : MonoBehaviour
 
     public int caminhos;
 
-    
 
     void Start()
     {
@@ -165,7 +166,6 @@ public class Jogo : MonoBehaviour
             //Screen.fullScreen = false;
         #endif
         //TirarBarras();
-        AtualizarVolume();
 
         caminhos = Informacoes.GetCaminhos();
 
@@ -188,12 +188,20 @@ public class Jogo : MonoBehaviour
          if (VerificarFim() == 0){
             AtualizarPerguntaTela();
         }
+
+        if(selecionou5050 == SIM){
+
+            alternativas[tirar_1].interactable = false;
+            alternativas[tirar_2].interactable = false;
+            ajuda5050.interactable = false;
+            
+        }
         
     }
 
     void Update()
     {
-        
+        AtualizarVolume();
         DesativaBarras();
         AttImagem();
         MostraAtual();
@@ -223,13 +231,6 @@ public class Jogo : MonoBehaviour
             }
         }
 
-        if(selecionou5050 == SIM){
-
-            alternativas[tirar_1].interactable = false;
-            alternativas[tirar_2].interactable = false;
-            ajuda5050.interactable = false;
-            
-        }
     }
 
     // Implementação da Barra de Perguntas
@@ -308,6 +309,10 @@ public class Jogo : MonoBehaviour
         audio_a3.volume = Informacoes.GetValueLeituraTexto();
         audio_dica.volume = Informacoes.GetValueLeituraTexto();
         audio_pergunta.volume = Informacoes.GetValueLeituraTexto();
+        audio_pular.volume = Informacoes.GetValueLeituraTexto();
+        audio_5050.volume = Informacoes.GetValueLeituraTexto();
+        audio_botao_dica.volume = Informacoes.GetValueLeituraTexto();
+        audio_confirmar.volume = Informacoes.GetValueLeituraTexto();
     }
     
     private void InicializarJogo()
@@ -947,7 +952,7 @@ public class Jogo : MonoBehaviour
             else{
                 one_click = false;
 
-                // selecionou5050 = SIM;
+                selecionou5050 = SIM;
                 confirmar.interactable = false;
 
                 // tirar_1 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
@@ -978,6 +983,7 @@ public class Jogo : MonoBehaviour
                 }
             }
         #else
+            
             audio_5050.Play();
             selecionou5050 = SIM;
             confirmar.interactable = false;
@@ -1046,10 +1052,12 @@ public class Jogo : MonoBehaviour
             confirmar.interactable = false;
             estado = JANELA;
             botao_panel.Select();
+            
             audio_dica.Play();
             
             //botao_panel.Select();
             CriarJanelaDica();
+
             audio_botao_dica.Play();
         #endif
     }
@@ -1069,7 +1077,7 @@ public class Jogo : MonoBehaviour
                 one_click = false;
 
                 Informacoes.SetStatusPular(SIM);
-                //selecionou_pular = SIM;
+                selecionou_pular = SIM;
                 confirmar.interactable = false;
                 pular.interactable = false;
                 pular_agora = SIM;
@@ -1078,15 +1086,25 @@ public class Jogo : MonoBehaviour
                 alternativas[0].Select();
             }
         #else
+
             audio_pular.Play();
+
             Informacoes.SetStatusPular(SIM);
-            //selecionou_pular = SIM;
+            selecionou_pular = SIM;
             confirmar.interactable = false;
             pular.interactable = false;
             pular_agora = SIM;
             PegarProximaQuestao();
             AtualizarPerguntaTela();
             alternativas[0].Select();
+
+            if(selecionou5050 == SIM && quantidade_5050 > 0){
+            alternativas[tirar_1].interactable = true;
+            alternativas[tirar_2].interactable = true;
+            ajuda5050.interactable = true;
+            selecionou5050 = NAO;
+            }
+
         #endif
             quantidade_pular--;
         }else{
