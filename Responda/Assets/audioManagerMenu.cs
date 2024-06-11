@@ -41,9 +41,4 @@ public class audioManagerMenu : MonoBehaviour
         }
         instrucoes.Select();
     }
-
-    public void StopAudio(){
-        adSource[0].Stop();
-        adSource[1].Stop();
-    }
 }
