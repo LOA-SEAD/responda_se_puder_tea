@@ -8,6 +8,8 @@ public class proxQuestao : MonoBehaviour
 {
     
     public TextMeshProUGUI pontos_player;
+
+    public TextMeshProUGUI pontos;
     public Animator anim;
     private Jogo jogoScript;
 
@@ -15,6 +17,7 @@ public class proxQuestao : MonoBehaviour
     void Start(){
         //pontos_player.text = Informacoes.GetPontos().ToString();
        jogoScript = GameObject.Find("JogoFunctions").GetComponent<Jogo>();
+       AttTexto();
        // Debug.Log(nivel_atual);
     }
 
@@ -23,6 +26,10 @@ public class proxQuestao : MonoBehaviour
             SceneManager.LoadScene("Nivel");
         else
             anim.SetTrigger("zoom");
+   }
+
+   public void AttTexto(){
+         pontos.text = "Você ganhou " + Informacoes.GetPontosGanhos().ToString() + " pontos!";
    }
 
  

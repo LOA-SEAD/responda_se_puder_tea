@@ -16,6 +16,8 @@
     private const int JOGO = 1;
     private static int origem = 0;
 
+    private static bool Acerto_Consecutivo = false;
+
     private static float valueMusicaFundo = 0.5f;
     private static float valueEfeitos = 0.5f;
     private static float valueLeituraTexto = 0.5f;
@@ -26,6 +28,7 @@
     private static int quantidade_dificil;
     private static int nivel_atual;
     private static int pontos;
+    private static int pontos_ganhos;
     private static string[] perguntas_facil = new string[11];
     private static string[] perguntas_medio = new string[11];
     private static string[] perguntas_dificil = new string[11];
@@ -41,8 +44,107 @@
     private static string[] audios_perguntas = new string[33];
     private static string[,] audios_alternativas = new string[33, 4];
     private static string[] audios_dicas = new string[33];
+    
 
     private static int numero_questao;
+
+    private static int pergunta_atual;
+
+    private static int[] perguntas_respondidas;
+
+    private static int quantidade_5050;
+    private static int quantidade_pular;
+
+    private static int caminho;
+
+    private static int tirar_1;
+    private static int tirar_2;
+
+    public static void SetTirar(int tirar1, int tirar2)
+    {
+        tirar_1 = tirar1;
+        tirar_2 = tirar2;
+    }
+    
+    public static int GetTirar1()
+    {
+        return tirar_1;
+    }
+
+    public static int GetTirar2()
+    {
+        return tirar_2;
+    }
+    
+    public static void SetCaminhos(int caminhoNovo)
+    {
+        caminho = caminhoNovo;
+    }
+
+    public static int GetCaminhos()
+    {
+        return caminho;
+    }
+
+    public static void SetQuantidade5050(int quantidade)
+    {
+        quantidade_5050 = quantidade;
+    }
+
+    public static int GetQuantidade5050()
+    {
+        return quantidade_5050;
+    }
+
+    public static void SetQuantidadePular(int quantidade)
+    {
+        quantidade_pular = quantidade;
+    }
+
+    public static int GetQuantidadePular()
+    {
+        return quantidade_pular;
+    }
+    
+    public static void SetPerguntasRespondidas(int[] perguntas)
+    {
+        perguntas_respondidas = perguntas;
+    }
+
+    public static int[] GetPerguntasRespondidas()
+    {
+        return perguntas_respondidas;
+    }
+    public static void SetPerguntaAtual(int pergunta)
+    {
+        pergunta_atual = pergunta;
+    }
+
+    public static int GetPerguntaAtual()
+    {
+        return pergunta_atual;
+    }
+
+    // Adicionado
+    public static void SetAcertoConsecutivo(bool acerto)
+    {
+        Acerto_Consecutivo = acerto;
+    }
+
+    public static bool GetAcertoConsecutivo()
+    {
+        return Acerto_Consecutivo;
+    }
+
+    public static void SetPontosGanhos(int pontosGanhos)
+    {
+        pontos_ganhos = pontosGanhos;
+    }
+
+    public static int GetPontosGanhos()
+    {
+        return pontos_ganhos;
+    }
 
     public static void SetOrigem(int origemNova)
     {
