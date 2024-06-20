@@ -1042,6 +1042,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1215131373}
     m_Modifications:
+    - target: {fileID: 49432833325566019, guid: 305bbe3ff344ec246ba48cb5361d4d85,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 106163079863369600, guid: 305bbe3ff344ec246ba48cb5361d4d85,
         type: 3}
       propertyPath: m_Name
@@ -1319,6 +1324,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MesaNova
       objectReference: {fileID: 0}
+    - target: {fileID: 2824017247925275387, guid: 84dd421cdbd64504bbaf0da536ed7516,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84dd421cdbd64504bbaf0da536ed7516, type: 3}
 --- !u!1 &1998098673
@@ -1345,7 +1355,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998098673}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d5504be7492073d439bf737a34ac0d6f, type: 3}
@@ -2047,11 +2057,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button
       objectReference: {fileID: 0}
+    - target: {fileID: 5714156187749720896, guid: 7d3026767ecaa4343b8a101285def9a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714156187749720898, guid: 7d3026767ecaa4343b8a101285def9a6,
+        type: 3}
+      propertyPath: m_Transition
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5714156187749720898, guid: 7d3026767ecaa4343b8a101285def9a6,
         type: 3}
       propertyPath: m_TargetGraphic
       value: 
       objectReference: {fileID: 622113224}
+    - target: {fileID: 5714156187749720898, guid: 7d3026767ecaa4343b8a101285def9a6,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714156187749720898, guid: 7d3026767ecaa4343b8a101285def9a6,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714156187749720898, guid: 7d3026767ecaa4343b8a101285def9a6,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5714156187749720898, guid: 7d3026767ecaa4343b8a101285def9a6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

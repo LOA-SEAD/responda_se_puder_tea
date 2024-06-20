@@ -2043,11 +2043,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button
       objectReference: {fileID: 0}
+    - target: {fileID: 5714156187749720896, guid: 7d3026767ecaa4343b8a101285def9a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714156187749720898, guid: 7d3026767ecaa4343b8a101285def9a6,
+        type: 3}
+      propertyPath: m_Transition
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5714156187749720898, guid: 7d3026767ecaa4343b8a101285def9a6,
         type: 3}
       propertyPath: m_TargetGraphic
       value: 
       objectReference: {fileID: 331661481}
+    - target: {fileID: 5714156187749720898, guid: 7d3026767ecaa4343b8a101285def9a6,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714156187749720898, guid: 7d3026767ecaa4343b8a101285def9a6,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714156187749720898, guid: 7d3026767ecaa4343b8a101285def9a6,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5714156187749720898, guid: 7d3026767ecaa4343b8a101285def9a6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2162,6 +2187,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714156187749720901, guid: 7d3026767ecaa4343b8a101285def9a6,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714156187749720901, guid: 7d3026767ecaa4343b8a101285def9a6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d3026767ecaa4343b8a101285def9a6, type: 3}
