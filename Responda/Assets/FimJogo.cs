@@ -60,12 +60,14 @@ public class FimJogo : MonoBehaviour
 
         if (fadein)
         {
-            canvasGroup.alpha += Time.deltaTime;
+            canvasGroup.alpha += Time.deltaTime*0.5f;
         }
 
         if (canvasGroup.alpha >= 1)
         {
             fadein = false;
+            SceneManager.LoadScene("Final");
+
         }
 
         ColocarPontuacao();
@@ -76,27 +78,7 @@ public class FimJogo : MonoBehaviour
     {
 
         fadein = true;
-
-        pontuacao = Informacoes.GetPontos();
-        pontuacao = 0;
-
-        if (pontuacao == 0)
-        {
-            imagem.sprite = spritearray[0];
-        }
-        else if (pontuacao == 1)
-        {
-            imagem.sprite = spritearray[1];
-        }
-        else if (pontuacao == 2)
-        {
-            imagem.sprite = spritearray[2];
-        }
-        else if (pontuacao == 3)
-        {
-            imagem.sprite = spritearray[3];
-        }
-
+        imagem.sprite = spritearray[0];
         prosseguir.enabled = false;
         texto_prosseguir.text = "";
     }

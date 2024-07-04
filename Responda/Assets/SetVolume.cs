@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,9 +11,7 @@ public class SetVolume : MonoBehaviour
     public Slider Efeitos;
     public AudioSource EfeitosAudio;
     public Slider LeituraTexto;
-
     public AudioSource LeituraTextoAudio;
-
 
     public Text TextoVoltar;
 

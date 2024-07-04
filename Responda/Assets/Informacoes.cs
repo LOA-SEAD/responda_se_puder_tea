@@ -17,7 +17,7 @@
     private static int origem = 0;
 
     private static bool Acerto_Consecutivo = false;
-
+    private static int quantidade_acertos = 0;
     private static float valueMusicaFundo = 0.5f;
     private static float valueEfeitos = 0.5f;
     private static float valueLeituraTexto = 0.5f;
@@ -134,6 +134,16 @@
     public static bool GetAcertoConsecutivo()
     {
         return Acerto_Consecutivo;
+    }
+
+    public static void SetQuantidadeAcertos(int quantidade)
+    {
+        quantidade_acertos = quantidade;
+    }
+
+    public static int GetQuantidadeAcertos()
+    {
+        return quantidade_acertos;
     }
 
     public static void SetPontosGanhos(int pontosGanhos)

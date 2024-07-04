@@ -22,6 +22,8 @@ public class Jogo : MonoBehaviour
     // Adicionado Bonus
     public bool Acerto_Consecutivo = false;
 
+    int quantidade_acertos = 0;
+
     public Text pergunta_tela;
     public Text alternativa1_tela;
     public Text alternativa2_tela;
@@ -358,6 +360,7 @@ public class Jogo : MonoBehaviour
         selecionou5050 = 0;
         selecionou_pular = 0;
         Acerto_Consecutivo = false;
+        quantidade_acertos = 0;
         audios_perguntas = Informacoes.GetAudiosPerguntas();
         audios_alternativas = Informacoes.GetAudiosAlternativas();
         audios_dicas = Informacoes.GetAudiosDicas();
@@ -651,6 +654,7 @@ public class Jogo : MonoBehaviour
         Informacoes.SetAudiosDicas(audios_dicas);
 
         Informacoes.SetAcertoConsecutivo(Acerto_Consecutivo);
+        Informacoes.SetQuantidadeAcertos(quantidade_acertos);
         Informacoes.SetPontosGanhos(pontos_ganhos);
 
         Informacoes.SetNumeroQuestao(questao_x_de_y);
@@ -706,6 +710,7 @@ public class Jogo : MonoBehaviour
         volume_musica = Informacoes.GetValueEfeitos();
         volume_texto = Informacoes.GetValueLeituraTexto();
         Acerto_Consecutivo = Informacoes.GetAcertoConsecutivo();
+        quantidade_acertos = Informacoes.GetQuantidadeAcertos();
         audios_perguntas = Informacoes.GetAudiosPerguntas();
         audios_alternativas = Informacoes.GetAudiosAlternativas();
         audios_dicas = Informacoes.GetAudiosDicas();
@@ -1123,6 +1128,7 @@ public class Jogo : MonoBehaviour
 
                 if(Acerto_Consecutivo){
                     pontos_ganhos += 5;
+                    quantidade_acertos ++;
                 }
                 else{
                     Acerto_Consecutivo = true;
@@ -1143,6 +1149,7 @@ public class Jogo : MonoBehaviour
 
                 if(Acerto_Consecutivo){
                     pontos_ganhos += 5;
+                    quantidade_acertos ++;
                 }
                 else{
                     Acerto_Consecutivo = true;
@@ -1163,6 +1170,7 @@ public class Jogo : MonoBehaviour
 
                 if(Acerto_Consecutivo){
                     pontos_ganhos += 5;
+                    quantidade_acertos ++;
                 }
                 else{
                     Acerto_Consecutivo = true;
@@ -1269,9 +1277,9 @@ public class Jogo : MonoBehaviour
     {
         dificuldade_tela.text = "NÍVEL FÁCIL";
         if (pular_agora == SIM){
-            numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + (quantidade_facil).ToString();}
+            numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();}
         else
-            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + (quantidade_facil).ToString();
+            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
         pergunta_tela.text = perguntas_facil[questao_x_de_y];
         alternativa_correta = respostas_facil[questao_x_de_y];
         
@@ -1295,11 +1303,11 @@ public class Jogo : MonoBehaviour
     {
         dificuldade_tela.text = "NÍVEL MÉDIO";
         if (selecionou_pular == 2)
-            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + quantidade_medio.ToString();
+            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
         else if (pular_agora == SIM)
-            numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + quantidade_medio.ToString();
+            numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
         else
-            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + quantidade_medio.ToString();
+            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
         pergunta_tela.text = perguntas_medio[questao_x_de_y];
         alternativa_correta = respostas_medio[questao_x_de_y];
         
@@ -1323,11 +1331,11 @@ public class Jogo : MonoBehaviour
     {
         dificuldade_tela.text = "NÍVEL DIFÍCIL";
         if (selecionou_pular == 2)
-            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + quantidade_dificil.ToString();
+            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
         else if (pular_agora == SIM)
-            numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + quantidade_dificil.ToString();
+            numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
         else
-            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + quantidade_dificil.ToString();
+            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
         pergunta_tela.text = perguntas_dificil[questao_x_de_y];
         alternativa_correta = respostas_dificil[questao_x_de_y];
             
