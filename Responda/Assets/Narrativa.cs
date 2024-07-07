@@ -109,7 +109,7 @@ public class Narrativa : MonoBehaviour
         roteiro[8] = " Parece que nosso robô moderno está com dificuldades. Mas se você, aí assistindo, sabe a resposta, ligue para o número na tela e participe do nosso novo programa - Responda Se Puder ! -";
         roteiro[9] = " Responda Se Puder... Acho que sei a resposta.";
         roteiro[10] = " Hum... talvez seja a minha chance de sair deste lixão e dar um upgrade na minha vida! Parece interessante. Acho que posso fazer isso.";
-        roteiro[11] = " Você pode me ajudar?";
+        roteiro[11] = " Você poderia me ajudar?";
 
         /*
         roteiro[0] = "Onde estou? Tudo está tão escuro e enferrujado.";
@@ -152,7 +152,7 @@ public class Narrativa : MonoBehaviour
             CarregaTextoNaTela();
         }
         
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKeyDown(KeyCode.Return)) {
             Prosseguir();
         }
         

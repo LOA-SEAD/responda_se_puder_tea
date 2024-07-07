@@ -29,6 +29,8 @@ public class Menu : MonoBehaviour
 
     public AudioSource plateia;
 
+    public Image roda;
+
     private void AtualizarVolume(){
         plateia.volume = Informacoes.GetValueEfeitos();
         intrucoesAudio.volume = Informacoes.GetValueLeituraTexto();
@@ -59,7 +61,7 @@ public class Menu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        roda.transform.Rotate(0, 0.1f, 0);   
     }
 
     public void HighlightMenu (int botao){

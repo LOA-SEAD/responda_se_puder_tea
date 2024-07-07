@@ -52,6 +52,8 @@
 
     private static int[] perguntas_respondidas;
 
+    private static int[] ajudas_usadas;
+
     private static int quantidade_5050;
     private static int quantidade_pular;
 
@@ -115,6 +117,17 @@
     {
         return perguntas_respondidas;
     }
+
+    public static void SetAjudasUsadas(int[] ajudas)
+    {
+        ajudas_usadas = ajudas;
+    }
+
+    public static int[] GetAjudasUsadas()
+    {
+        return ajudas_usadas;
+    }
+    
     public static void SetPerguntaAtual(int pergunta)
     {
         pergunta_atual = pergunta;

@@ -147,9 +147,14 @@ public class Jogo : MonoBehaviour
 
     public Sprite[] sprites_variacoes;
 
+    public Image[] ajudas;
+
+    public Sprite[] sprites_ajudas;
+
     public int pergunta_atual;
 
     public int[] perguntas_bool;
+    public int[] ajudas_usadas;
 
     public int caminhos;
 
@@ -244,7 +249,7 @@ public class Jogo : MonoBehaviour
 
     void AttImagem(){
 
-        for(int j = 0; j < 15; j++){
+        for(int j = 0; j < 10; j++){
             if(perguntas_bool[j] == 1){
                 images[j].sprite = sprites_variacoes[1];
             }else if(perguntas_bool[j] == 2){
@@ -255,6 +260,18 @@ public class Jogo : MonoBehaviour
                 images[j].sprite = sprites_variacoes[3];
             }
         }
+
+        for(int j = 0; j < 10; j++){
+            if(ajudas_usadas[j] == 1){
+                ajudas[j].sprite = sprites_ajudas[1];
+            }else if(ajudas_usadas[j] == 2){
+                ajudas[j].sprite = sprites_ajudas[2];
+            }else if(ajudas_usadas[j] == 3){
+                ajudas[j].sprite = sprites_ajudas[3];
+            }else if(ajudas_usadas[j] == 0){
+                ajudas[j].sprite = sprites_ajudas[0];
+            }
+        }
             
     }
 
@@ -263,21 +280,21 @@ public class Jogo : MonoBehaviour
 
         if(quantidade_facil != 5){
 
-            for(int i = 4;i >= quantidade_facil; i--){
+            for(int i = 3;i >= quantidade_facil; i--){
                 //images[i].sprite = sprites_variacoes[3];
                 perguntas_bool[i] = 3;
             }
         }
 
         if(quantidade_medio != 5){
-            for(int i = 9;i >= quantidade_medio + 5; i--){
+            for(int i = 6;i >= quantidade_medio + 4; i--){
                 // images[i].sprite = sprites_variacoes[3];
                 perguntas_bool[i] = 3;
             }
         }
 
         if(quantidade_dificil != 5){
-            for(int i = 14;i >= quantidade_dificil + 10; i--){
+            for(int i = 9;i >= quantidade_dificil + 7; i--){
                 // images[i].sprite = sprites_variacoes[3];
                 perguntas_bool[i] = 3;
             }
@@ -364,7 +381,8 @@ public class Jogo : MonoBehaviour
         audios_perguntas = Informacoes.GetAudiosPerguntas();
         audios_alternativas = Informacoes.GetAudiosAlternativas();
         audios_dicas = Informacoes.GetAudiosDicas();
-        perguntas_bool = new int[15];
+        perguntas_bool = new int[10];
+        ajudas_usadas = new int[10];
         
         MixLista();
         AtualizarVariaveis();
@@ -416,7 +434,8 @@ public class Jogo : MonoBehaviour
         quantidade_medio--;
         quantidade_dificil--;
 
-        perguntas_bool = new int[15];
+        perguntas_bool = new int[10];
+        ajudas_usadas = new int[10];
 
 
     }
@@ -660,6 +679,7 @@ public class Jogo : MonoBehaviour
         Informacoes.SetNumeroQuestao(questao_x_de_y);
         Informacoes.SetPerguntaAtual(pergunta_atual);
         Informacoes.SetPerguntasRespondidas(perguntas_bool);
+        Informacoes.SetAjudasUsadas(ajudas_usadas);
 
         Informacoes.SetQuantidade5050(quantidade_5050);
         Informacoes.SetQuantidadePular(quantidade_pular);
@@ -716,6 +736,7 @@ public class Jogo : MonoBehaviour
         audios_dicas = Informacoes.GetAudiosDicas();
         pergunta_atual = Informacoes.GetPerguntaAtual();
         perguntas_bool = Informacoes.GetPerguntasRespondidas();
+        ajudas_usadas = Informacoes.GetAjudasUsadas();
         quantidade_5050 = Informacoes.GetQuantidade5050();
         quantidade_pular = Informacoes.GetQuantidadePular();
 
@@ -940,6 +961,8 @@ public class Jogo : MonoBehaviour
 
     public void NaoConfirmarAlternativa(){
         EsconderPanelConfirmar();
+        botao_pergunta.Select();
+        
         // alternativas[alternativa_escolhida].Select(); Não precisa falar duas vezes
     }
 
@@ -992,6 +1015,12 @@ public class Jogo : MonoBehaviour
             audio_5050.Play();
             selecionou5050 = SIM;
             confirmar.interactable = false;
+
+            if(ajudas_usadas[pergunta_atual]==0){
+                ajudas_usadas[pergunta_atual] = 1;
+            }else{
+                ajudas_usadas[pergunta_atual] = 3;
+            }
 
             // tirar_1 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
             tirar_1 = GeraNumero(0, 4);
@@ -1093,6 +1122,12 @@ public class Jogo : MonoBehaviour
         #else
 
             audio_pular.Play();
+
+            if(ajudas_usadas[pergunta_atual]==0){
+                ajudas_usadas[pergunta_atual] = 2;
+            }else{
+                ajudas_usadas[pergunta_atual] = 3;
+            }
 
             Informacoes.SetStatusPular(SIM);
             selecionou_pular = SIM;
@@ -1283,6 +1318,7 @@ public class Jogo : MonoBehaviour
         pergunta_tela.text = perguntas_facil[questao_x_de_y];
         alternativa_correta = respostas_facil[questao_x_de_y];
         
+        //alternativas[0].Select();
         alternativa1_tela.text = respostas_possiveis_facil[questao_x_de_y, 0];
         alternativa2_tela.text = respostas_possiveis_facil[questao_x_de_y, 1];
         alternativa3_tela.text = respostas_possiveis_facil[questao_x_de_y, 2];
@@ -1303,14 +1339,15 @@ public class Jogo : MonoBehaviour
     {
         dificuldade_tela.text = "NÍVEL MÉDIO";
         if (selecionou_pular == 2)
-            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
+            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1 + quantidade_facil).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
         else if (pular_agora == SIM)
-            numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
+            numero_questao_tela.text = "Questão " + (questao_x_de_y + quantidade_facil).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
         else
-            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
+            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1 + quantidade_facil).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
         pergunta_tela.text = perguntas_medio[questao_x_de_y];
         alternativa_correta = respostas_medio[questao_x_de_y];
-        
+
+        //alternativas[0].Select();
         alternativa1_tela.text = respostas_possiveis_medio[questao_x_de_y, 0];
         alternativa2_tela.text = respostas_possiveis_medio[questao_x_de_y, 1];
         alternativa3_tela.text = respostas_possiveis_medio[questao_x_de_y, 2];
@@ -1331,14 +1368,15 @@ public class Jogo : MonoBehaviour
     {
         dificuldade_tela.text = "NÍVEL DIFÍCIL";
         if (selecionou_pular == 2)
-            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
+            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1 + quantidade_facil + quantidade_medio).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
         else if (pular_agora == SIM)
-            numero_questao_tela.text = "Questão " + (questao_x_de_y).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
+            numero_questao_tela.text = "Questão " + (questao_x_de_y  + quantidade_facil + quantidade_medio).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
         else
-            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
+            numero_questao_tela.text = "Questão " + (questao_x_de_y + 1 + quantidade_facil + quantidade_medio).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
         pergunta_tela.text = perguntas_dificil[questao_x_de_y];
         alternativa_correta = respostas_dificil[questao_x_de_y];
             
+        //alternativas[0].Select();
         alternativa1_tela.text = respostas_possiveis_dificil[questao_x_de_y, 0];
         alternativa2_tela.text = respostas_possiveis_dificil[questao_x_de_y, 1];
         alternativa3_tela.text = respostas_possiveis_dificil[questao_x_de_y, 2];
@@ -1415,12 +1453,13 @@ public class Jogo : MonoBehaviour
 
     private int VerificarFim()
     {
+
         if (pular_agora == NAO)
         {
             if (questao_x_de_y == quantidade_dificil && nivel_atual == DIFICIL)
             {
                 Informacoes.SetPontos(pontuacao);
-                SceneManager.LoadScene("Fim");
+                //SceneManager.LoadScene("Fim");
                 return 1;
             }
             else
@@ -1433,7 +1472,7 @@ public class Jogo : MonoBehaviour
             if (questao_x_de_y == quantidade_dificil && nivel_atual == DIFICIL)
             {
                 Informacoes.SetPontos(pontuacao);
-                SceneManager.LoadScene("Fim");
+                //SceneManager.LoadScene("Fim");
                 return 1;
             }
             else
@@ -1446,7 +1485,7 @@ public class Jogo : MonoBehaviour
             if (questao_x_de_y == quantidade_dificil + 1 && nivel_atual == DIFICIL)
             {
                 Informacoes.SetPontos(pontuacao);
-                SceneManager.LoadScene("Fim");
+                //SceneManager.LoadScene("Fim");
                 return 1;
             }
             else
@@ -1506,6 +1545,7 @@ public class Jogo : MonoBehaviour
         SalvarInfos();
         SceneManager.LoadScene("respostaCorreta");
 
+
     }
 
     private void CriarJanelaErrado ()
@@ -1513,17 +1553,18 @@ public class Jogo : MonoBehaviour
         Informacoes.SetStatus(PROXPALAVRA);
         SalvarInfos();
         SceneManager.LoadScene("respostaErrada");
+
     }
 
     
 
     private void VerificarIntervalo(){
          if(pergunta_atual >= quantidade_facil && nivel_atual == FACIL){
-            pergunta_atual += (5 - quantidade_facil);
+            pergunta_atual += (4 - quantidade_facil);
         }
 
-        if(pergunta_atual >= (quantidade_medio + 5) && nivel_atual == MEDIO){
-            pergunta_atual += (5 - quantidade_medio);
+        if(pergunta_atual >= (quantidade_medio + 4) && nivel_atual == MEDIO){
+            pergunta_atual += (3 - quantidade_medio);
         }
     }
 

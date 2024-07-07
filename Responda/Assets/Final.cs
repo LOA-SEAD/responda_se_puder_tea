@@ -70,14 +70,23 @@ public class Final : MonoBehaviour
 
     }
 
+    public int quantidadeFacil = Informacoes.GetQuantidadeFacil();
+    public int quantidadeMedio = Informacoes.GetQuantidadeMedio();
+    public int quantidadeDificil = Informacoes.GetQuantidadeDificil();
+    public int quantidade5050 = Informacoes.GetQuantidade5050();
+    public int quantidadePular = Informacoes.GetQuantidadePular();
+    public int quantidadeAcertos = Informacoes.GetQuantidadeAcertos();
+
     void PontuacaoIntervalos(){
 
         pontuacao_total = 0;
 
-        pontuacao_total = 10*Informacoes.GetQuantidadeFacil() + 20*Informacoes.GetQuantidadeMedio() + 30*Informacoes.GetQuantidadeDificil();
+        pontuacao_total = 10*Informacoes.GetQuantidadeFacil() + 15*Informacoes.GetQuantidadeMedio() + 20*Informacoes.GetQuantidadeDificil();
         pontuacao_total += 10*Informacoes.GetQuantidade5050() + 10*Informacoes.GetQuantidadePular() + 5*Informacoes.GetQuantidadeAcertos();
 
         intervalos = pontuacao_total/4;
+
+        canvasGroupCarta.alpha = 1;
 
         if(pontuacao <= intervalos){
             final = 0;
@@ -119,9 +128,9 @@ public class Final : MonoBehaviour
         texto.text = "";
     }
     public void Pular(){
-        Informacoes.SetStatus(0);
-		Informacoes.SetNivel(0);
-		SceneManager.LoadScene("Nivel");
+        comeco.gameObject.SetActive(true);
+		fadein = true;
+
     }
 
     public void Prosseguir(){
@@ -137,6 +146,8 @@ public class Final : MonoBehaviour
             carrega = roteiro_aux.Length;
             fim = true;
             if(num_texto == 8){
+
+                comeco.gameObject.SetActive(true);
                 fadein = true;
             }
             velocidade = 0;
@@ -193,6 +204,7 @@ public class Final : MonoBehaviour
                 fim = true;
 
                 if(num_texto == 8){
+                    comeco.gameObject.SetActive(true);
                     fadein = true;
                 }
                 
@@ -238,7 +250,7 @@ public class Final : MonoBehaviour
             nome.text = "Apresentador";
         }
 
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKeyDown(KeyCode.Return)) {
             Prosseguir();
         }
     }   
