@@ -14,9 +14,38 @@ public class Menu : MonoBehaviour
     public Button botao_creditos;
     public Button botao_sair;
 
+    public AudioSource intrucoesAudio;
+    public AudioSource jogarAudio;
+
+    public AudioSource configAudio;
+
+    public AudioSource creditosAudio;
+
+    public AudioSource sairAudio;
+
+    public AudioSource topBottomAudio;
+
+    public AudioSource inicioAudio;
+
+    public AudioSource plateia;
+
+    public Image roda;
+
+    private void AtualizarVolume(){
+        plateia.volume = Informacoes.GetValueEfeitos();
+        intrucoesAudio.volume = Informacoes.GetValueLeituraTexto();
+        jogarAudio.volume = Informacoes.GetValueLeituraTexto();
+        configAudio.volume = Informacoes.GetValueLeituraTexto();
+        creditosAudio.volume = Informacoes.GetValueLeituraTexto();
+        sairAudio.volume = Informacoes.GetValueLeituraTexto();
+        topBottomAudio.volume = Informacoes.GetValueLeituraTexto();
+        inicioAudio.volume = Informacoes.GetValueLeituraTexto();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        AtualizarVolume();
         Debug.Log("[Menu] Start - Inicio");
         CarregaDados.Load(this);
         Debug.Log("[Menu] Quantidade itens: " + CarregaDados.listaDados.Count);
@@ -32,7 +61,7 @@ public class Menu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        roda.transform.Rotate(0, 0.1f, 0);   
     }
 
     public void HighlightMenu (int botao){

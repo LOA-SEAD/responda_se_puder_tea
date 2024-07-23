@@ -14,7 +14,14 @@ public class MudarNivel : MonoBehaviour
     public AudioClip[] audioClips;
     public AudioClip[] audiosSeq;
     public AudioSource adSource;
+
+    public AudioSource plateia;
     public Animator anim;
+
+    private void AtualizarAudios(AudioSource p){
+        plateia.volume = Informacoes.GetValueEfeitos();
+        p.volume = Informacoes.GetValueLeituraTexto();
+    }
 
     void Start()
     {
@@ -59,6 +66,7 @@ public class MudarNivel : MonoBehaviour
             adSource.clip = audiosSeq[i] ;
 
             //3.Play Audio
+            AtualizarAudios(adSource);
             adSource.Play();
 
             //4.Wait for it to finish playing

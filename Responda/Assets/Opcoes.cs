@@ -45,7 +45,15 @@ public class Opcoes : MonoBehaviour
 
     public void desistir()
     {
-        Informacoes.SetStatus(0);
+        Informacoes.SetCaminhos(1);
         SceneManager.LoadScene("Menu");
+    }
+
+    public void Recomecar(){
+        Informacoes.SetCaminhos(1);
+        Informacoes.SetStatus(0);
+		Informacoes.SetNivel(0);
+		SceneManager.LoadScene("Nivel");
+        //SceneManager.LoadScene("Menu");
     }
 }

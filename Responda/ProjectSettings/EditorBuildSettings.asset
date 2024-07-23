@@ -42,6 +42,9 @@ EditorBuildSettings:
     path: Assets/Scenes/JogoPaisagem.unity
     guid: 88bae46b175b29e43b7e4aff2b8d5d8a
   - enabled: 1
-    path: Assets/Scenes/JogoTutorial.unity
-    guid: cf2826bbe555a58439fde826902f4ec5
+    path: Assets/Scenes/Final.unity
+    guid: 362f1f0927af8c64dafc469610379b28
+  - enabled: 1
+    path: Assets/Scenes/Narrativa.unity
+    guid: 554312c296520974f8d0d7246f2ba627
   m_configObjects: {}
