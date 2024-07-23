@@ -241,7 +241,7 @@ public class Instrucoes : MonoBehaviour
         paginacao.text = "1/5";
         subtitulo.text = "Regras do jogo";
         texto_instrucoes.text = "Responda à pergunta selecionando a alternativa correta.\n\nSempre que selecionar uma alternativa você deverá confirmar a escolha.\n\n";
-        texto_instrucoes.text += "Você terá 3 tipos de ajuda caso tenha dificuldade em achar a alternativa correta.\n\n";
+        texto_instrucoes.text += "Você terá 3 tipos de ajuda caso tenha dificuldade em achar a resposta.\n\n";
         texto_instrucoes.text += "O jogo é composto por 3 níveis: fácil, médio e difícil.";
 
     }
@@ -252,8 +252,8 @@ public class Instrucoes : MonoBehaviour
         adSource.Play();
         paginacao.text = "2/5";
         subtitulo.text = "Ajuda";
-        texto_instrucoes.text = "Dica - Fornece uma pista para encontrar a resposta certa. Você poderá utilizar essa ajuda quantas vezes quiser.\n";
-        texto_instrucoes.text += "50 50 - Elimina metade das alternativas possíveis. Você só poderá utilizar essa ajuda uma vez, use com cuidado.\n";
+        texto_instrucoes.text = "Dica - Fornece uma pista para encontrar a resposta certa. Você poderá utilizar essa ajuda quantas vezes quiser.\n\n";
+        texto_instrucoes.text += "50 50 - Elimina metade das alternativas possíveis. Você só poderá utilizar essa ajuda 2 vezes, use com cuidado.\n\n";
         texto_instrucoes.text += "Pular - A questão atual será substituida por outra. O Pular poderá ser utilizado uma única vez.";
 
 
@@ -265,7 +265,9 @@ public class Instrucoes : MonoBehaviour
         adSource.Play();
         paginacao.text = "3/5";
         subtitulo.text = "Pontuação final";
-        texto_instrucoes.text = "A cada questão certa, você ganhará 10 pontos. Caso a resposta esteja errada, você não ganhará nenhum ponto.\n\n";
+        texto_instrucoes.text = "A cada questão certa, você ganhará os pontos referente ao nível. Nível Fácil será 10, Médio 15 e Difícil 20.\n";
+        texto_instrucoes.text += "Acertando consecutivamente irá receber o bônus de 5 pontos, perdendo caso erre a questão, podendo retoma-lo depois. \n";
+        texto_instrucoes.text += "Caso a resposta esteja errada, você não ganhará nenhum ponto.\n";
         texto_instrucoes.text += "Caso chegue ao fim do jogo sem utilizar as ajudas 50 50 ou Pular, você ganhará um bônus para cada ajuda não utilizada";
 
 
@@ -279,7 +281,8 @@ public class Instrucoes : MonoBehaviour
         subtitulo.text = "Navegação pelo teclado (Acessibilidade)";
         texto_instrucoes.text = "Durante o jogo, você poderá utilizar a tecla TAB para navegar entre os blocos da tela de jogo.\n\n";
         texto_instrucoes.text += "Sendo eles pergunta, alternativas e ajudas.\n\n";
-        texto_instrucoes.text += "Para acessar as opções aperte a tecla ESC, e para selecionar qualquer item interativo, pressione a tecla ENTER";
+        texto_instrucoes.text += "Para acessar as opções aperte a tecla ESC, e para selecionar qualquer item interativo, pressione a tecla ENTER\n\n";
+        texto_instrucoes.text += "Caso perca a navegação pelo teclado, pressione a tecla TAB para voltar a navegação.";
 
     }
 

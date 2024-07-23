@@ -15,20 +15,58 @@ public class SetVolume : MonoBehaviour
 
     public Text TextoVoltar;
 
+    public Text TextoVoltarFundo;
+
+    public Button voltar;
+
     int origem;
+
+    public int posicao;
 
     void Start()
     {
         origem = Informacoes.GetOrigem();
         if(origem == 0){
             TextoVoltar.text = "Voltar para o Menu";
+            TextoVoltarFundo.text = "Voltar para o Menu";
         }
         else if(origem == 1){
             TextoVoltar.text = "Voltar para as Opções";
+            TextoVoltarFundo.text = "Voltar para as Opções";
         }
         MusicaFundo.value = Informacoes.GetValueMusicaFundo();
         Efeitos.value = Informacoes.GetValueEfeitos();
         LeituraTexto.value = Informacoes.GetValueLeituraTexto();
+
+    }
+
+    void Update()
+    {
+        if(posicao == 0){
+            MusicaFundo.Select();
+        }
+        else if(posicao == 1){
+            Efeitos.Select();
+        }
+        else if(posicao == 2){
+            LeituraTexto.Select();
+        }else if(posicao == 3){
+            voltar.Select();
+        }
+
+         if(Input.GetKeyDown(KeyCode.UpArrow)) {
+            posicao--;
+            if(posicao == -1) {
+                posicao = 3;
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.DownArrow)) {
+            posicao++;
+            if(posicao == 4) {
+                posicao = 0;
+            }
+        }
     }
 
     public void AtualizarMusicaFundo(){

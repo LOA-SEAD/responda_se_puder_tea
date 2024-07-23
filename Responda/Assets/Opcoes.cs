@@ -1,19 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using System;
 using UnityEngine.SceneManagement;
-
+using TMPro;
+using UnityEngine.Networking;
 public class Opcoes : MonoBehaviour
 {
     const int ORIGEM_MENU = 0;
     const int ORIGEM_JOGO = 1;
 
+    public Animator Panel_confirmar_anim;
+
+    public Button sim;
+
+    public Button sair;
+
+    public AudioSource confirmar;
+    public AudioSource nao;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        confirmar.volume = Informacoes.GetValueLeituraTexto();
+        nao.volume = Informacoes.GetValueLeituraTexto();
+        confirmar.Stop();
     }
 
     // Update is called once per frame
@@ -41,6 +54,18 @@ public class Opcoes : MonoBehaviour
     {
         Informacoes.SetOrigem(ORIGEM_JOGO);
         SceneManager.LoadScene("Instrucoes");
+    }
+
+    public void MostrarPainelConfirmar()
+    {
+        Panel_confirmar_anim.SetBool("showPanel", true);
+        sim.Select();
+    }
+
+    public void fecharPainelConfirmar()
+    {
+        Panel_confirmar_anim.SetBool("showPanel", false);
+        sair.Select();
     }
 
     public void desistir()

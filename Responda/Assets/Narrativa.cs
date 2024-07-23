@@ -154,6 +154,7 @@ public class Narrativa : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Return)) {
             Prosseguir();
+            AtualizarAudios();
         }
         
     }

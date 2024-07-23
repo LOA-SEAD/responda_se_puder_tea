@@ -21,7 +21,7 @@ public class Final : MonoBehaviour
 
     public bool fadein;
 
-    private int final;
+    public int final;
 
     public AudioClip[] falas;
     public AudioSource fala;
@@ -65,9 +65,9 @@ public class Final : MonoBehaviour
         canvasGroup.alpha = 1;
         fadeOut = true;
         pontuacao = Informacoes.GetPontos();
-        Comecar();
+        Informacoes.SetCaminhos(1);
         PontuacaoIntervalos();
-
+        Comecar();
     }
 
     public int quantidadeFacil = Informacoes.GetQuantidadeFacil();
@@ -252,6 +252,7 @@ public class Final : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return)) {
             Prosseguir();
+            //AtualizarAudios();
         }
     }   
 }

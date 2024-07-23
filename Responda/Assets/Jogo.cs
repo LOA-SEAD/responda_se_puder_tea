@@ -7,6 +7,8 @@ using System;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Networking;
+using System.Linq;
+
 
 public class Jogo : MonoBehaviour
 {
@@ -41,8 +43,12 @@ public class Jogo : MonoBehaviour
     public Button botao_pergunta;
     public Button confirmar;
     public Button ajuda5050;
+
+    public Text ajuda5050_tela;
     public Button dica;
     public Button pular;
+
+    public Text pular_tela;
 
     public GameObject[] barra_facil = new GameObject[17];
     public GameObject[] barra_medio = new GameObject[17];
@@ -76,9 +82,9 @@ public class Jogo : MonoBehaviour
     string[] perguntas_facil = new string[11];
     string[] perguntas_medio = new string[11];
     string[] perguntas_dificil = new string[11];
-    int[] respostas_facil = new int[11];
-    int[] respostas_medio = new int[11];
-    int[] respostas_dificil = new int[11];
+    public int[] respostas_facil = new int[11];
+    public int[] respostas_medio = new int[11];
+    public int[] respostas_dificil = new int[11];
     string[,] respostas_possiveis_facil = new string[11, 4];
     string[,] respostas_possiveis_medio = new string[11, 4];
     string[,] respostas_possiveis_dificil = new string[11, 4];
@@ -100,7 +106,11 @@ public class Jogo : MonoBehaviour
     public int selecionou5050 = NAO;
 
     public int quantidade_5050 = 2;
+
+    public Text quantidade_5050_tela;
     int quantidade_pular = 1;
+
+    public Text quantidade_pular_tela;
     public int selecionou_pular = 0;
     public int nivel_atual = FACIL;
     int pontuacao;
@@ -166,6 +176,8 @@ public class Jogo : MonoBehaviour
         Debug.Log("[Jogo] Quantidade itens: " + CarregaDados.listaDados.Count);
         Debug.Log("[Jogo] Start - Fim");
         pergunta_atual = 0;
+
+        //pergunta_tela.color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
     
         
         #if UNITY_ANDROID
@@ -201,9 +213,37 @@ public class Jogo : MonoBehaviour
             alternativas[tirar_1].interactable = false;
             alternativas[tirar_2].interactable = false;
             ajuda5050.interactable = false;
+
+            if(tirar_1 == 0){
+                alternativa1_tela.color =  new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            }else if(tirar_1 == 1){
+                alternativa2_tela.color =  new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            }else if(tirar_1 == 2){
+                alternativa3_tela.color =  new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            }else{
+                alternativa4_tela.color =  new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            }
+            
+            if(tirar_2 == 0){
+                alternativa1_tela.color =  new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            }else if(tirar_2 == 1){
+                alternativa2_tela.color =  new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            }else if(tirar_2 == 2){
+                alternativa3_tela.color =  new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            }else{
+                alternativa4_tela.color =  new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            }
+
+            ajuda5050_tela.color =  new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            quantidade_5050_tela.color = new Color(0.5660378f,0.4708605f, 0.2963688f,1);
             
         }
         
+        if(pular_agora == SIM){
+            //pular.interactable = false;
+            pular_tela.color =  new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            quantidade_pular_tela.color = new Color(0.5660378f,0.4708605f, 0.2963688f,1);
+        }
     }
 
     void Update()
@@ -245,6 +285,8 @@ public class Jogo : MonoBehaviour
     void MostraAtual(){
         pergunta_atual = Informacoes.GetPerguntaAtual();
         images[pergunta_atual].sprite = sprites_variacoes[0];
+        quantidade_5050_tela.text = "x" + quantidade_5050.ToString();
+        quantidade_pular_tela.text = "x" + quantidade_pular.ToString();
     }
 
     void AttImagem(){
@@ -551,24 +593,28 @@ public class Jogo : MonoBehaviour
         }
     }
 
+
+    HashSet<int> gerador = new HashSet<int>();
+    public int[] pergunta_trocar = new int[4];
+
     private void MisturarRespostas()
     {
+
+
         for (int i = 0; i < quantidade_facil + 1; i++)
-        {
+        {   
+
             string aux_s;
             string aux_audio;
             // int troca1 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
             // int troca2 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
-            int troca1 = GeraNumero(0, 4);
-            int troca2 = GeraNumero(0, 4);
-            if (respostas_facil[i] == troca1)
-            {
-                respostas_facil[i] = troca2;
-            }
-            else if (respostas_facil[i] == troca2)
-            {
-                respostas_facil[i] = troca1;
-            }
+            gerador = RandomHashSet.Gera(0, 4);
+            pergunta_trocar = gerador.ToArray();
+            int troca1 = 0;
+            int troca2 = pergunta_trocar[0];
+
+            respostas_facil[i] = troca2;
+
             aux_s = respostas_possiveis_facil[i, troca1];
             respostas_possiveis_facil[i, troca1] = respostas_possiveis_facil[i, troca2];
             respostas_possiveis_facil[i, troca2] = aux_s;
@@ -576,6 +622,7 @@ public class Jogo : MonoBehaviour
             aux_audio = audios_alternativas[i, troca1];
             audios_alternativas[i, troca1] = audios_alternativas[i, troca2];
             audios_alternativas[i, troca2] = aux_audio;
+
         }
 
         for (int i = 0; i < quantidade_medio + 1; i++)
@@ -584,16 +631,14 @@ public class Jogo : MonoBehaviour
             string aux_audio;
             // int troca1 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
             // int troca2 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
-            int troca1 = GeraNumero(0, 4);
-            int troca2 = GeraNumero(0, 4);
-            if (respostas_medio[i] == troca1)
-            {
-                respostas_medio[i] = troca2;
-            }
-            else if (respostas_medio[i] == troca2)
-            {
-                respostas_medio[i] = troca1;
-            }
+
+            gerador = RandomHashSet.Gera(0, 4);
+            pergunta_trocar = gerador.ToArray();
+            int troca1 = 0;
+            int troca2 = pergunta_trocar[0];
+
+            respostas_medio[i] = troca2;
+
             aux_s = respostas_possiveis_medio[i, troca1];
             respostas_possiveis_medio[i, troca1] = respostas_possiveis_medio[i, troca2];
             respostas_possiveis_medio[i, troca2] = aux_s;
@@ -609,16 +654,14 @@ public class Jogo : MonoBehaviour
             string aux_audio;
             // int troca1 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
             // int troca2 = random.Next(0, Int32.MaxValue) % 4; // Gera número entre 0 e 3
-            int troca1 = GeraNumero(0, 4);
-            int troca2 = GeraNumero(0, 4);
-            if (respostas_dificil[i] == troca1)
-            {
-                respostas_dificil[i] = troca2;
-            }
-            else if (respostas_dificil[i] == troca2)
-            {
-                respostas_dificil[i] = troca1;
-            }
+
+            gerador = RandomHashSet.Gera(0, 4);
+            pergunta_trocar = gerador.ToArray();
+            int troca1 = 0;
+            int troca2 = pergunta_trocar[0];
+
+            respostas_dificil[i] = troca2;
+
             aux_s = respostas_possiveis_dificil[i, troca1];
             respostas_possiveis_dificil[i, troca1] = respostas_possiveis_dificil[i, troca2];
             respostas_possiveis_dificil[i, troca2] = aux_s;
@@ -1000,6 +1043,7 @@ public class Jogo : MonoBehaviour
                 }
                 alternativas[tirar_1].interactable = false;
                 alternativas[tirar_2].interactable = false;
+                
 
                 ajuda5050.interactable = false;
                 for(int i=0; i<4; i++){
@@ -1039,6 +1083,29 @@ public class Jogo : MonoBehaviour
             }
             alternativas[tirar_1].interactable = false;
             alternativas[tirar_2].interactable = false;
+
+            if(tirar_1 == 0){
+                alternativa1_tela.color =  new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            }else if(tirar_1 == 1){
+                alternativa2_tela.color =  new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            }else if(tirar_1 == 2){
+                alternativa3_tela.color =  new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            }else{
+                alternativa4_tela.color =  new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            }
+            
+            if(tirar_2 == 0){
+                alternativa1_tela.color =  new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            }else if(tirar_2 == 1){
+                alternativa2_tela.color =  new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            }else if(tirar_2 == 2){
+                alternativa3_tela.color =  new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            }else{
+                alternativa4_tela.color =  new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            }
+
+            ajuda5050_tela.color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            quantidade_5050_tela.color = new Color(0.5660378f,0.4708605f, 0.2963688f,1);
 
             risco[tirar_1].SetActive(true);
             risco[tirar_2].SetActive(true);
@@ -1138,17 +1205,28 @@ public class Jogo : MonoBehaviour
             AtualizarPerguntaTela();
             alternativas[0].Select();
 
+            alternativa1_tela.color =  new Color(0.8113208f, 0.8113208f,0.8113208f, 1);
+            alternativa2_tela.color =  new Color(0.8113208f, 0.8113208f,0.8113208f, 1);
+            alternativa3_tela.color =  new Color(0.8113208f, 0.8113208f,0.8113208f, 1);
+            alternativa4_tela.color =  new Color(0.8113208f, 0.8113208f,0.8113208f, 1);
+
             if(selecionou5050 == SIM && quantidade_5050 > 0){
             alternativas[tirar_1].interactable = true;
             alternativas[tirar_2].interactable = true;
+            ajuda5050_tela.color = new Color(0.8113208f, 0.8113208f,0.8113208f, 1);
+            quantidade_5050_tela.color = new Color(1,0.8573965f,0.5990566f,1);
             ajuda5050.interactable = true;
             selecionou5050 = NAO;
             }
+
+            pular_tela.color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            quantidade_pular_tela.color = new Color(0.5660378f,0.4708605f, 0.2963688f,1);
 
         #endif
             quantidade_pular--;
         }else{
             pular.interactable = false;
+            //pular_tela.color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
         }
     }
 
@@ -1409,6 +1487,8 @@ public class Jogo : MonoBehaviour
         if (quantidade_5050 == 0)
         {
             ajuda5050.interactable = false;
+            ajuda5050_tela.color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            quantidade_5050_tela.color = new Color(0.5660378f,0.4708605f, 0.2963688f,1);
         }
         if (quantidade_pular == 0)
         {
