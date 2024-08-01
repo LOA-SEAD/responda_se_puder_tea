@@ -17,6 +17,8 @@ public class Navegacao : MonoBehaviour
     public Button ajuda5050;
     public Button pular;
     public Button confirmar;
+
+    public Button opcoes;
     public Animator btnAnim;
     public int index = -1;
 
@@ -42,7 +44,7 @@ public class Navegacao : MonoBehaviour
                         Selectable current = (Selectable)selected.GetComponent("Selectable");
                         if (current != null)
                         {
-                            if (current == dica || current == ajuda5050 || current == pular)
+                            if (current == dica || current == ajuda5050 || current == pular || current == opcoes)
                             {
                                 index = -1;
                                 if(alternativa1.interactable){
@@ -105,7 +107,7 @@ public class Navegacao : MonoBehaviour
                             dica.Select();
                             index = 0;
                         }
-                        else if(current == dica || current == ajuda5050 || current == pular){
+                        else if(current == dica || current == ajuda5050 || current == pular || current == opcoes){
                             index = -1;
                             pergunta.Select();
                         }

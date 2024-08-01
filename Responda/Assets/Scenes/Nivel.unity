@@ -416,12 +416,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nivel_tela: {fileID: 912587649}
   audioClips:
-  - {fileID: 8300000, guid: 1a133547c088a1c44a0f3501bc071a9c, type: 3}
-  - {fileID: 8300000, guid: f9f405f982b43e94bac527aeecc686d9, type: 3}
-  - {fileID: 8300000, guid: 7715216b18033524ba1363089a54931c, type: 3}
+  - {fileID: 8300000, guid: f26d8dad69e1b3e4c8d665ee7d9fb437, type: 3}
+  - {fileID: 8300000, guid: 31f7976b273ccdd4e9788d57df31aa87, type: 3}
+  - {fileID: 8300000, guid: a03dffa4872e03145bb74dc7a1c1c1b2, type: 3}
   audiosSeq:
-  - {fileID: 0}
-  - {fileID: 8300000, guid: aed8e874180c73a4c8cab7341ce6a423, type: 3}
+  - {fileID: 8300000, guid: fc4f77e0e8da1ad4aa80021e35a80464, type: 3}
+  - {fileID: 8300000, guid: 40d4c5afdb4e93046889989b31f396d8, type: 3}
   adSource: {fileID: 105456481}
   plateia: {fileID: 1998098674}
   anim: {fileID: 1215131374}
@@ -1180,7 +1180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Clique ou pressione a tecla 'Enter' para continuar.
+  m_Text: Clique na Tela com o mouse ou pressione a tecla 'Enter' para continuar.
 --- !u!222 &1461591104
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2022,12 +2022,12 @@ PrefabInstance:
     - target: {fileID: 2641637588757769258, guid: 2e878a04ac79cdc49bb4f5eb43070ebd,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 218.5
+      value: 226.8
       objectReference: {fileID: 0}
     - target: {fileID: 2641637588757769258, guid: 2e878a04ac79cdc49bb4f5eb43070ebd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 60.4
+      value: 67
       objectReference: {fileID: 0}
     - target: {fileID: 2641637588757769258, guid: 2e878a04ac79cdc49bb4f5eb43070ebd,
         type: 3}

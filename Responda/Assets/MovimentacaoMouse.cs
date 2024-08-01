@@ -11,45 +11,22 @@ using UnityEngine.EventSystems;
 
 public class MovimentacaoMouse : MonoBehaviour
 {
-    public Button selecionar;
-    private Vector3 lastMousePosition;
-    public bool isMouseMoving;
-    public bool isInputDetected;
+    public Button buttonToSelect; // Arraste o botão desejado para este campo no Inspector
 
-    void Start()
+    private void Update()
     {
-        lastMousePosition = Input.mousePosition;
-        isMouseMoving = false;
-        isInputDetected = false;
-    }
-
-    void Update()
-    {
-        bool mouseMoved = Input.mousePosition != lastMousePosition;
-        bool arrowKeysPressed = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow);
-        bool tabPressed = Input.GetKey(KeyCode.Tab);
-
-        if(mouseMoved)
-            EventSystem.current.SetSelectedGameObject(null);
-        
-        if(tabPressed && mouseMoved){
-            selecionar.Select();
-            lastMousePosition = Input.mousePosition;
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            SelectButtonIfNoneSelected(buttonToSelect);
         }
-        
     }
 
-    private IEnumerator HandleInputDetection()
+    private void SelectButtonIfNoneSelected(Button button)
     {
-        isInputDetected = true;
-        isMouseMoving = true;
-        yield return new WaitForSeconds(5f);
-        isMouseMoving = false;
-        isInputDetected = false;
+        if (button != null && EventSystem.current.currentSelectedGameObject == null)
+        {
+            EventSystem.current.SetSelectedGameObject(button.gameObject);
+        }
     }
 
-    public bool IsMouseMoving()
-    {
-        return isMouseMoving;
-    }
 }

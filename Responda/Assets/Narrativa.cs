@@ -42,11 +42,14 @@ public class Narrativa : MonoBehaviour
     public int pular;
     public bool fim;
 
+    public AudioSource pularaudio;
+
     // Start is called before the first frame update
 
     private void AtualizarAudios(){
         efeito.volume = Informacoes.GetValueEfeitos();
         fala.volume = Informacoes.GetValueLeituraTexto();
+        pularaudio.volume = Informacoes.GetValueLeituraTexto();
         fala.Stop();
         efeito.Stop();
         efeito.clip = efeitos[num_texto];
@@ -99,17 +102,17 @@ public class Narrativa : MonoBehaviour
         texto.text = "";
         num_texto = 0;
         roteiro[0] = " Onde..... estou.....? Tudo está tão escuro e enferrujado.";
-        roteiro[1] = " Uau.... o que aconteceu? Sinto-me... vivo novamente....  Ou... O que foi isso?! Sinto-me diferente.... Como se estivesse conectado novamente.";
-        roteiro[2] = " [Barulho de uma TV Ligando]";
-        roteiro[3] = " E agora, nosso robô moderno Smartio, responda esta pergunta: - Quem foi o humano que formulou as nossas 3 leis ? -";
-        roteiro[4] = " 1. um robô não pode ferir um humano ou permitir que um humano sofra algum mal;";
-        roteiro[5] = " 2. os robôs devem obedecer às ordens dos humanos, exceto nos casos em que essas ordens entrem em conflito com a primeira lei;";
+        roteiro[1] = " Uau.... o que aconteceu? Sinto-me... vivo novamente....";
+        roteiro[2] = " O que foi isso?! Sinto-me diferente.... Como se estivesse conectado novamente.";
+        roteiro[3] = " E agora, nosso robô moderno Smartio, responda esta pergunta: - Quem foi o humano que formulou as nossas 3 leis ?";
+        roteiro[4] = " 1. um robô não pode ferir um humano ou permitir que um humano sofra algum mal.";
+        roteiro[5] = " 2. os robôs devem obedecer às ordens dos humanos, exceto nos casos em que essas ordens entrem em conflito com a primeira lei.";
         roteiro[6] = " 3. os robôs devem proteger a sua própria existência, desde que tal proteção não entre em conflito com a primeira ou a segunda lei.";
         roteiro[7] = " ...";
-        roteiro[8] = " Parece que nosso robô moderno está com dificuldades. Mas se você, aí assistindo, sabe a resposta, ligue para o número na tela e participe do nosso novo programa - Responda Se Puder ! -";
-        roteiro[9] = " Responda Se Puder... Acho que sei a resposta.";
+        roteiro[8] = " Parece que nosso robô moderno está com dificuldades. Mas se você, aí assistindo, sabe a resposta, ligue para o número na tela e participe do nosso novo programa - Responda Se Puder!";
+        roteiro[9] = " Responda Se Puder... Acho que sei a resposta, essas são as três leis da robótica, criadas por Asimov.";
         roteiro[10] = " Hum... talvez seja a minha chance de sair deste lixão e dar um upgrade na minha vida! Parece interessante. Acho que posso fazer isso.";
-        roteiro[11] = " Você poderia me ajudar?";
+        roteiro[11] = " Você poderia me ajudar? ";
 
         /*
         roteiro[0] = "Onde estou? Tudo está tão escuro e enferrujado.";
@@ -155,6 +158,14 @@ public class Narrativa : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return)) {
             Prosseguir();
             AtualizarAudios();
+        }
+
+         if(num_texto > 3 && num_texto < 8 || num_texto == 9){
+            nome.text = "Apresentador";
+        }else if(num_texto == 8){
+            nome.text = "Smartio";
+        }else{
+            nome.text = "Robs";
         }
         
     }

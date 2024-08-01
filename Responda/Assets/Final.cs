@@ -145,7 +145,7 @@ public class Final : MonoBehaviour
             texto.text = roteiro_aux;
             carrega = roteiro_aux.Length;
             fim = true;
-            if(num_texto == 8){
+            if(num_texto == 10){
 
                 comeco.gameObject.SetActive(true);
                 fadein = true;
@@ -159,35 +159,40 @@ public class Final : MonoBehaviour
 
 
         if(final == 0){
-            roteiro[1] = "Só queria mandar um super obrigado por toda a ajuda para eu conseguir morar na garagem. Vocês foram demais!";
-            roteiro[2] = "Sem a orientação e ajuda do meu amigo e de vocês, eu provavelmente ainda estaria procurando um lugar adequado.";
-            roteiro[3] = "Estou adorando o novo espaço. É perfeito para recarregar minhas baterias (literalmente, haha).";
+            roteiro[2] = " Só queria mandar um super obrigado por toda a ajuda para eu conseguir uma moradia.";
+            roteiro[3] = " Você foi demais! Sem sua orientação, eu provavelmente ainda estaria procurando um lugar adequado.";
+            roteiro[4] = " Estou adorando o novo espaço. É perfeito para recarregar minhas baterias.";
+            roteiro[5] = " Valeu mesmo por tudo! Se precisar de qualquer coisa, estou por aqui, pronto para ajudar também.";
         }else if(final == 1){
-            roteiro[1] = "Queria agradecer muito por toda a ajuda com a atualização das minhas peças, elas brilham";
-            roteiro[2] = "Você e meu amigo realmente fizeram a diferença! Sem vocês, eu não teria conseguido fazer essa melhoria.";
-            roteiro[3] = "Estou adorando as novas peças. Eu tô muito lindo!";
+            roteiro[2] = " Gostaria de agradecer pela incrível oportunidade de participar do programa.";
+            roteiro[3] = " Graças a ele, atualizei minhas peças enferrujadas e agora não consigo parar de me admirar no espelho.";
+            roteiro[4] = " Quem diria que um robô velho como eu se tornaria tão brilhante? Agora sou praticamente um modelo da revista mecânica RoboVogue!";
+            roteiro[5] = " Valeu mesmo por tudo! Se precisar de qualquer coisa, estou por aqui, pronto para ajudar também.";
         }else if(final == 2){
-            roteiro[1] = "Super obrigado por toda a ajuda com a atualização das minhas peças, agora deu até vontade de ir na academia";
-            roteiro[2] = "Vocês foram demais! Agora, com meu novo visual e corpo bombado, me sinto muito mais eficiente e estiloso.";
-            roteiro[3] = "Posso simplesmente levantar todo esse peso de ser um robô moderno e lindo!";
+            roteiro[2] = " Gostaria de agradecer pela oportunidade de participar do programa.";
+            roteiro[3] = " Graças a ele, consegui atualizar minhas peças e até ganhei ânimo para ir à academia. ";
+            roteiro[4] = " Agora, além de brilhar com minhas novas atualizações, estou malhando para garantir que minha bateria dure ainda mais, para não precisar me carregar a cada corrida.";
+            roteiro[5] = " Valeu mesmo! Se precisar de qualquer coisa, estou por aqui, pronto para ajudar também.";
         }else if(final == 3){
-            roteiro[1] = "Queria te mandar um alô e um super obrigado diretamente da praia!";
-            roteiro[2] = "Agora consigo curtir o vento com meus cabelos de metal e minha nova aparência. Curti demais";
-            roteiro[3] = "Vou lá surfar nessas ondas da internet. Valeu por tudo!";
+            roteiro[2] = " Só queria agradecer pela oportunidade de participar do programa. Muito obrigado por ajudar a realizar meu sonho de morar na praia.";
+            roteiro[3] = " Estou adorando sentir o vento nos cabelos e na minha lataria.";
+            roteiro[4] = " Quem diria que um robô vindo de um ferro-velho, cheio de parafusos enferrujados, agora estaria aproveitando a vida na praia? Nunca imaginei que meus circuitos precisariam de protetor solar.";
+            roteiro[5] = " Valeu mesmo por tudo! Agora vou surfar na Internet.";
         }
 
     }
 
     void CarregarTexto(){
-        roteiro = new String[8];
+        roteiro = new String[10];
         texto.text = "";
         num_texto = 0;
-        roteiro[0] = "Agora vamos ver como nosso último participante está hoje em dia… Ele nos mandou uma foto com uma carta. Vamos apresenta-la a vocês";
+        roteiro[0] = " Agora vamos ver como nosso último participante está hoje em dia… Ele nos mandou uma foto com uma carta. Vamos apresentá-la a vocês.";
+        roteiro[1] = " Ei, Apresentador!";
         Cartas();
-        roteiro[4] = "Obrigado por Tudo !";
-        roteiro[5] = "Uau, olha só… Ele está diferente..";
-        roteiro[6] = "...";
-        roteiro[7] = "Ás vezes me emociono… Dessa vez vamos prosseguir para a próxima pergunta para encontramos nosso próximo jogador… Qual a...";
+        roteiro[6] = " Grande abraço!";
+        roteiro[7] = " Uau, olha só… Ele está diferente..";
+        roteiro[8] = " ...";
+        roteiro[9] = " Às vezes me emociono… Dessa vez vamos prosseguir para a próxima pergunta para encontrarmos nosso próximo jogador… Qual a…";
 
     }
     // Update is called once per frame
@@ -203,7 +208,7 @@ public class Final : MonoBehaviour
             if(carrega == roteiro_aux.Length){
                 fim = true;
 
-                if(num_texto == 8){
+                if(num_texto == 10){
                     comeco.gameObject.SetActive(true);
                     fadein = true;
                 }
@@ -244,7 +249,7 @@ public class Final : MonoBehaviour
 
         teste = canvasGroup.alpha;
 
-        if(num_texto > 1 && num_texto < 6){
+        if(num_texto > 1 && num_texto < 8){
             nome.text = "Robs";
         }else{
             nome.text = "Apresentador";

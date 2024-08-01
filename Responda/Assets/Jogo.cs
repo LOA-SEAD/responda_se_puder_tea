@@ -141,6 +141,11 @@ public class Jogo : MonoBehaviour
     public AudioSource audio_pular;
 
     public AudioSource audio_confirmar;
+
+    public AudioSource audio_opcoes;
+    public AudioSource audio_nao;
+
+    public AudioSource audio_sim;
     
     System.Random random = new System.Random();
 
@@ -358,6 +363,10 @@ public class Jogo : MonoBehaviour
         audio_a2.Stop();
         audio_a3.Stop();
         audio_transicoes.Stop();
+        audio_confirmar.Stop();
+        audio_opcoes.Stop();
+        audio_nao.Stop();
+        audio_sim.Stop();
         //parar todos os audios tocando
     }
 
@@ -374,6 +383,8 @@ public class Jogo : MonoBehaviour
         audio_5050.volume = Informacoes.GetValueLeituraTexto();
         audio_botao_dica.volume = Informacoes.GetValueLeituraTexto();
         audio_confirmar.volume = Informacoes.GetValueLeituraTexto();
+        audio_opcoes.volume = Informacoes.GetValueLeituraTexto();
+        audio_nao.volume = Informacoes.GetValueLeituraTexto();
     }
     
     private void InicializarJogo()
@@ -982,6 +993,7 @@ public class Jogo : MonoBehaviour
 
     public void MostrarPanelConfirmar(){
         Panel_confirmar_anim.SetBool("showPanel", true);
+        audio_confirmar.Play();
         botao_panel_sim.Select();
     }
 
@@ -1297,6 +1309,7 @@ public class Jogo : MonoBehaviour
             }
         }
         
+        //Informacoes.SetPontosGanhos(pontos_ganhos);
         pontuacao += pontos_ganhos;
     }
 

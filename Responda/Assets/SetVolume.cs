@@ -13,61 +13,64 @@ public class SetVolume : MonoBehaviour
     public Slider LeituraTexto;
     public AudioSource LeituraTextoAudio;
 
+    public AudioSource MusicaFundoAudioFundo;
+    public AudioSource EfeitosAudioFundo;
+    public AudioSource LeituraTextoAudioFundo;
+
+    public AudioSource voltarAudio;
+    public AudioClip[] voltarAudioClip;
+
     public Text TextoVoltar;
 
     public Text TextoVoltarFundo;
 
     public Button voltar;
 
-    int origem;
+    public int origem;
 
     public int posicao;
 
     void Start()
     {
+
         origem = Informacoes.GetOrigem();
         if(origem == 0){
             TextoVoltar.text = "Voltar para o Menu";
             TextoVoltarFundo.text = "Voltar para o Menu";
+            voltarAudio.clip = voltarAudioClip[1];
+            voltarAudio.volume = Informacoes.GetValueLeituraTexto();
+
         }
         else if(origem == 1){
             TextoVoltar.text = "Voltar para as Opções";
             TextoVoltarFundo.text = "Voltar para as Opções";
+            voltarAudio.clip = voltarAudioClip[0];
+            voltarAudio.volume = Informacoes.GetValueLeituraTexto();
+
         }
+        
         MusicaFundo.value = Informacoes.GetValueMusicaFundo();
         Efeitos.value = Informacoes.GetValueEfeitos();
         LeituraTexto.value = Informacoes.GetValueLeituraTexto();
+        MusicaFundoAudioFundo.volume = Informacoes.GetValueLeituraTexto();
+        EfeitosAudioFundo.volume = Informacoes.GetValueLeituraTexto();
+        LeituraTextoAudioFundo.volume = Informacoes.GetValueLeituraTexto();
+        voltarAudio.volume = Informacoes.GetValueLeituraTexto();
+        MusicaFundoAudioFundo.Stop();
+        EfeitosAudioFundo.Stop();
+        LeituraTextoAudioFundo.Stop();
+        voltarAudio.Stop();
+
+        MusicaFundo.Select();
 
     }
 
     void Update()
     {
-        if(posicao == 0){
-            MusicaFundo.Select();
-        }
-        else if(posicao == 1){
-            Efeitos.Select();
-        }
-        else if(posicao == 2){
-            LeituraTexto.Select();
-        }else if(posicao == 3){
-            voltar.Select();
-        }
 
-         if(Input.GetKeyDown(KeyCode.UpArrow)) {
-            posicao--;
-            if(posicao == -1) {
-                posicao = 3;
-            }
-        }
 
-        if(Input.GetKeyDown(KeyCode.DownArrow)) {
-            posicao++;
-            if(posicao == 4) {
-                posicao = 0;
-            }
-        }
     }
+
 
     public void AtualizarMusicaFundo(){
 

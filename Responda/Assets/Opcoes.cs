@@ -21,12 +21,42 @@ public class Opcoes : MonoBehaviour
     public AudioSource confirmar;
     public AudioSource nao;
 
+    public AudioSource confirmarBotao;
+    public AudioSource recomecarBotao;
+    public AudioSource intrudcoesBotao;
+
+    public AudioSource configuracoesBotao;
+
+    public AudioSource sairButton;
+
+    public AudioSource simm;
+
     // Start is called before the first frame update
-    void Start()
+
+    void AttAudio()
     {
+        //Informacoes.SetValueLeituraTexto(0.5f);
         confirmar.volume = Informacoes.GetValueLeituraTexto();
         nao.volume = Informacoes.GetValueLeituraTexto();
+        confirmarBotao.volume = Informacoes.GetValueLeituraTexto();
+        recomecarBotao.volume = Informacoes.GetValueLeituraTexto();
+        intrudcoesBotao.volume = Informacoes.GetValueLeituraTexto();
+        configuracoesBotao.volume = Informacoes.GetValueLeituraTexto();
+        sairButton.volume = Informacoes.GetValueLeituraTexto();
+        simm.volume = Informacoes.GetValueLeituraTexto();
         confirmar.Stop();
+        nao.Stop();
+        confirmarBotao.Stop();
+        recomecarBotao.Stop();
+        intrudcoesBotao.Stop();
+        configuracoesBotao.Stop();
+        sairButton.Stop();
+        simm.Stop();
+
+    }
+    void Start()
+    {
+        AttAudio();
     }
 
     // Update is called once per frame
@@ -59,6 +89,7 @@ public class Opcoes : MonoBehaviour
     public void MostrarPainelConfirmar()
     {
         Panel_confirmar_anim.SetBool("showPanel", true);
+        confirmar.Play();
         sim.Select();
     }
 

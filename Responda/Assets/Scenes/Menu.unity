@@ -289,6 +289,7 @@ GameObject:
   - component: {fileID: 289329352}
   - component: {fileID: 289329351}
   - component: {fileID: 289329354}
+  - component: {fileID: 289329356}
   - component: {fileID: 289329355}
   m_Layer: 5
   m_Name: botao_instrucoes
@@ -471,6 +472,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 0
   m_AspectRatio: 0.9818781
+--- !u!114 &289329356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289329349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1eafd8511c9aaa43965862ff820cf45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSound: {fileID: 1782060907}
 --- !u!1 &349775326
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,6 +686,7 @@ GameObject:
   - component: {fileID: 471906648}
   - component: {fileID: 471906647}
   - component: {fileID: 471906650}
+  - component: {fileID: 471906652}
   - component: {fileID: 471906651}
   m_Layer: 5
   m_Name: botao_sair
@@ -752,6 +767,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 786270577}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -854,6 +881,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 0
   m_AspectRatio: 1.0540866
+--- !u!114 &471906652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471906645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1eafd8511c9aaa43965862ff820cf45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSound: {fileID: 1110261506}
 --- !u!1 &480713412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,9 +1393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f59e0e24fa46a642b64452bfee21bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selecionar: {fileID: 985133703}
-  isMouseMoving: 0
-  isInputDetected: 0
+  buttonToSelect: {fileID: 985133703}
 --- !u!1 &895553492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,6 +1877,7 @@ GameObject:
   - component: {fileID: 905907882}
   - component: {fileID: 905907881}
   - component: {fileID: 905907884}
+  - component: {fileID: 905907886}
   - component: {fileID: 905907885}
   m_Layer: 5
   m_Name: botao_configuracoes
@@ -2021,6 +2060,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 0
   m_AspectRatio: 1.0117736
+--- !u!114 &905907886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905907879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1eafd8511c9aaa43965862ff820cf45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSound: {fileID: 1712561596}
 --- !u!1 &916721863
 GameObject:
   m_ObjectHideFlags: 0
@@ -2238,6 +2290,7 @@ GameObject:
   - component: {fileID: 985133704}
   - component: {fileID: 985133703}
   - component: {fileID: 985133706}
+  - component: {fileID: 985133708}
   - component: {fileID: 985133707}
   m_Layer: 5
   m_Name: botao_jogar
@@ -2390,6 +2443,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 786270577}
+          m_TargetAssemblyTypeName: 
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 0
     callback:
       m_PersistentCalls:
@@ -2420,6 +2485,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 0
   m_AspectRatio: 0.92571574
+--- !u!114 &985133708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985133701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1eafd8511c9aaa43965862ff820cf45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSound: {fileID: 1492315808}
 --- !u!1 &1018392366
 GameObject:
   m_ObjectHideFlags: 0
@@ -2727,7 +2805,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e9bf9d14588cd6847bd29ec352de738d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c888cda1773d6ea48880a3553aaa84ae, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2861,8 +2939,8 @@ MonoBehaviour:
   - {fileID: 916721864}
   - {fileID: 898222988}
   adClips:
-  - {fileID: 8300000, guid: 6e5e85b0280384e40addfd7b991b468e, type: 3}
-  - {fileID: 8300000, guid: bab07578706c9f54f8db225f260f16ce, type: 3}
+  - {fileID: 8300000, guid: ce3a3dcd062e8b442a0b3fc638305346, type: 3}
+  - {fileID: 8300000, guid: dadbecb55f2d874479031a0ac7d7bf09, type: 3}
   instrucoes: {fileID: 289329351}
 --- !u!4 &1166930543
 Transform:
@@ -3213,7 +3291,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 208273f473ccb064e83c9e27063a716d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 41f0e57fcab60ae419627a7d1c82f853, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3500,7 +3578,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d5eb5fb7b5930664da2633680736d155, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 36e012e87508a894f91039e906f53be4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3720,7 +3798,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2d3bfe6af8195bb40a17238366fa8fe5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d1f1b0b8d6f696e40aecf525a3581a65, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
