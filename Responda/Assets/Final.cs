@@ -192,7 +192,7 @@ public class Final : MonoBehaviour
         roteiro[6] = " Grande abraço!";
         roteiro[7] = " Uau, olha só… Ele está diferente..";
         roteiro[8] = " ...";
-        roteiro[9] = " Às vezes me emociono… Dessa vez vamos prosseguir para a próxima pergunta para encontrarmos nosso próximo jogador… Qual a…";
+        roteiro[9] = " Que história linda… Com toda certeza...  Vamos dar outra oportunidade ? Responda a próxima pergunta para ser nosso próximo jogador… Qual a…";
 
     }
     // Update is called once per frame

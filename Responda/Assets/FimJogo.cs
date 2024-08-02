@@ -32,6 +32,14 @@ public class FimJogo : MonoBehaviour
 
     private bool fadein;
 
+    public AudioSource avancar;
+
+    void AttAudios(){
+        avancar.volume = Informacoes.GetValueLeituraTexto();
+        avancar.Stop();
+
+    }
+
     void Start()
     {
         
@@ -42,7 +50,8 @@ public class FimJogo : MonoBehaviour
         pontuacao = Informacoes.GetPontos();
         Informacoes.SetCaminhos(1);
         CalcularBonus();
-        prosseguir.Select();
+        //prosseguir.Select();
+        AttAudios();   
         botao.onClick.AddListener(() => Voltar());
     }
 
