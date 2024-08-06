@@ -137,7 +137,7 @@ public class Narrativa : MonoBehaviour
     void CarregaTextoNaTela(){
 
         velocidade += Time.deltaTime*10;
-        if(velocidade > 0.9){
+        if(velocidade > 0.7){
             texto.text += roteiro_aux[carrega];
             carrega++;
             velocidade = 0;

@@ -335,17 +335,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   falas:
   - {fileID: 8300000, guid: 6c689c96391857f47a5bf60c36a38eba, type: 3}
-  - {fileID: 8300000, guid: 883050f96f2b5b7459a88d095c1de227, type: 3}
+  - {fileID: 8300000, guid: 1f3e110c089254b4aa85d273e510c2c8, type: 3}
+  - {fileID: 8300000, guid: 31f1cfdbc19a05d4c87f6c5f592a6222, type: 3}
+  - {fileID: 8300000, guid: d63b06b4740aee0418efaf1864a7c316, type: 3}
+  - {fileID: 8300000, guid: 85c52f95640c4a64986eaf785f6418d8, type: 3}
+  - {fileID: 8300000, guid: a527d79a01b1a3145b0cfe85f9ba6a35, type: 3}
+  - {fileID: 8300000, guid: 7858b048cea84ab42a4abc2017328401, type: 3}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: e3bf0bbe69b7e6743a9e7ab076a75b15, type: 3}
+  - {fileID: 8300000, guid: 603ef0585cfa41740a5fa76b3441e4fd, type: 3}
+  - {fileID: 8300000, guid: 224b68679c4a99e45ae3174306d81657, type: 3}
   - {fileID: 8300000, guid: 4136ed94708f7674d8480ea56910ea8b, type: 3}
-  - {fileID: 8300000, guid: 4f681922bf53bf84987064cc1b81c129, type: 3}
+  - {fileID: 8300000, guid: bb1d7ebbdcc82e847acefe6c94f18ca6, type: 3}
   fala: {fileID: 762412199}
   efeitos:
   - {fileID: 0}

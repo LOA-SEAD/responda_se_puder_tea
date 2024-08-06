@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Networking;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 
 public class Jogo : MonoBehaviour
@@ -43,6 +44,8 @@ public class Jogo : MonoBehaviour
     public Button botao_pergunta;
     public Button confirmar;
     public Button ajuda5050;
+
+    public Button opcoes;
 
     public Text ajuda5050_tela;
     public Button dica;
@@ -991,14 +994,62 @@ public class Jogo : MonoBehaviour
         #endif
     }
 
+
     public void MostrarPanelConfirmar(){
         Panel_confirmar_anim.SetBool("showPanel", true);
         audio_confirmar.Play();
         botao_panel_sim.Select();
+        dica.enabled = false;
+        audio_botao_dica.enabled = false;
+        ajuda5050.enabled = false;
+        audio_5050.enabled = false;
+        pular.enabled = false;
+        audio_pular.enabled = false;
+        botao_pergunta.enabled = false;
+        audio_pergunta.enabled = false;
+        alternativas[0].enabled = false;
+        audio_a0.enabled = false;
+        alternativas[1].enabled = false;
+        audio_a1.enabled = false;
+        alternativas[2].enabled = false;
+        audio_a2.enabled = false;
+        alternativas[3].enabled = false;
+        audio_a3.enabled = false;
+        opcoes.enabled = false;
+        audio_opcoes.enabled = false;
+        
+        /*botao_pergunta.gameObject.SetActive(false);
+        alternativas[0].gameObject.SetActive(false);
+        alternativas[1].gameObject.SetActive(false);
+        alternativas[2].gameObject.SetActive(false);
+        alternativas[3].gameObject.SetActive(false);
+        dica.gameObject.SetActive(false);
+        ajuda5050.gameObject.SetActive(false);
+        pular.gameObject.SetActive(false);
+        */
+        
     }
 
     public void EsconderPanelConfirmar(){
         Panel_confirmar_anim.SetBool("showPanel", false);
+        dica.enabled = true;
+        audio_botao_dica.enabled = true;
+        ajuda5050.enabled = true;
+        audio_5050.enabled = true;
+        pular.enabled = true;
+        audio_pular.enabled = true;
+        botao_pergunta.enabled = true;
+        audio_pergunta.enabled = true;
+        alternativas[0].enabled = true;
+        audio_a0.enabled = true;
+        alternativas[1].enabled = true;
+        audio_a1.enabled = true;
+        alternativas[2].enabled = true;
+        audio_a2.enabled = true;
+        alternativas[3].enabled = true;
+        audio_a3.enabled = true;
+        opcoes.enabled = true;
+        audio_opcoes.enabled = true;
     }
     
     public void ConfirmarAlternativa()

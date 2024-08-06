@@ -9211,6 +9211,7 @@ MonoBehaviour:
   botao_pergunta: {fileID: 37363188}
   confirmar: {fileID: 568989694}
   ajuda5050: {fileID: 570421369882439859}
+  opcoes: {fileID: 1927639551}
   ajuda5050_tela: {fileID: 148121291}
   dica: {fileID: 1514659565}
   pular: {fileID: 1226335333}

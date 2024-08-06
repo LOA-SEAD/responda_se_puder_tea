@@ -18,6 +18,14 @@ public class Opcoes : MonoBehaviour
 
     public Button sair;
 
+    public Button recomecar;
+
+    public Button instrucoes;
+
+    public Button configuracoes;
+
+    public Button sairBotao;
+
     public AudioSource confirmar;
     public AudioSource nao;
 
@@ -91,12 +99,38 @@ public class Opcoes : MonoBehaviour
         Panel_confirmar_anim.SetBool("showPanel", true);
         confirmar.Play();
         sim.Select();
+        confirmar.enabled = false;
+        confirmarBotao.enabled = false;
+        recomecarBotao.enabled = false;
+        intrudcoesBotao.enabled = false;
+        configuracoesBotao.enabled = false;
+        sairButton.enabled = false;
+        sair.interactable = false;
+        recomecar.interactable = false;
+        instrucoes.interactable = false;
+        configuracoes.interactable = false;
+        sairBotao.interactable= false;
+
+
     }
 
     public void fecharPainelConfirmar()
     {
         Panel_confirmar_anim.SetBool("showPanel", false);
         sair.Select();
+        confirmar.enabled = true;
+        confirmarBotao.enabled = true;
+        recomecarBotao.enabled = true;
+        intrudcoesBotao.enabled = true;
+        configuracoesBotao.enabled = true;
+        sairButton.enabled = true;
+        sair.interactable = true;
+        recomecar.interactable = true;
+        instrucoes.interactable = true;
+        configuracoes.interactable = true;
+        sairBotao.interactable= true;
+        AttAudio();
+
     }
 
     public void desistir()

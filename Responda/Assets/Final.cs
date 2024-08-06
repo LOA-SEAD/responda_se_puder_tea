@@ -54,20 +54,38 @@ public class Final : MonoBehaviour
 
     public int intervalos;
 
+    
+    public AudioSource pularaudio;
+
+    public AudioClip[] variantes_carta;
+
     // Start is called before the first frame update
 
-    private void AtualizarAudios(AudioSource p){
+    private void AtualizarAudios(){
         efeito.volume = Informacoes.GetValueEfeitos();
         fala.volume = Informacoes.GetValueLeituraTexto();
+        pularaudio.volume = Informacoes.GetValueLeituraTexto();
+        fala.Stop();
+        efeito.Stop();
+        efeito.clip = efeitos[num_texto];
+        fala.clip = falas[num_texto];
+        efeito.Play();
+        fala.Play();
+
     }
     void Start()
     {
+        AtualizarAudios();
+        CarregarTexto();
         canvasGroup.alpha = 1;
         fadeOut = true;
         pontuacao = Informacoes.GetPontos();
         Informacoes.SetCaminhos(1);
+        carrega = 0;
+        fim = false;
+        roteiro_aux = roteiro[num_texto++];
+        texto.text = "";
         PontuacaoIntervalos();
-        Comecar();
     }
 
     public int quantidadeFacil = Informacoes.GetQuantidadeFacil();
@@ -120,13 +138,6 @@ public class Final : MonoBehaviour
 
     }
 
-    void Comecar(){
-        CarregarTexto();
-        carrega = 0;
-        fim = false;
-        roteiro_aux = roteiro[num_texto++];
-        texto.text = "";
-    }
     public void Pular(){
         comeco.gameObject.SetActive(true);
 		fadein = true;
@@ -137,6 +148,7 @@ public class Final : MonoBehaviour
 
         if(fim == true){
             roteiro_aux = roteiro[num_texto++];
+            AtualizarAudios();
             texto.text = "";
             carrega = 0;
             fim = false;
@@ -145,7 +157,7 @@ public class Final : MonoBehaviour
             texto.text = roteiro_aux;
             carrega = roteiro_aux.Length;
             fim = true;
-            if(num_texto == 10){
+            if(num_texto >= 10){
 
                 comeco.gameObject.SetActive(true);
                 fadein = true;
@@ -159,40 +171,60 @@ public class Final : MonoBehaviour
 
 
         if(final == 0){
-            roteiro[2] = " Só queria mandar um super obrigado por toda a ajuda para eu conseguir uma moradia.";
+            roteiro[2] = " Só queria mandar um super obrigado por toda a ajuda, sem ela não conseguiria uma moradia.";
             roteiro[3] = " Você foi demais! Sem sua orientação, eu provavelmente ainda estaria procurando um lugar adequado.";
             roteiro[4] = " Estou adorando o novo espaço. É perfeito para recarregar minhas baterias.";
             roteiro[5] = " Valeu mesmo por tudo! Se precisar de qualquer coisa, estou por aqui, pronto para ajudar também.";
+
+            falas[3] = variantes_carta[0];
+            falas[4] = variantes_carta[1];
+            falas[5] = variantes_carta[2];
+            falas[6] = variantes_carta[3];
         }else if(final == 1){
             roteiro[2] = " Gostaria de agradecer pela incrível oportunidade de participar do programa.";
             roteiro[3] = " Graças a ele, atualizei minhas peças enferrujadas e agora não consigo parar de me admirar no espelho.";
-            roteiro[4] = " Quem diria que um robô velho como eu se tornaria tão brilhante? Agora sou praticamente um modelo da revista mecânica RoboVogue!";
+            roteiro[4] = " Quem diria que um robô velho como eu se tornaria algo tão brilhante? Agora sou praticamente um modelo de revista da RoboVogue!";
             roteiro[5] = " Valeu mesmo por tudo! Se precisar de qualquer coisa, estou por aqui, pronto para ajudar também.";
+
+            falas[3] = variantes_carta[4];
+            falas[4] = variantes_carta[5];
+            falas[5] = variantes_carta[6];
+            falas[6] = variantes_carta[7];
         }else if(final == 2){
             roteiro[2] = " Gostaria de agradecer pela oportunidade de participar do programa.";
             roteiro[3] = " Graças a ele, consegui atualizar minhas peças e até ganhei ânimo para ir à academia. ";
-            roteiro[4] = " Agora, além de brilhar com minhas novas atualizações, estou malhando para garantir que minha bateria dure ainda mais, para não precisar me carregar a cada corrida.";
-            roteiro[5] = " Valeu mesmo! Se precisar de qualquer coisa, estou por aqui, pronto para ajudar também.";
+            roteiro[4] = " Agora, além de brilhar com minhas novas atualizações, estou malhando para garantir que minha bateria dure ainda mais, para não precisar me recarregar tanto";
+            roteiro[5] = " Valeu mesmo! Se precisar de qualquer coisa, qualquer coisinha, estou por aqui, pronto para ajudar também.";
+
+            falas[3] = variantes_carta[8];
+            falas[4] = variantes_carta[9];
+            falas[5] = variantes_carta[10];
+            falas[6] = variantes_carta[11];
         }else if(final == 3){
             roteiro[2] = " Só queria agradecer pela oportunidade de participar do programa. Muito obrigado por ajudar a realizar meu sonho de morar na praia.";
             roteiro[3] = " Estou adorando sentir o vento nos cabelos e na minha lataria.";
             roteiro[4] = " Quem diria que um robô vindo de um ferro-velho, cheio de parafusos enferrujados, agora estaria aproveitando a vida na praia? Nunca imaginei que meus circuitos precisariam de protetor solar.";
-            roteiro[5] = " Valeu mesmo por tudo! Agora vou surfar na Internet.";
+            roteiro[5] = " Valeu mesmo por tudo! Agora vou surfar por ai.";
+
+            falas[3] = variantes_carta[12];
+            falas[4] = variantes_carta[13];
+            falas[5] = variantes_carta[14];
+            falas[6] = variantes_carta[15];
         }
 
     }
 
     void CarregarTexto(){
-        roteiro = new String[10];
+        roteiro = new String[11];
         texto.text = "";
         num_texto = 0;
-        roteiro[0] = " Agora vamos ver como nosso último participante está hoje em dia… Ele nos mandou uma foto com uma carta. Vamos apresentá-la a vocês.";
+        roteiro[0] = " Agora vamos ver como nosso último participante está hoje em dia... Ele nos mandou uma foto com uma carta. Vamos apresentá-la a vocês.";
         roteiro[1] = " Ei, Apresentador!";
         Cartas();
         roteiro[6] = " Grande abraço!";
-        roteiro[7] = " Uau, olha só… Ele está diferente..";
+        roteiro[7] = " Uau, olha só... Ele está diferente...";
         roteiro[8] = " ...";
-        roteiro[9] = " Que história linda… Com toda certeza...  Vamos dar outra oportunidade ? Responda a próxima pergunta para ser nosso próximo jogador… Qual a…";
+        roteiro[9] = " Que história linda... ela está muito melhor... Alguém deseja ter essa oportunidade ? Responda a próxima pergunta para ser nosso próximo jogador… Qual a…";
 
     }
     // Update is called once per frame
@@ -208,7 +240,7 @@ public class Final : MonoBehaviour
             if(carrega == roteiro_aux.Length){
                 fim = true;
 
-                if(num_texto == 10){
+                if(num_texto >= 10){
                     comeco.gameObject.SetActive(true);
                     fadein = true;
                 }
@@ -257,7 +289,7 @@ public class Final : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return)) {
             Prosseguir();
-            //AtualizarAudios();
+            AtualizarAudios();
         }
     }   
 }

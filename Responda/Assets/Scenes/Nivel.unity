@@ -421,7 +421,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a03dffa4872e03145bb74dc7a1c1c1b2, type: 3}
   audiosSeq:
   - {fileID: 8300000, guid: fc4f77e0e8da1ad4aa80021e35a80464, type: 3}
-  - {fileID: 8300000, guid: 40d4c5afdb4e93046889989b31f396d8, type: 3}
+  - {fileID: 8300000, guid: 22d59bf1d7c1ddb4484f9dfb5db2de54, type: 3}
   adSource: {fileID: 105456481}
   plateia: {fileID: 1998098674}
   anim: {fileID: 1215131374}
@@ -1180,7 +1180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Clique na Tela com o mouse ou pressione a tecla 'Enter' para continuar.
+  m_Text: "Clique com o bot\xE3o esquerdo do mouse ou pressione 'Enter' para continuar"
 --- !u!222 &1461591104
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -1442,7 +1442,7 @@ MonoBehaviour:
   adClips:
   - {fileID: 8300000, guid: 7be980f09872f014f8ad1ad59c233a15, type: 3}
   - {fileID: 0}
-  - {fileID: 8300000, guid: aed8e874180c73a4c8cab7341ce6a423, type: 3}
+  - {fileID: 8300000, guid: 22d59bf1d7c1ddb4484f9dfb5db2de54, type: 3}
   variacoes:
   - {fileID: 8300000, guid: 8f7a29001b4f87d4fbd717a8eefb807d, type: 3}
   - {fileID: 8300000, guid: 4cfb365ea10cc494489480bc161c64b8, type: 3}
@@ -1655,6 +1655,7 @@ MonoBehaviour:
   botao_pergunta: {fileID: 0}
   confirmar: {fileID: 0}
   ajuda5050: {fileID: 0}
+  opcoes: {fileID: 0}
   ajuda5050_tela: {fileID: 0}
   dica: {fileID: 0}
   pular: {fileID: 0}
@@ -1748,6 +1749,7 @@ MonoBehaviour:
   audio_confirmar: {fileID: 0}
   audio_opcoes: {fileID: 0}
   audio_nao: {fileID: 0}
+  audio_sim: {fileID: 0}
   images: []
   sprites_variacoes: []
   ajudas: []
@@ -7084,8 +7086,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281568768
-  m_fontColor: {r: 0, g: 0.5566038, b: 0.20037743, a: 1}
+    rgba: 4294913536
+  m_fontColor: {r: 0, g: 0.18039216, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7347,7 +7349,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Clique ou pressione 'Enter' para continuar
+  m_text: "Clique com o bot\xE3o esquerdo do mouse ou pressione 'Enter' para continuar"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: afae0f24ac4cc52478e33ce26681c332, type: 2}
   m_sharedMaterial: {fileID: 9017377245658397608, guid: afae0f24ac4cc52478e33ce26681c332,
