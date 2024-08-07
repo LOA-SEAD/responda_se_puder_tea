@@ -76,6 +76,7 @@ public class Final : MonoBehaviour
     void Start()
     {
         AtualizarAudios();
+        PontuacaoIntervalos();
         CarregarTexto();
         canvasGroup.alpha = 1;
         fadeOut = true;
@@ -85,7 +86,7 @@ public class Final : MonoBehaviour
         fim = false;
         roteiro_aux = roteiro[num_texto++];
         texto.text = "";
-        PontuacaoIntervalos();
+        //PontuacaoIntervalos();
     }
 
     public int quantidadeFacil = Informacoes.GetQuantidadeFacil();
@@ -104,6 +105,8 @@ public class Final : MonoBehaviour
 
         intervalos = pontuacao_total/4;
 
+
+
         canvasGroupCarta.alpha = 1;
 
         if(pontuacao <= intervalos){
@@ -118,6 +121,8 @@ public class Final : MonoBehaviour
         if(pontuacao > 3*intervalos){
             final = 3;
         }
+
+
 
         if (final == 0)
         {
@@ -193,7 +198,7 @@ public class Final : MonoBehaviour
         }else if(final == 2){
             roteiro[2] = " Gostaria de agradecer pela oportunidade de participar do programa.";
             roteiro[3] = " Graças a ele, consegui atualizar minhas peças e até ganhei ânimo para ir à academia. ";
-            roteiro[4] = " Agora, além de brilhar com minhas novas atualizações, estou malhando para garantir que minha bateria dure ainda mais, para não precisar me recarregar tanto";
+            roteiro[4] = " Agora, além de brilhar com minhas novas atualizações, estou malhando para garantir que minha bateria dure ainda mais, para não precisar me recarregar tanto.";
             roteiro[5] = " Valeu mesmo! Se precisar de qualquer coisa, qualquer coisinha, estou por aqui, pronto para ajudar também.";
 
             falas[3] = variantes_carta[8];
@@ -232,7 +237,7 @@ public class Final : MonoBehaviour
     void CarregaTextoNaTela(){
 
         velocidade += Time.deltaTime*10;
-        if(velocidade > 0.5){
+        if(velocidade > 0.6){
             texto.text += roteiro_aux[carrega];
             carrega++;
             velocidade = 0;

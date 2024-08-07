@@ -99,7 +99,7 @@ public class Opcoes : MonoBehaviour
         Panel_confirmar_anim.SetBool("showPanel", true);
         confirmar.Play();
         sim.Select();
-        confirmar.enabled = false;
+        //confirmar.enabled = false;
         confirmarBotao.enabled = false;
         recomecarBotao.enabled = false;
         intrudcoesBotao.enabled = false;

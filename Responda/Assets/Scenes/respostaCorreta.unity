@@ -917,7 +917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &268936982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -932,8 +932,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   adSource: {fileID: 268936983}
   adClips:
-  - {fileID: 8300000, guid: 7be980f09872f014f8ad1ad59c233a15, type: 3}
-  - {fileID: 8300000, guid: 8f7a29001b4f87d4fbd717a8eefb807d, type: 3}
+  - {fileID: 8300000, guid: 4dbadb396ad64724f853955a47cf280d, type: 3}
+  - {fileID: 8300000, guid: a931ef53e6b25cf45811574d524801d6, type: 3}
   - {fileID: 8300000, guid: aed8e874180c73a4c8cab7341ce6a423, type: 3}
   instrucoes: {fileID: 558518476}
   plateia: {fileID: 244672817}
@@ -1440,11 +1440,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   adSource: {fileID: 438372551}
   adClips:
-  - {fileID: 8300000, guid: 7be980f09872f014f8ad1ad59c233a15, type: 3}
+  - {fileID: 8300000, guid: 70f859a69256bfb4abee71897f0ba1b6, type: 3}
   - {fileID: 0}
   - {fileID: 8300000, guid: 22d59bf1d7c1ddb4484f9dfb5db2de54, type: 3}
   variacoes:
-  - {fileID: 8300000, guid: 8f7a29001b4f87d4fbd717a8eefb807d, type: 3}
+  - {fileID: 8300000, guid: a931ef53e6b25cf45811574d524801d6, type: 3}
   - {fileID: 8300000, guid: 4cfb365ea10cc494489480bc161c64b8, type: 3}
   - {fileID: 8300000, guid: 5ea57eed1a8972a4f9976614c88df17a, type: 3}
   - {fileID: 8300000, guid: 6dff237d972f4fa43ac411563326fde5, type: 3}
@@ -7076,7 +7076,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Resposta Correta
+  m_text: "Parab\xE9ns!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: afae0f24ac4cc52478e33ce26681c332, type: 2}
   m_sharedMaterial: {fileID: 9017377245658397608, guid: afae0f24ac4cc52478e33ce26681c332,

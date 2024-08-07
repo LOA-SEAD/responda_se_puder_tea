@@ -333,7 +333,7 @@ MonoBehaviour:
   spritearray:
   - {fileID: 21300000, guid: 08d00556bcc6e9d4dbbbd43886055d37, type: 3}
   - {fileID: 21300000, guid: 37cacca33531f8b4d86cb77365b94827, type: 3}
-  - {fileID: 21300000, guid: 37cacca33531f8b4d86cb77365b94827, type: 3}
+  - {fileID: 21300000, guid: a756871465487b0459173f3ae69c5438, type: 3}
   - {fileID: 21300000, guid: 6d0f39b7d5d2790478844a98337aff46, type: 3}
   canvasGroup: {fileID: 1546253560}
   canvasGroupCarta: {fileID: 1419060182}
@@ -349,7 +349,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 8300000, guid: 60faf5f4a45fdd14eb357956098700d0, type: 3}
-  - {fileID: 8300000, guid: 21db4b109a7071f4e976a4595d9efbc4, type: 3}
+  - {fileID: 8300000, guid: 7e1963da115356b459721c0971bfd8d8, type: 3}
   - {fileID: 0}
   - {fileID: 8300000, guid: e7ec02809804d87429ebd921d0e55f11, type: 3}
   fala: {fileID: 1821671230}
