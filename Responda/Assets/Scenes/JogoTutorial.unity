@@ -6455,12 +6455,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcca19dee1cea6b4a933806b0200c2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Acerto_Consecutivo: 0
   pergunta_tela: {fileID: 1529795546}
   alternativa1_tela: {fileID: 1125419952}
   alternativa2_tela: {fileID: 1284720109}
   alternativa3_tela: {fileID: 784039564}
   alternativa4_tela: {fileID: 10938551}
   pontuacao_tela: {fileID: 593994941}
+  valorQuestao: {fileID: 0}
   dificuldade_tela: {fileID: 507345909}
   numero_questao_tela: {fileID: 1630400567}
   panel_title: {fileID: 1404751366}
@@ -6560,6 +6562,15 @@ MonoBehaviour:
   arquivo_texto: {fileID: 4900000, guid: 901afec2135dc2948a377cb762babd34, type: 3}
   Panel_anim: {fileID: 552239528}
   Panel_confirmar_anim: {fileID: 1604381990}
+  quantidade_facil: 0
+  quantidade_medio: 0
+  quantidade_dificil: 0
+  pular_agora: 0
+  questao_x_de_y: 0
+  selecionou5050: 0
+  quantidade_5050: 2
+  selecionou_pular: 0
+  nivel_atual: 0
   audio_pergunta: {fileID: 0}
   audio_a0: {fileID: 0}
   audio_a1: {fileID: 0}
@@ -6570,6 +6581,15 @@ MonoBehaviour:
   audio_botao_dica: {fileID: 0}
   audio_5050: {fileID: 0}
   audio_pular: {fileID: 0}
+  audio_confirmar: {fileID: 0}
+  images: []
+  sprites_variacoes: []
+  ajudas: []
+  sprites_ajudas: []
+  pergunta_atual: 0
+  perguntas_bool: 
+  ajudas_usadas: 
+  caminhos: 0
 --- !u!114 &1144039884
 MonoBehaviour:
   m_ObjectHideFlags: 0

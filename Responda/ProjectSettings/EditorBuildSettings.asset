@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Narrativa.unity
     guid: 554312c296520974f8d0d7246f2ba627
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 98abdd8fda68f664e9f8abe0066d68f4
   m_configObjects: {}

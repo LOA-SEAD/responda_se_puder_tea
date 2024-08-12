@@ -66,6 +66,13 @@ public class Buttons : MonoBehaviour {
 		//SceneManager.LoadScene("Nivel");
 	}
 
+	public void IniciarTutorial()
+	{
+		SceneManager.LoadScene("Tutorial");
+        fadein = true;
+        
+    }
+
 	private void Update()
 	{
 		if(fadein)
