@@ -11,22 +11,25 @@ using UnityEngine.EventSystems;
 
 public class MovimentacaoMouse : MonoBehaviour
 {
-    public Button buttonToSelect; // Arraste o botão desejado para este campo no Inspector
+    public Button[] buttonsToSelect; // Arraste os botões desejados para este campo no Inspector
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab) && Informacoes.GetCursosBlock() != 2)
         {
-            SelectButtonIfNoneSelected(buttonToSelect);
+            SelectInteractableButton(buttonsToSelect);
         }
     }
 
-    private void SelectButtonIfNoneSelected(Button button)
+    private void SelectInteractableButton(Button[] buttons)
     {
-        if (button != null && EventSystem.current.currentSelectedGameObject == null)
+        foreach (Button button in buttons)
         {
-            EventSystem.current.SetSelectedGameObject(button.gameObject);
+            if (button != null && button.interactable)
+            {
+                EventSystem.current.SetSelectedGameObject(button.gameObject);
+                break; // Seleciona o primeiro botão interactable e interrompe o loop
+            }
         }
     }
-
 }

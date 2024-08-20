@@ -242,8 +242,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 44.8, y: 97.1}
-  m_SizeDelta: {x: 45.86, y: 39.84}
+  m_AnchoredPosition: {x: 37.518, y: 153}
+  m_SizeDelta: {x: 660.96, y: 118.12}
   m_Pivot: {x: 0.5, y: 0.50000024}
 --- !u!114 &37363187
 MonoBehaviour:
@@ -305,7 +305,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 87c762091d2b8bc46b22c3ee22157956, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 24c5bba4484b6e84eb456ba8ae35fc3e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9452,7 +9452,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f59e0e24fa46a642b64452bfee21bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonToSelect: {fileID: 37363188}
+  buttonsToSelect:
+  - {fileID: 37363188}
+  - {fileID: 54104687}
+  - {fileID: 1569739278}
 --- !u!114 &1144039887
 MonoBehaviour:
   m_ObjectHideFlags: 0

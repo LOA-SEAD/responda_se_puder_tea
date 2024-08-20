@@ -51,6 +51,8 @@ public class Opcoes : MonoBehaviour
 
     public AudioSource navegaçao;
 
+    public AudioSource deseja_navegar;
+
     public Button mouseButton;
 
     public Button tecladoButton;
@@ -75,6 +77,7 @@ public class Opcoes : MonoBehaviour
         teclado.volume = Informacoes.GetValueLeituraTexto();
         mouse.volume = Informacoes.GetValueLeituraTexto();
         navegaçao.volume = Informacoes.GetValueLeituraTexto();
+        deseja_navegar.volume = Informacoes.GetValueLeituraTexto();
         confirmar.Stop();
         nao.Stop();
         confirmarBotao.Stop();
@@ -87,6 +90,7 @@ public class Opcoes : MonoBehaviour
         teclado.Stop();
         mouse.Stop();
         navegaçao.Stop();
+        deseja_navegar.Stop();
 
     }
     void Start()
@@ -112,7 +116,7 @@ public class Opcoes : MonoBehaviour
     public void MostrarPainelCursor()
     {
         Panel_cursor_anim.SetBool("showPanel", true);
-        navegaçao.Play();
+        deseja_navegar.Play();
         mouseButton.Select();
         DesligarBotoes();
     }
@@ -193,6 +197,7 @@ public class Opcoes : MonoBehaviour
         Panel_confirmar_anim.SetBool("showPanel", true);
         confirmar.Play();
         sim.Select();
+        mouseButton.interactable = false;
         //confirmar.enabled = false;
         DesligarBotoes();
 
@@ -202,6 +207,7 @@ public class Opcoes : MonoBehaviour
     public void fecharPainelConfirmar()
     {
         Panel_confirmar_anim.SetBool("showPanel", false);
+        mouseButton.interactable = true;
         sair.Select();
         LigarBotoes();
 

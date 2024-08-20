@@ -997,6 +997,7 @@ public class Jogo : MonoBehaviour
 
     public void MostrarPanelConfirmar(){
         Panel_confirmar_anim.SetBool("showPanel", true);
+        botao_pergunta.interactable = false;
         audio_confirmar.Play();
         botao_panel_sim.Select();
         dica.enabled = false;
@@ -1032,6 +1033,7 @@ public class Jogo : MonoBehaviour
 
     public void EsconderPanelConfirmar(){
         Panel_confirmar_anim.SetBool("showPanel", false);
+        botao_pergunta.interactable = true;
         dica.enabled = true;
         audio_botao_dica.enabled = true;
         ajuda5050.enabled = true;
@@ -1220,6 +1222,7 @@ public class Jogo : MonoBehaviour
             audio_dica.Play();
             
             //botao_panel.Select();
+            
 
             CriarJanelaDica();
             
@@ -1653,6 +1656,8 @@ public class Jogo : MonoBehaviour
         Panel_anim.SetBool("showPanel", true);
         panel_title.text = "DICA";
 
+        botao_panel_sim.interactable = false;
+        botao_pergunta.interactable = false;
         dica.enabled = false;
         audio_botao_dica.enabled = false;
         ajuda5050.enabled = false;
@@ -1690,6 +1695,8 @@ public class Jogo : MonoBehaviour
         audio_pular.enabled = true;
         opcoes.enabled = true;
         audio_opcoes.enabled = true;
+        botao_pergunta.interactable = true;
+        botao_panel_sim.interactable = true;
 
         if(showCerto){
             showCerto = false;

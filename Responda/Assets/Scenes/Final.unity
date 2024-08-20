@@ -464,7 +464,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f59e0e24fa46a642b64452bfee21bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonToSelect: {fileID: 296985166185768814}
+  buttonsToSelect:
+  - {fileID: 296985166185768814}
 --- !u!114 &933031739
 MonoBehaviour:
   m_ObjectHideFlags: 0

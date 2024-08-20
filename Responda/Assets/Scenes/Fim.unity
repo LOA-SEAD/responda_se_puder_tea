@@ -414,7 +414,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f59e0e24fa46a642b64452bfee21bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonToSelect: {fileID: 2002120923}
+  buttonsToSelect:
+  - {fileID: 2002120923}
 --- !u!114 &158178730
 MonoBehaviour:
   m_ObjectHideFlags: 0

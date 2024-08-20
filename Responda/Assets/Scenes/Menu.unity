@@ -814,7 +814,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: dca81e6c58e444d4185dda3f627aaf99, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 73c7688265aad8f42aa06a9e7524b2ea, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1914,7 +1914,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f59e0e24fa46a642b64452bfee21bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonToSelect: {fileID: 985133703}
+  buttonsToSelect:
+  - {fileID: 985133703}
+  - {fileID: 806735372}
 --- !u!114 &786270584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1932,9 +1934,9 @@ MonoBehaviour:
   - {fileID: 1492315808}
   - {fileID: 1712561596}
   - {fileID: 1110261506}
-  - {fileID: 1317417591}
-  - {fileID: 419163563}
-  - {fileID: 1922199078}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &786270585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2187,6 +2189,18 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 1317417591}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 916721864}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Stop
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -3309,6 +3323,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 916721864}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Stop
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &985133707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4071,7 +4101,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6857d403a5ac46c41ac91a3fa2152e8f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6afc7cf77db6cf342aa2ee9e28e0c510, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -4278,7 +4308,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 96b26e98d2c735b48885d1d238e7b1c4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bfe94bcb7c0788449ae8d32139a72155, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -4437,7 +4467,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Deseja jogar de mouse ou teclado ?
+  m_text: Deseja navegar de mouse ou teclado ?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: afae0f24ac4cc52478e33ce26681c332, type: 2}
   m_sharedMaterial: {fileID: 9017377245658397608, guid: afae0f24ac4cc52478e33ce26681c332,
