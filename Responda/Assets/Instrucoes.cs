@@ -26,6 +26,7 @@ public class Instrucoes : MonoBehaviour
     public AudioSource pontuacaos;
     public AudioSource navegacaos;
     public AudioSource creditoss;
+    public AudioSource tutorials;
 
     public AudioSource menu;
     public AudioClip[] adClips;
@@ -39,6 +40,8 @@ public class Instrucoes : MonoBehaviour
     public Button navegacao;
     public Button creditos;
 
+    public Button tutorial;
+
     // Sumario Texts
 
     public Text regrasText;
@@ -46,6 +49,7 @@ public class Instrucoes : MonoBehaviour
     public Text pontuacaoText;
     public Text navegacaoText;
     public Text creditosText;
+    public Text tutorialText;
 
     int pag;
     int origem;
@@ -158,34 +162,41 @@ public class Instrucoes : MonoBehaviour
             pontuacao.enabled = true;
             navegacao.enabled = true;
             creditos.enabled = true;
+            tutorial.enabled = true;
             regras.gameObject.SetActive(true);
             ajuda.gameObject.SetActive(true);
             pontuacao.gameObject.SetActive(true);
             navegacao.gameObject.SetActive(true);
             creditos.gameObject.SetActive(true);
+            tutorial.gameObject.SetActive(true);
 
             regrasText.text = "1. Regras do Jogo";
             ajudaText.text = "2. Ajuda";
             pontuacaoText.text = "3. Pontuação Final";
             navegacaoText.text = "4. Navegação pelo Teclado ( Acessibilidade )";
             creditosText.text = "5. Créditos";
+            tutorialText.text = "6. Tutorial";
         }else{
             regras.enabled = false;
             ajuda.enabled = false;
             pontuacao.enabled = false;
             navegacao.enabled = false;
             creditos.enabled = false;
+            tutorial.enabled = false;
+
             regras.gameObject.SetActive(false);
             ajuda.gameObject.SetActive(false);
             pontuacao.gameObject.SetActive(false);
             navegacao.gameObject.SetActive(false);
             creditos.gameObject.SetActive(false);
+            tutorial.gameObject.SetActive (false);
 
             regrasText.text = "";
             ajudaText.text = "";
             pontuacaoText.text = "";
             navegacaoText.text = "";
             creditosText.text = "";
+            tutorialText.text = "";
         }
     }
 
@@ -215,6 +226,12 @@ public class Instrucoes : MonoBehaviour
         pag = 5;
         AtualizaInstrucoes(pag);
     }
+    public void Tutorial()
+    {
+        pag = 6;
+        SceneManager.LoadScene("Tutorial");
+    }
+
 
     // Páginas 
 

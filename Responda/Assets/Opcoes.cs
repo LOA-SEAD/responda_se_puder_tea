@@ -11,7 +11,7 @@ public class Opcoes : MonoBehaviour
 {
     const int ORIGEM_MENU = 0;
     const int ORIGEM_JOGO = 1;
-    
+    const int ORIGEM_TUTORIAL = 2;
 
     public Animator Panel_confirmar_anim;
     
@@ -140,11 +140,21 @@ public class Opcoes : MonoBehaviour
 
     public void continuarJogo()
     {
-        #if UNITY_ANDROID
+#if UNITY_ANDROID
             SceneManager.LoadScene("JogoPaisagem");
-        #else
+#else
+        if (!Informacoes.getTutorial())
+        {
             SceneManager.LoadScene("Jogo");
-        #endif
+        }
+        else
+        {
+            SceneManager.LoadScene("Tutorial");
+        }
+            
+#endif
+
+
     }
 
     public void configuracoesAudio()

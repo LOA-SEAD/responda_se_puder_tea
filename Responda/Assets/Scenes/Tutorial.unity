@@ -3655,6 +3655,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &386458990 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
+    type: 3}
+  m_PrefabInstance: {fileID: 329847856}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386458982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &388955842
 GameObject:
   m_ObjectHideFlags: 0
@@ -10092,8 +10104,11 @@ MonoBehaviour:
   botao_pergunta: {fileID: 0}
   confirmar: {fileID: 0}
   ajuda5050: {fileID: 0}
+  opcoes: {fileID: 0}
+  ajuda5050_tela: {fileID: 0}
   dica: {fileID: 0}
   pular: {fileID: 0}
+  pular_tela: {fileID: 0}
   barra_facil:
   - {fileID: 0}
   - {fileID: 0}
@@ -10180,10 +10195,15 @@ MonoBehaviour:
   quantidade_facil: 0
   quantidade_medio: 0
   quantidade_dificil: 0
+  respostas_facil: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  respostas_medio: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  respostas_dificil: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   pular_agora: 0
   questao_x_de_y: 0
   selecionou5050: 0
   quantidade_5050: 2
+  quantidade_5050_tela: {fileID: 0}
+  quantidade_pular_tela: {fileID: 0}
   selecionou_pular: 0
   nivel_atual: 0
   audio_pergunta: {fileID: 0}
@@ -10197,6 +10217,9 @@ MonoBehaviour:
   audio_5050: {fileID: 0}
   audio_pular: {fileID: 0}
   audio_confirmar: {fileID: 0}
+  audio_opcoes: {fileID: 0}
+  audio_nao: {fileID: 0}
+  audio_sim: {fileID: 0}
   images: []
   sprites_variacoes: []
   ajudas: []
@@ -10205,6 +10228,7 @@ MonoBehaviour:
   perguntas_bool: 
   ajudas_usadas: 
   caminhos: 0
+  pergunta_trocar: 00000000000000000000000000000000
 --- !u!114 &1144039884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10227,6 +10251,7 @@ MonoBehaviour:
   ajuda5050: {fileID: 0}
   pular: {fileID: 0}
   confirmar: {fileID: 0}
+  opcoes: {fileID: 0}
   btnAnim: {fileID: 0}
   index: -1
 --- !u!114 &1144039885
@@ -13780,7 +13805,7 @@ RectTransform:
   m_GameObject: {fileID: 1582482938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.057043094, y: 0.033705477, z: 0.024447402}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.024447402}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1565940012}
@@ -14709,21 +14734,22 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666748283}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 858bbdb7b2db280458a470386515209f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  findFirstSelectable: 0
-  pergunta: {fileID: 0}
-  alternativa1: {fileID: 0}
-  alternativa2: {fileID: 0}
-  alternativa3: {fileID: 0}
-  alternativa4: {fileID: 0}
-  dica: {fileID: 0}
-  ajuda5050: {fileID: 0}
-  pular: {fileID: 0}
+  findFirstSelectable: 1
+  pergunta: {fileID: 1082518337}
+  alternativa1: {fileID: 1296274893}
+  alternativa2: {fileID: 1496623175}
+  alternativa3: {fileID: 995235707}
+  alternativa4: {fileID: 240719762}
+  dica: {fileID: 78694137}
+  ajuda5050: {fileID: 2050714900}
+  pular: {fileID: 386458990}
   confirmar: {fileID: 0}
+  opcoes: {fileID: 1241351697}
   btnAnim: {fileID: 0}
   index: 0
 --- !u!1 &1675685030
@@ -16983,6 +17009,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047606163}
   m_CullTransparentMesh: 1
+--- !u!114 &2050714900 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6806848036839663048, guid: 96cc07791a18a904581f13b65b23f063,
+    type: 3}
+  m_PrefabInstance: {fileID: 1422744517}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2050974521
 GameObject:
   m_ObjectHideFlags: 0

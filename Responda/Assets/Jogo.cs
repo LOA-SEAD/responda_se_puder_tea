@@ -185,16 +185,11 @@ public class Jogo : MonoBehaviour
         pergunta_atual = 0;
         Informacoes.setTutorial(false);
 
-#if UNITY_ANDROID
-        //Informacoes.SetCursosBlock(1);
-
-        //pergunta_tela.color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
-    
-        
+   
         #if UNITY_ANDROID
             Screen.orientation = ScreenOrientation.LandscapeLeft;
             //Screen.fullScreen = false;
-#endif
+        #endif
         //TirarBarras();
 
         caminhos = Informacoes.GetCaminhos();

@@ -72,6 +72,7 @@
     public static void setTutorial(bool b)
     {
         tutorial = b;
+    }
     private static int cursos_block = 0;
 
     public static void SetCursosBlock(int cursos)
