@@ -35,15 +35,15 @@ public class SetVolume : MonoBehaviour
 
         origem = Informacoes.GetOrigem();
         if(origem == 0){
-            TextoVoltar.text = "Voltar para o Menu";
-            TextoVoltarFundo.text = "Voltar para o Menu";
+            TextoVoltar.text = "Voltar";
+            TextoVoltarFundo.text = "Voltar";
             voltarAudio.clip = voltarAudioClip[1];
             voltarAudio.volume = Informacoes.GetValueLeituraTexto();
 
         }
         else if(origem == 1){
-            TextoVoltar.text = "Voltar para as Opções";
-            TextoVoltarFundo.text = "Voltar para as Opções";
+            TextoVoltar.text = "Voltar";
+            TextoVoltarFundo.text = "Voltar";
             voltarAudio.clip = voltarAudioClip[0];
             voltarAudio.volume = Informacoes.GetValueLeituraTexto();
 

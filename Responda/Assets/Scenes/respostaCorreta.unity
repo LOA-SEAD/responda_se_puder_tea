@@ -7711,6 +7711,7 @@ GameObject:
   - component: {fileID: 1626848568}
   - component: {fileID: 1626848567}
   - component: {fileID: 1626848566}
+  - component: {fileID: 1626848570}
   - component: {fileID: 1626848569}
   m_Layer: 0
   m_Name: EventSystem
@@ -7792,6 +7793,21 @@ MonoBehaviour:
   pergunta_dificil: 0
   perguntas_totais: 0
   carrega: 0
+--- !u!114 &1626848570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626848565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4b029d1a04eb94b90668bd08acc074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 558518476}
+  sliders: []
 --- !u!1 &1632192625
 GameObject:
   m_ObjectHideFlags: 0

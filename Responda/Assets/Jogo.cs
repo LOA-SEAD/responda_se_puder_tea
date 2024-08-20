@@ -176,7 +176,6 @@ public class Jogo : MonoBehaviour
 
     public int caminhos;
 
-
     void Start()
     {
         Debug.Log("[Jogo] Start - Inicio");
@@ -184,6 +183,7 @@ public class Jogo : MonoBehaviour
         Debug.Log("[Jogo] Quantidade itens: " + CarregaDados.listaDados.Count);
         Debug.Log("[Jogo] Start - Fim");
         pergunta_atual = 0;
+        //Informacoes.SetCursosBlock(1);
 
         //pergunta_tela.color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
     
@@ -1220,9 +1220,11 @@ public class Jogo : MonoBehaviour
             audio_dica.Play();
             
             //botao_panel.Select();
-            CriarJanelaDica();
 
-            audio_botao_dica.Play();
+            CriarJanelaDica();
+            
+
+            //audio_botao_dica.Play();
         #endif
     }
 
@@ -1650,6 +1652,19 @@ public class Jogo : MonoBehaviour
     {
         Panel_anim.SetBool("showPanel", true);
         panel_title.text = "DICA";
+
+        dica.enabled = false;
+        audio_botao_dica.enabled = false;
+        ajuda5050.enabled = false;
+        audio_5050.enabled = false;
+        pular.enabled = false;
+        audio_pular.enabled = false;
+        opcoes.enabled = false;
+        audio_opcoes.enabled = false;
+        
+
+        opcoes.enabled = false;
+
         if (nivel_atual == FACIL)
         {
             panel_text.text = dicas_facil[questao_x_de_y];
@@ -1666,6 +1681,15 @@ public class Jogo : MonoBehaviour
 
     public void EsconderPanel()
     {
+
+        dica.enabled = true;
+        audio_botao_dica.enabled = true;
+        ajuda5050.enabled = true;
+        audio_5050.enabled = true;
+        pular.enabled = true;
+        audio_pular.enabled = true;
+        opcoes.enabled = true;
+        audio_opcoes.enabled = true;
 
         if(showCerto){
             showCerto = false;

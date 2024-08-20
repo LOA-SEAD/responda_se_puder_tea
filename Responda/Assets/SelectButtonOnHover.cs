@@ -18,6 +18,7 @@ public class SelectButtonOnHover : MonoBehaviour, IPointerEnterHandler
         if (hoverSound != null)
         {
             audioSource = hoverSound;
+            audioSource.volume = Informacoes.GetValueLeituraTexto();
             audioSource.Play();
         }
 

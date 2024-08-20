@@ -77,10 +77,10 @@ public class Instrucoes : MonoBehaviour
         #endif
         origem = Informacoes.GetOrigem();
         if(origem == 0){
-            voltarTexto.text = "Menu";
+            voltarTexto.text = "Voltar";
         }
         else if(origem == 1){
-            voltarTexto.text = "Opções";
+            voltarTexto.text = "Voltar";
         }
 
         pag = 0;

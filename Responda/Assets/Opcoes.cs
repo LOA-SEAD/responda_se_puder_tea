@@ -13,6 +13,8 @@ public class Opcoes : MonoBehaviour
     const int ORIGEM_JOGO = 1;
 
     public Animator Panel_confirmar_anim;
+    
+    public Animator Panel_cursor_anim;
 
     public Button sim;
 
@@ -25,6 +27,8 @@ public class Opcoes : MonoBehaviour
     public Button configuracoes;
 
     public Button sairBotao;
+
+    public Button navegaButton;
 
     public AudioSource confirmar;
     public AudioSource nao;
@@ -39,6 +43,21 @@ public class Opcoes : MonoBehaviour
 
     public AudioSource simm;
 
+    public AudioSource voltar;
+
+    public AudioSource teclado;
+
+    public AudioSource mouse;
+
+    public AudioSource navegaçao;
+
+    public Button mouseButton;
+
+    public Button tecladoButton;
+
+    public Button voltarButton;
+
+
     // Start is called before the first frame update
 
     void AttAudio()
@@ -52,6 +71,10 @@ public class Opcoes : MonoBehaviour
         configuracoesBotao.volume = Informacoes.GetValueLeituraTexto();
         sairButton.volume = Informacoes.GetValueLeituraTexto();
         simm.volume = Informacoes.GetValueLeituraTexto();
+        voltar.volume = Informacoes.GetValueLeituraTexto();
+        teclado.volume = Informacoes.GetValueLeituraTexto();
+        mouse.volume = Informacoes.GetValueLeituraTexto();
+        navegaçao.volume = Informacoes.GetValueLeituraTexto();
         confirmar.Stop();
         nao.Stop();
         confirmarBotao.Stop();
@@ -60,6 +83,10 @@ public class Opcoes : MonoBehaviour
         configuracoesBotao.Stop();
         sairButton.Stop();
         simm.Stop();
+        voltar.Stop();
+        teclado.Stop();
+        mouse.Stop();
+        navegaçao.Stop();
 
     }
     void Start()
@@ -72,6 +99,39 @@ public class Opcoes : MonoBehaviour
     {
 
     }
+
+    public void FecharPainelCursor()
+	{
+		Panel_cursor_anim.SetBool("showPanel", false);
+		navegaçao.Stop();
+		sair.Select();
+        LigarBotoes();
+		
+	}
+
+    public void MostrarPainelCursor()
+    {
+        Panel_cursor_anim.SetBool("showPanel", true);
+        navegaçao.Play();
+        mouseButton.Select();
+        DesligarBotoes();
+    }
+
+    public void SelecionarCursor(int botao)
+	{
+		if(botao == 0)
+		{
+			Informacoes.SetCursosBlock(1);
+		}else if(botao == 1)
+		{
+			Informacoes.SetCursosBlock(2);
+		}else if(botao == 2)
+		{
+			Informacoes.SetCursosBlock(0);
+		}
+
+		FecharPainelCursor();
+	}
 
     public void continuarJogo()
     {
@@ -94,22 +154,47 @@ public class Opcoes : MonoBehaviour
         SceneManager.LoadScene("Instrucoes");
     }
 
-    public void MostrarPainelConfirmar()
-    {
-        Panel_confirmar_anim.SetBool("showPanel", true);
-        confirmar.Play();
-        sim.Select();
-        //confirmar.enabled = false;
+
+    public void LigarBotoes(){
+
+        confirmar.enabled = true;
+        confirmarBotao.enabled = true;
+        recomecarBotao.enabled = true;
+        intrudcoesBotao.enabled = true;
+        configuracoesBotao.enabled = true;
+        navegaçao.enabled = true;
+        sairButton.enabled = true;
+        sair.interactable = true;
+        recomecar.interactable = true;
+        instrucoes.interactable = true;
+        configuracoes.interactable = true;
+        sairBotao.interactable= true;
+        navegaButton.interactable = true;
+        AttAudio();
+
+    }
+
+    public void DesligarBotoes(){
         confirmarBotao.enabled = false;
         recomecarBotao.enabled = false;
         intrudcoesBotao.enabled = false;
         configuracoesBotao.enabled = false;
+        navegaçao.enabled = false;
         sairButton.enabled = false;
         sair.interactable = false;
         recomecar.interactable = false;
         instrucoes.interactable = false;
         configuracoes.interactable = false;
         sairBotao.interactable= false;
+        navegaButton.interactable = false;
+    }
+    public void MostrarPainelConfirmar()
+    {
+        Panel_confirmar_anim.SetBool("showPanel", true);
+        confirmar.Play();
+        sim.Select();
+        //confirmar.enabled = false;
+        DesligarBotoes();
 
 
     }
@@ -118,18 +203,7 @@ public class Opcoes : MonoBehaviour
     {
         Panel_confirmar_anim.SetBool("showPanel", false);
         sair.Select();
-        confirmar.enabled = true;
-        confirmarBotao.enabled = true;
-        recomecarBotao.enabled = true;
-        intrudcoesBotao.enabled = true;
-        configuracoesBotao.enabled = true;
-        sairButton.enabled = true;
-        sair.interactable = true;
-        recomecar.interactable = true;
-        instrucoes.interactable = true;
-        configuracoes.interactable = true;
-        sairBotao.interactable= true;
-        AttAudio();
+        LigarBotoes();
 
     }
 

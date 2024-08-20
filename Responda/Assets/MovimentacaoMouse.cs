@@ -15,7 +15,7 @@ public class MovimentacaoMouse : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && Informacoes.GetCursosBlock() != 2)
         {
             SelectButtonIfNoneSelected(buttonToSelect);
         }

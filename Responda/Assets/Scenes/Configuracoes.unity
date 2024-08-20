@@ -482,7 +482,7 @@ MonoBehaviour:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 1490438641}
-    m_SelectOnDown: {fileID: 1662200687}
+    m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -517,6 +517,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1126850062}
+        m_TargetAssemblyTypeName: AudioStop, Assembly-CSharp
+        m_MethodName: PararAudios
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1781455813}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -579,8 +591,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.145, y: -158.1}
-  m_SizeDelta: {x: 603.8, y: 100.29}
+  m_AnchoredPosition: {x: -301, y: -165}
+  m_SizeDelta: {x: 174.32, y: 77.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &218057637
 MonoBehaviour:
@@ -1019,7 +1031,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3703d1d1b884c7e439b6c07bc9b1f4fb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b3f843f3039cf5a498ea2c1f3b047115, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1
@@ -1641,7 +1653,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 436086c053428474d864e99e644ae2fb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b3f843f3039cf5a498ea2c1f3b047115, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1
@@ -2050,8 +2062,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.145, y: 156.13}
-  m_SizeDelta: {x: 544.88, y: 104.26}
+  m_AnchoredPosition: {x: 3.19, y: 154.98}
+  m_SizeDelta: {x: 564.82, y: 109.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1057208712
 MonoBehaviour:
@@ -2074,12 +2086,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 0b9b5d77ea4fdc1439f546621bd9a1b0, type: 3}
+    m_Font: {fileID: 12800000, guid: e404b90482d337c4b92fec9cdb4c2365, type: 3}
     m_FontSize: 40
     m_FontStyle: 3
     m_BestFit: 0
     m_MinSize: 4
-    m_MaxSize: 40
+    m_MaxSize: 42
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2106,7 +2118,9 @@ GameObject:
   - component: {fileID: 1126850058}
   - component: {fileID: 1126850057}
   - component: {fileID: 1126850056}
+  - component: {fileID: 1126850063}
   - component: {fileID: 1126850061}
+  - component: {fileID: 1126850062}
   - component: {fileID: 1126850059}
   - component: {fileID: 1126850060}
   m_Layer: 0
@@ -2180,6 +2194,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imagem: {fileID: 0}
   canvasGroup: {fileID: 0}
+  confirmar: {fileID: 0}
+  naoo: {fileID: 0}
+  simm: {fileID: 0}
+  voltar: {fileID: 0}
+  sim: {fileID: 0}
+  nao: {fileID: 0}
+  play: {fileID: 0}
+  voltarBotao: {fileID: 0}
+  Panel_confirmar_anim: {fileID: 0}
 --- !u!114 &1126850060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2203,8 +2226,8 @@ MonoBehaviour:
   LeituraTextoAudioFundo: {fileID: 141478238}
   voltarAudio: {fileID: 1781455813}
   voltarAudioClip:
-  - {fileID: 8300000, guid: 3703d1d1b884c7e439b6c07bc9b1f4fb, type: 3}
-  - {fileID: 8300000, guid: 436086c053428474d864e99e644ae2fb, type: 3}
+  - {fileID: 8300000, guid: b3f843f3039cf5a498ea2c1f3b047115, type: 3}
+  - {fileID: 8300000, guid: b3f843f3039cf5a498ea2c1f3b047115, type: 3}
   TextoVoltar: {fileID: 1291471636}
   TextoVoltarFundo: {fileID: 1906879187}
   voltar: {fileID: 218057633}
@@ -2223,6 +2246,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonToSelect: {fileID: 218057633}
+--- !u!114 &1126850062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126850055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5156aa8b044e10348850421c25aa56fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios:
+  - {fileID: 243152391}
+  - {fileID: 1391966646}
+  - {fileID: 769426121}
+  - {fileID: 2055115337}
+  - {fileID: 671997697}
+  - {fileID: 141478238}
+  - {fileID: 1781455813}
+  - {fileID: 904718753}
+  - {fileID: 468149397}
+--- !u!114 &1126850063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126850055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4b029d1a04eb94b90668bd08acc074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 218057633}
+  sliders:
+  - {fileID: 1662200687}
+  - {fileID: 1461085588}
+  - {fileID: 1490438641}
 --- !u!1 &1180297222
 GameObject:
   m_ObjectHideFlags: 0
@@ -2340,8 +2403,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.145, y: 158}
-  m_SizeDelta: {x: 544.88, y: 100.53}
+  m_AnchoredPosition: {x: 2.145, y: 156.79}
+  m_SizeDelta: {x: 544.88, y: 93.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1202883247
 MonoBehaviour:
@@ -2364,7 +2427,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 0b9b5d77ea4fdc1439f546621bd9a1b0, type: 3}
+    m_Font: {fileID: 12800000, guid: e404b90482d337c4b92fec9cdb4c2365, type: 3}
     m_FontSize: 40
     m_FontStyle: 3
     m_BestFit: 0
@@ -2567,10 +2630,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0b9b5d77ea4fdc1439f546621bd9a1b0, type: 3}
-    m_FontSize: 50
+    m_FontSize: 30
     m_FontStyle: 3
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 0
     m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2578,7 +2641,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Voltar ao menu
+  m_Text: 'Voltar
+
+'
 --- !u!1001 &1349434520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3141,6 +3206,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1126850062}
+          m_TargetAssemblyTypeName: AudioStop, Assembly-CSharp
+          m_MethodName: PararAudios
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 671997697}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1490438639
 GameObject:
   m_ObjectHideFlags: 0
@@ -3288,6 +3365,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1126850062}
+          m_TargetAssemblyTypeName: AudioStop, Assembly-CSharp
+          m_MethodName: PararAudios
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 141478238}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1543034736
 GameObject:
   m_ObjectHideFlags: 0
@@ -3421,7 +3510,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 218057633}
+    m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 1461085588}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -3506,6 +3595,18 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1126850062}
+          m_TargetAssemblyTypeName: AudioStop, Assembly-CSharp
+          m_MethodName: PararAudios
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2055115337}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -3904,7 +4005,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5.290001}
+  m_AnchoredPosition: {x: 0, y: -26.9}
   m_SizeDelta: {x: 0, y: 10.59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1906879186
@@ -3937,18 +4038,20 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0b9b5d77ea4fdc1439f546621bd9a1b0, type: 3}
-    m_FontSize: 50
+    m_FontSize: 30
     m_FontStyle: 3
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 60
-    m_Alignment: 4
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Voltar ao menu
+  m_Text: 'Voltar
+
+'
 --- !u!1 &2055115336
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,6 +31,9 @@ public class Narrativa : MonoBehaviour
 
     public Sprite[] UIs;
 
+    public Image UI_TV;
+    public Sprite[] UIs_TV;
+
     private String[] nomes;
     public Text nome;
 
@@ -42,12 +45,14 @@ public class Narrativa : MonoBehaviour
     public int pular;
     public bool fim;
 
+    public float transitionTime = 0.5f;
+
     public AudioSource pularaudio;
 
     // Start is called before the first frame update
 
     private void AtualizarAudios(){
-        efeito.volume = Informacoes.GetValueEfeitos();
+        efeito.volume = Informacoes.GetValueEfeitos() * 0.2f;
         fala.volume = Informacoes.GetValueLeituraTexto();
         pularaudio.volume = Informacoes.GetValueLeituraTexto();
         fala.Stop();
@@ -62,11 +67,58 @@ public class Narrativa : MonoBehaviour
     {
         AtualizarAudios();
         CarregarTexto();
+        StartCoroutine(TransitionSprite(UIs,UI));
+        if(UIs_TV[num_texto] != null)
+            StartCoroutine(TransitionSprite(UIs_TV,UI_TV));
         carrega = 0;
         fim = false;
         roteiro_aux = roteiro[num_texto++];
         texto.text = "";
 
+    }
+
+    
+    private IEnumerator TransitionSprite(Sprite[] UIs, Image UI)
+    {
+
+        Sprite originalSprite = UI.sprite;
+        float elapsedTime = 0f;
+        Color originalColor = UI.color;
+        Color newColor = originalColor;
+        newColor.a = 0f;
+
+        // Transição do Sprite original para o novo Sprite
+        while (elapsedTime < transitionTime)
+        {
+            // Atualiza o tempo decorrido
+            elapsedTime += Time.deltaTime;
+
+            // Calcula a fração de tempo decorrido
+            float t = Mathf.Clamp01(elapsedTime / transitionTime);
+
+            // Interpola as cores para fazer o fade in/out
+            UI.color = Color.Lerp(originalColor, newColor, t);
+            
+            // Espera o próximo frame
+            yield return null;
+        }
+
+        // Troca o Sprite e reinicia a transição para fade in
+
+        if(UIs[num_texto] != null)
+            UI.sprite = UIs[num_texto];
+        elapsedTime = 0f;
+
+        while (elapsedTime < transitionTime)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / transitionTime);
+            UI.color = Color.Lerp(newColor, originalColor, t);
+            yield return null;
+        }
+
+        // Garante que a transparência final seja restaurada
+        UI.color = originalColor;
     }
 
     public void Pular(){
@@ -84,6 +136,9 @@ public class Narrativa : MonoBehaviour
         if(fim == true){
             roteiro_aux = roteiro[num_texto];
             AtualizarAudios();
+            StartCoroutine(TransitionSprite(UIs,UI));
+            if(UIs_TV[num_texto] != null && num_texto < 3)
+                StartCoroutine(TransitionSprite(UIs_TV,UI_TV));
             num_texto++;
             texto.text = "";
             carrega = 0;

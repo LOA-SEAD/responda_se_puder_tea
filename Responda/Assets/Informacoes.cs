@@ -62,6 +62,18 @@
     private static int tirar_1;
     private static int tirar_2;
 
+    private static int cursos_block = 0;
+
+    public static void SetCursosBlock(int cursos)
+    {
+        cursos_block = cursos;
+    }
+
+    public static int GetCursosBlock()
+    {
+        return cursos_block;
+    }
+
     public static void SetTirar(int tirar1, int tirar2)
     {
         tirar_1 = tirar1;

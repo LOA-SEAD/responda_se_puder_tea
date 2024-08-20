@@ -307,6 +307,7 @@ GameObject:
   - component: {fileID: 933031737}
   - component: {fileID: 933031736}
   - component: {fileID: 933031735}
+  - component: {fileID: 933031739}
   - component: {fileID: 933031734}
   - component: {fileID: 933031738}
   m_Layer: 0
@@ -333,7 +334,7 @@ MonoBehaviour:
   spritearray:
   - {fileID: 21300000, guid: 08d00556bcc6e9d4dbbbd43886055d37, type: 3}
   - {fileID: 21300000, guid: 37cacca33531f8b4d86cb77365b94827, type: 3}
-  - {fileID: 21300000, guid: a756871465487b0459173f3ae69c5438, type: 3}
+  - {fileID: 21300000, guid: f4a688548cf933a49862d41bca091992, type: 3}
   - {fileID: 21300000, guid: 6d0f39b7d5d2790478844a98337aff46, type: 3}
   canvasGroup: {fileID: 1546253560}
   canvasGroupCarta: {fileID: 1419060182}
@@ -464,6 +465,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonToSelect: {fileID: 296985166185768814}
+--- !u!114 &933031739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933031733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4b029d1a04eb94b90668bd08acc074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 296985166185768814}
+  - {fileID: 296985165783512315}
+  sliders: []
 --- !u!1 &1212553788
 GameObject:
   m_ObjectHideFlags: 0

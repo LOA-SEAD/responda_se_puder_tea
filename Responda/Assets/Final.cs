@@ -123,7 +123,6 @@ public class Final : MonoBehaviour
         }
 
 
-
         if (final == 0)
         {
             tiposFinal.sprite = spritearray[0];
