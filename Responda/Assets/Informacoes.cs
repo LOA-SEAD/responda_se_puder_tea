@@ -72,6 +72,16 @@
     public static void setTutorial(bool b)
     {
         tutorial = b;
+    private static int cursos_block = 0;
+
+    public static void SetCursosBlock(int cursos)
+    {
+        cursos_block = cursos;
+    }
+
+    public static int GetCursosBlock()
+    {
+        return cursos_block;
     }
 
     public static void SetTirar(int tirar1, int tirar2)

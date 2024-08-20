@@ -32,6 +32,14 @@ public class FimJogo : MonoBehaviour
 
     private bool fadein;
 
+    public AudioSource avancar;
+
+    void AttAudios(){
+        avancar.volume = Informacoes.GetValueLeituraTexto();
+        avancar.Stop();
+
+    }
+
     void Start()
     {
         
@@ -42,7 +50,8 @@ public class FimJogo : MonoBehaviour
         pontuacao = Informacoes.GetPontos();
         Informacoes.SetCaminhos(1);
         CalcularBonus();
-        prosseguir.Select();
+        //prosseguir.Select();
+        AttAudios();   
         botao.onClick.AddListener(() => Voltar());
     }
 
@@ -101,26 +110,22 @@ public class FimJogo : MonoBehaviour
         // Informacoes.SetQuantidade5050(2);
         //  Informacoes.SetQuantidadePular(1);
 
+        int pontuacao_aux = pontuacao;
+
         bonus_5050 = Informacoes.GetQuantidade5050() * bonus;
         bonus_pular = Informacoes.GetQuantidadePular() * bonus;
 
-        if (Informacoes.GetQuantidade5050() > 0 || Informacoes.GetQuantidadePular() > 0)
-        {
-            bonus_tela.text = "Você desbloqueou conquistas e ganhou bônus na pontuação.\n\n";
-            bonus_tela.text += "Bônus acumulados: ";
 
-            if (Informacoes.GetQuantidade5050() != 0)
-            {
-                x5050.text = "Não usou a ajuda 5050: + " + bonus_5050.ToString() + " pontos!";
-                pontuacao = pontuacao + bonus_5050;
-            }
-            if (Informacoes.GetQuantidadePular() != 0)
-            {
-                pular.text = "Não usou a ajuda Pular: + " + bonus_pular.ToString() + " pontos!";
-                pontuacao = pontuacao + bonus_pular;
-            }
-            pontos_final.text = "Pontuação atualizada: " + pontuacao.ToString();
-            Informacoes.SetPontos(pontuacao);
-        }
+           
+        x5050.text = "Bônus por não usar a ajuda 5050: + " + bonus_5050.ToString() + " pontos!";
+        pontuacao = pontuacao + bonus_5050;
+
+
+        pular.text = "Bônus por não usar a ajuda Pular: + " + bonus_pular.ToString() + " pontos!";
+        pontuacao = pontuacao + bonus_pular;
+
+        pontos_final.text = "Pontuação Antes: " + pontuacao_aux + "    Final: " + pontuacao.ToString();
+        Informacoes.SetPontos(pontuacao);
+        
     }
 }

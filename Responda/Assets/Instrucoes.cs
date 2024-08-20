@@ -20,6 +20,14 @@ public class Instrucoes : MonoBehaviour
     public GameObject bolinha_esquerda;
     public GameObject bolinha_direita;
     public AudioSource adSource;
+
+    public AudioSource regrass;
+    public AudioSource ajudas;
+    public AudioSource pontuacaos;
+    public AudioSource navegacaos;
+    public AudioSource creditoss;
+
+    public AudioSource menu;
     public AudioClip[] adClips;
 
     // Sumario Buttons
@@ -44,25 +52,21 @@ public class Instrucoes : MonoBehaviour
 
     int posicao;
 
-    // Controle do Selectable
-    void Controle(){
 
-        if(posicao == 0){
-            regras.Select();
-        }
-        else if(posicao == 1){
-            ajuda.Select();
-        }
-        else if(posicao == 2){
-            pontuacao.Select();
-        }
-        else if(posicao == 3){
-            navegacao.Select();
-        }
-        else if(posicao == 4){
-            creditos.Select();
-        }
 
+    void AttAudios(){
+        regrass.volume = Informacoes.GetValueLeituraTexto();
+        ajudas.volume = Informacoes.GetValueLeituraTexto();
+        pontuacaos.volume = Informacoes.GetValueLeituraTexto();
+        navegacaos.volume = Informacoes.GetValueLeituraTexto();
+        creditoss.volume = Informacoes.GetValueLeituraTexto();
+        menu.volume = Informacoes.GetValueLeituraTexto();
+        regrass.Stop();
+        ajudas.Stop();
+        pontuacaos.Stop();
+        navegacaos.Stop();
+        creditoss.Stop();
+        menu.Stop();
     }
 
     void Start()
@@ -73,15 +77,16 @@ public class Instrucoes : MonoBehaviour
         #endif
         origem = Informacoes.GetOrigem();
         if(origem == 0){
-            voltarTexto.text = "Menu";
+            voltarTexto.text = "Voltar";
         }
         else if(origem == 1){
-            voltarTexto.text = "Opções";
+            voltarTexto.text = "Voltar";
         }
 
         pag = 0;
         posicao = 0;
         AtualizaInstrucoes(pag);
+        AttAudios();
     }
 
     // Update is called once per frame
@@ -99,26 +104,7 @@ public class Instrucoes : MonoBehaviour
             PagAnterior();
         }
 
-        // Para cima
-        if(Input.GetKeyDown(KeyCode.UpArrow)){
-            if(posicao > 0){
-                posicao--;
-            }else{
-                posicao = 4;
-            }
-        }
-
-        // Para baixo
-        else if(Input.GetKeyDown(KeyCode.DownArrow)){
-            if(posicao < 4){
-                posicao++;
-            }else{
-                posicao = 0;
-            }
-        }
-
         Sumario();
-        Controle();
     }
 
     public void AtualizaInstrucoes(int novapag){
@@ -172,11 +158,16 @@ public class Instrucoes : MonoBehaviour
             pontuacao.enabled = true;
             navegacao.enabled = true;
             creditos.enabled = true;
+            regras.gameObject.SetActive(true);
+            ajuda.gameObject.SetActive(true);
+            pontuacao.gameObject.SetActive(true);
+            navegacao.gameObject.SetActive(true);
+            creditos.gameObject.SetActive(true);
 
-            regrasText.text = "1. Regras";
+            regrasText.text = "1. Regras do Jogo";
             ajudaText.text = "2. Ajuda";
-            pontuacaoText.text = "3. Pontuação";
-            navegacaoText.text = "4. Navegação";
+            pontuacaoText.text = "3. Pontuação Final";
+            navegacaoText.text = "4. Navegação pelo Teclado ( Acessibilidade )";
             creditosText.text = "5. Créditos";
         }else{
             regras.enabled = false;
@@ -184,6 +175,11 @@ public class Instrucoes : MonoBehaviour
             pontuacao.enabled = false;
             navegacao.enabled = false;
             creditos.enabled = false;
+            regras.gameObject.SetActive(false);
+            ajuda.gameObject.SetActive(false);
+            pontuacao.gameObject.SetActive(false);
+            navegacao.gameObject.SetActive(false);
+            creditos.gameObject.SetActive(false);
 
             regrasText.text = "";
             ajudaText.text = "";
@@ -224,36 +220,45 @@ public class Instrucoes : MonoBehaviour
 
     public void Pagina0(){
         adSource.clip = adClips[0];
+        adSource.volume = Informacoes.GetValueLeituraTexto();
         adSource.Play();
-        adSource.Stop();
+        AttAudios();
+
         paginacao.text = "0/5";
         subtitulo.text = "Índice";
         texto_instrucoes.text = "";
-        
+        regras.Select();
+        regrass.Play();
 
     }
 
     public void Pagina1()
     {
       
-        adSource.clip = adClips[0];
+        adSource.clip = adClips[1];
+        adSource.volume = Informacoes.GetValueLeituraTexto();
         adSource.Play();
+        AttAudios();
         paginacao.text = "1/5";
         subtitulo.text = "Regras do jogo";
-        texto_instrucoes.text = "Responda à pergunta selecionando a alternativa correta.\n\nSempre que selecionar uma alternativa você deverá confirmar a escolha.\n\n";
-        texto_instrucoes.text += "Você terá 3 tipos de ajuda caso tenha dificuldade em achar a alternativa correta.\n\n";
-        texto_instrucoes.text += "O jogo é composto por 3 níveis: fácil, médio e difícil.";
+        texto_instrucoes.text = "Responda à pergunta selecionando a alternativa correta.Após selecionada, confirme sua escolha. \n\n";
+        texto_instrucoes.text += "A cada resposta certa, você ganhará os pontos referentes ao nível. Nível Fácil será 10, Médio 15 e Difícil 20.\n\n";
+        texto_instrucoes.text += "Você terá 3 tipos de ajuda caso tenha dificuldade em achar a solução.\n\n";
+        texto_instrucoes.text += "Além disso, haverá bônus por acetos consecutivos e ajudas não usadas.";
 
     }
 
     public void Pagina2()
     {
-        adSource.clip = adClips[1];
+        adSource.clip = adClips[2];
+        AttAudios();
+        adSource.volume = Informacoes.GetValueLeituraTexto();
         adSource.Play();
         paginacao.text = "2/5";
         subtitulo.text = "Ajuda";
-        texto_instrucoes.text = "Dica - Fornece uma pista para encontrar a resposta certa. Você poderá utilizar essa ajuda quantas vezes quiser.\n";
-        texto_instrucoes.text += "50 50 - Elimina metade das alternativas possíveis. Você só poderá utilizar essa ajuda uma vez, use com cuidado.\n";
+        texto_instrucoes.text = "Haverá 3 tipos de ajuda, caso tenha dificuldade em achar a solução.\n\n";
+        texto_instrucoes.text += "Dica - Fornece uma pista para encontrar a resposta certa. Fique a vontade para utilizar essa ajuda quantas vezes quiser, sem qualquer custo. \n\n";
+        texto_instrucoes.text += "50 50 - Elimina metade das alternativas possíveis. Você só poderá utilizar essa ajuda 2 vezes, use com cuidado.\n\n";
         texto_instrucoes.text += "Pular - A questão atual será substituida por outra. O Pular poderá ser utilizado uma única vez.";
 
 
@@ -261,32 +266,41 @@ public class Instrucoes : MonoBehaviour
 
     public void Pagina3()
     {
-        adSource.clip = adClips[2];
+        adSource.clip = adClips[3];
+        AttAudios();
+        adSource.volume = Informacoes.GetValueLeituraTexto();
         adSource.Play();
         paginacao.text = "3/5";
         subtitulo.text = "Pontuação final";
-        texto_instrucoes.text = "A cada questão certa, você ganhará 10 pontos. Caso a resposta esteja errada, você não ganhará nenhum ponto.\n\n";
-        texto_instrucoes.text += "Caso chegue ao fim do jogo sem utilizar as ajudas 50 50 ou Pular, você ganhará um bônus para cada ajuda não utilizada";
+        texto_instrucoes.text = "A cada questão certa, você ganhará os pontos referente ao nível. Nível Fácil será 10, Médio 15 e Difícil 20.\n\n";
+        texto_instrucoes.text += "A cada acerto consecutivo receberá 5 pontos extras. Ao errar uma questão, deixará de ganhar o bônus\n";
+        texto_instrucoes.text += "Caso volte a acertar, é possível voltar a ganhar a pontuação extra.\n";
+        texto_instrucoes.text += "Caso a resposta esteja errada, você não ganhará nenhum ponto.\n";
+        texto_instrucoes.text += "Caso chegue ao fim do jogo sem utilizar as ajudas 50 50 ou Pular, você ganhará um bônus para cada ajuda não utilizada.";
 
 
     }
 
     public void Pagina4()
     {
-        adSource.clip = adClips[3];
+        adSource.clip = adClips[4];
+        AttAudios();
+        adSource.volume = Informacoes.GetValueLeituraTexto();
         adSource.Play();
         paginacao.text = "4/5";
         subtitulo.text = "Navegação pelo teclado (Acessibilidade)";
-        texto_instrucoes.text = "Durante o jogo, você poderá utilizar a tecla TAB para navegar entre os blocos da tela de jogo.\n\n";
-        texto_instrucoes.text += "Sendo eles pergunta, alternativas e ajudas.\n\n";
-        texto_instrucoes.text += "Para acessar as opções aperte a tecla ESC, e para selecionar qualquer item interativo, pressione a tecla ENTER";
+        texto_instrucoes.text = "Durante o jogo, você poderá utilizar a tecla TAB para navegar entre os 3 blocos da tela de jogo: pergunta, alternativas e ajudas.\n\n";
+        texto_instrucoes.text += "Para navegar entre as alternativas ou entre as ajudas, use as setas direcionais.\n\n";
+        texto_instrucoes.text += "Para acessar as opções, aperte a tecla ESC, e para selecionar qualquer item interativo, pressione a tecla ENTER.\n\n";
+        texto_instrucoes.text += "Caso perca a navegação, pressione a tecla TAB para voltar à navegação pelo teclado.";
 
     }
 
     public void Pagina5(){
-        adSource.clip = adClips[4];
+        adSource.clip = adClips[5];
+        AttAudios();
+        adSource.volume = Informacoes.GetValueLeituraTexto();
         adSource.Play();
-        adSource.Stop();
         paginacao.text = "5/5";
         subtitulo.text = "Créditos";
         texto_instrucoes.text = "Desenvolvido por:\n\n";

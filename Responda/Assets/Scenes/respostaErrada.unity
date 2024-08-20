@@ -253,6 +253,7 @@ GameObject:
   - component: {fileID: 78255047}
   - component: {fileID: 78255046}
   - component: {fileID: 78255045}
+  - component: {fileID: 78255048}
   - component: {fileID: 78255044}
   m_Layer: 0
   m_Name: EventSystem
@@ -276,6 +277,14 @@ MonoBehaviour:
   pontos_player: {fileID: 0}
   pontos: {fileID: 0}
   anim: {fileID: 159037103}
+  fadein: 0
+  teste: 0
+  pergunta: 0
+  pergunta_facil: 0
+  pergunta_medio: 0
+  pergunta_dificil: 0
+  perguntas_totais: 0
+  carrega: 0
 --- !u!114 &78255045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +335,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &78255048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78255043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4b029d1a04eb94b90668bd08acc074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 1971120028}
+  sliders: []
 --- !u!1001 &151340708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -641,8 +665,11 @@ MonoBehaviour:
   botao_pergunta: {fileID: 0}
   confirmar: {fileID: 0}
   ajuda5050: {fileID: 0}
+  opcoes: {fileID: 0}
+  ajuda5050_tela: {fileID: 0}
   dica: {fileID: 0}
   pular: {fileID: 0}
+  pular_tela: {fileID: 0}
   barra_facil:
   - {fileID: 0}
   - {fileID: 0}
@@ -708,10 +735,15 @@ MonoBehaviour:
   quantidade_facil: 0
   quantidade_medio: 0
   quantidade_dificil: 0
+  respostas_facil: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  respostas_medio: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  respostas_dificil: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   pular_agora: 0
   questao_x_de_y: 0
   selecionou5050: 0
   quantidade_5050: 2
+  quantidade_5050_tela: {fileID: 0}
+  quantidade_pular_tela: {fileID: 0}
   selecionou_pular: 0
   nivel_atual: 0
   audio_pergunta: {fileID: 0}
@@ -725,11 +757,18 @@ MonoBehaviour:
   audio_5050: {fileID: 0}
   audio_pular: {fileID: 0}
   audio_confirmar: {fileID: 0}
+  audio_opcoes: {fileID: 0}
+  audio_nao: {fileID: 0}
+  audio_sim: {fileID: 0}
   images: []
   sprites_variacoes: []
+  ajudas: []
+  sprites_ajudas: []
   pergunta_atual: 0
   perguntas_bool: 
+  ajudas_usadas: 
   caminhos: 0
+  pergunta_trocar: 00000000000000000000000000000000
 --- !u!4 &190764513
 Transform:
   m_ObjectHideFlags: 0
@@ -1018,8 +1057,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   adSource: {fileID: 703653470}
   adClips:
-  - {fileID: 8300000, guid: e41ee8e7be6288648b49fdc8107c118b, type: 3}
-  - {fileID: 8300000, guid: aed8e874180c73a4c8cab7341ce6a423, type: 3}
+  - {fileID: 8300000, guid: e0175d9e2eeda5840b9e49f3629704ba, type: 3}
+  - {fileID: 8300000, guid: f910cf617f6c6304d9b2ed4180c51bb9, type: 3}
+  - {fileID: 8300000, guid: 22d59bf1d7c1ddb4484f9dfb5db2de54, type: 3}
   instrucoes: {fileID: 0}
   plateia: {fileID: 2052126151}
 --- !u!82 &703653470
@@ -1191,7 +1231,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Voc\xEA perdeu o b\xF4nus"
+  m_text: "N\xE3o foi dessa vez, mas eu sei que voc\xEA consegue se tentar de novo!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: afae0f24ac4cc52478e33ce26681c332, type: 2}
   m_sharedMaterial: {fileID: 9017377245658397608, guid: afae0f24ac4cc52478e33ce26681c332,
@@ -1577,7 +1617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.07214669, b: 0.0047169924, a: 1}
+  m_Color: {r: 0, g: 0.17721939, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1597,7 +1637,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Resposta Errada
+  m_Text: "Quase l\xE1!"
 --- !u!222 &1199095656
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1623,7 +1663,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -117}
+  m_AnchoredPosition: {x: 0, y: -106.1}
   m_SizeDelta: {x: 800, y: 160.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1204368968 stripped
@@ -1703,7 +1743,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Clique ou pressione a tecla 'Enter' para continuar.
+  m_Text: "Clique com o bot\xE3o esquerdo do mouse ou pressione 'Enter' para continuar"
 --- !u!222 &1507878272
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2200,6 +2240,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d3026767ecaa4343b8a101285def9a6, type: 3}
+--- !u!114 &1971120028 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5714156187749720898, guid: 7d3026767ecaa4343b8a101285def9a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1971120027}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126731794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2002233098
 PrefabInstance:
   m_ObjectHideFlags: 0
