@@ -62,6 +62,18 @@
     private static int tirar_1;
     private static int tirar_2;
 
+    private static bool tutorial;
+
+    public static bool getTutorial()
+    { 
+        return tutorial;
+    }
+
+    public static void setTutorial(bool b)
+    {
+        tutorial = b;
+    }
+
     public static void SetTirar(int tirar1, int tirar2)
     {
         tirar_1 = tirar1;

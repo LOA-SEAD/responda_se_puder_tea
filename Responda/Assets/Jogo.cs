@@ -166,12 +166,12 @@ public class Jogo : MonoBehaviour
         Debug.Log("[Jogo] Quantidade itens: " + CarregaDados.listaDados.Count);
         Debug.Log("[Jogo] Start - Fim");
         pergunta_atual = 0;
-    
-        
-        #if UNITY_ANDROID
+        Informacoes.setTutorial(false);
+
+#if UNITY_ANDROID
             Screen.orientation = ScreenOrientation.LandscapeLeft;
             //Screen.fullScreen = false;
-        #endif
+#endif
         //TirarBarras();
 
         caminhos = Informacoes.GetCaminhos();

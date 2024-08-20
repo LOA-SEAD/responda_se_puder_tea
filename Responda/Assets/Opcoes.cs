@@ -9,7 +9,7 @@ public class Opcoes : MonoBehaviour
 {
     const int ORIGEM_MENU = 0;
     const int ORIGEM_JOGO = 1;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +53,16 @@ public class Opcoes : MonoBehaviour
         Informacoes.SetCaminhos(1);
         Informacoes.SetStatus(0);
 		Informacoes.SetNivel(0);
-		SceneManager.LoadScene("Nivel");
+        if(!Informacoes.getTutorial())
+        {
+            Debug.Log(Informacoes.getTutorial());
+            SceneManager.LoadScene("Nivel");
+        }
+        else
+        {
+            SceneManager.LoadScene("Tutorial");
+        }
+		
         //SceneManager.LoadScene("Menu");
     }
 }
