@@ -20,7 +20,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] GameObject mask;
     Transform t;
     Transform b;
-
+    public GameObject panelConfirma;
     public Animator Panel_anim;
     public TextMeshProUGUI panel_title;
     public TextMeshProUGUI panel_text;
@@ -308,8 +308,8 @@ public class Tutorial : MonoBehaviour
                 btn.transform.localScale = new Vector3(1, 1, 1);
 
                 txtPergunta.text = "- 50/50 irá eliminar duas alternativas erradas!\n";
-                txtPergunta.text = txtPergunta.text + "- Dica irá dar uma pista da resposta!\n";
-                txtPergunta.text = txtPergunta.text + "- Se quiser, pode ir para a próxima pergunta com o 'Pular'!";
+                txtPergunta.text = txtPergunta.text + "- Dica irá dar uma pista da resposta!";
+                //txtPergunta.text = txtPergunta.text + "- Se quiser, pode ir para a próxima pergunta com o 'Pular'!";
                 foreach (Button b in Dica5050)
                 {
                     b.gameObject.SetActive(true);
@@ -461,6 +461,16 @@ public class Tutorial : MonoBehaviour
         if (selecionou5050 == SIM)
             Informacoes.SetTirar(tirar_1, tirar_2);
 
+    }
+
+    public void sairTutorial()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void showConfirma(bool b)
+    {
+        panelConfirma.SetActive(b);
     }
 
 }
