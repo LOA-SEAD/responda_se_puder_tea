@@ -1823,6 +1823,7 @@ MonoBehaviour:
   opcoesAudio: {fileID: 1712561596}
   intrucoesAudio: {fileID: 1782060907}
   sairAudio: {fileID: 1110261506}
+  audioInicial: {fileID: 916721864}
   voltarBotao: {fileID: 1092514531}
   Panel_confirmar_anim: {fileID: 392076738}
 --- !u!114 &786270579
@@ -3315,22 +3316,6 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: 
           m_MethodName: HighlightMenu
           m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 1
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 916721864}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: Stop
-          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

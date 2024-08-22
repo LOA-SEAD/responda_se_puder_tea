@@ -41,6 +41,8 @@ public class Buttons : MonoBehaviour {
 
 	public AudioSource sairAudio;
 
+	public AudioSource audioInicial;
+
 	public Button voltarBotao;
 
 	public Animator Panel_confirmar_anim;
@@ -66,6 +68,7 @@ public class Buttons : MonoBehaviour {
 		opcoesAudio.volume = volume_texto;
 		intrucoesAudio.volume = volume_texto;
 		sairAudio.volume = volume_texto;
+		audioInicial.volume = volume_texto;
 		confirmar.Stop();
 		naoo.Stop();
 		simm.Stop();
@@ -74,6 +77,7 @@ public class Buttons : MonoBehaviour {
 		opcoesAudio.Stop();
 		intrucoesAudio.Stop();
 		sairAudio.Stop();
+		audioInicial.Stop();
 	}
 
 	public void DesativarBotoes(){
@@ -141,6 +145,8 @@ public class Buttons : MonoBehaviour {
     public void MostrarPainelConfirmar()
     {
         Panel_confirmar_anim.SetBool("showPanel", true);
+		audioInicial.volume = 0;
+		audioInicial.Stop();
         confirmar.Play();
         sim.Select();
 		DesativarBotoes();
@@ -167,6 +173,8 @@ public class Buttons : MonoBehaviour {
 	public void FecharPainelCursor()
 	{
 		Panel_confirmar_anim.SetBool("showPanel", false);
+		audioInicial.volume = volume_texto;
+		audioInicial.Stop();
 		confirmar.Stop();
 		play.Select();
 		AtivarBotoes();
@@ -183,7 +191,7 @@ public class Buttons : MonoBehaviour {
 				//SceneManager.LoadScene("Narrativa");
 				Informacoes.SetStatus(0);
 				Informacoes.SetNivel(0);
-				SceneManager.LoadScene("Nivel");
+				SceneManager.LoadScene("Narrativa");
 			}
 		}
 	}
