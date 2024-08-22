@@ -48,13 +48,14 @@ public class Narrativa : MonoBehaviour
     public float transitionTime = 0.5f;
 
     public AudioSource pularaudio;
-
+    
     // Start is called before the first frame update
 
     private void AtualizarAudios(){
         efeito.volume = Informacoes.GetValueEfeitos() * 0.2f;
         fala.volume = Informacoes.GetValueLeituraTexto();
         pularaudio.volume = Informacoes.GetValueLeituraTexto();
+        Informacoes.setTelaChamou("Narrativa");
         fala.Stop();
         efeito.Stop();
         efeito.clip = efeitos[num_texto];
@@ -74,8 +75,9 @@ public class Narrativa : MonoBehaviour
         fim = false;
         roteiro_aux = roteiro[num_texto++];
         texto.text = "";
+        
 
-    }
+}
 
     
     private IEnumerator TransitionSprite(Sprite[] UIs, Image UI)
@@ -124,7 +126,7 @@ public class Narrativa : MonoBehaviour
     public void Pular(){
         Informacoes.SetStatus(0);
 		Informacoes.SetNivel(0);
-		SceneManager.LoadScene("Nivel");
+		SceneManager.LoadScene("Tutorial");
     }
 
     public void Prosseguir(){

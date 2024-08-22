@@ -57,7 +57,6 @@ public class Instrucoes : MonoBehaviour
     int posicao;
 
 
-
     void AttAudios(){
         regrass.volume = Informacoes.GetValueLeituraTexto();
         ajudas.volume = Informacoes.GetValueLeituraTexto();
@@ -86,7 +85,7 @@ public class Instrucoes : MonoBehaviour
         else if(origem == 1){
             voltarTexto.text = "Voltar";
         }
-
+        Informacoes.setTelaChamou("Instrucoes");
         pag = 0;
         posicao = 0;
         AtualizaInstrucoes(pag);

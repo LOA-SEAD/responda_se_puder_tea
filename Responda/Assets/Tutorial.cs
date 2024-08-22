@@ -381,7 +381,7 @@ public class Tutorial : MonoBehaviour
                 btn.SetActive(true);
                 break;
             case 9:
-                SceneManager.LoadScene("Menu");
+                sairTutorial();
                 break;
         }
 
@@ -465,7 +465,16 @@ public class Tutorial : MonoBehaviour
 
     public void sairTutorial()
     {
-        SceneManager.LoadScene("Menu");
+        if(Informacoes.getTelaChamou() == "Narrativa")
+        {
+            SceneManager.LoadScene("Nivel");
+
+        }
+        else
+        {
+            SceneManager.LoadScene("Menu");
+        }
+        
     }
 
     public void showConfirma(bool b)

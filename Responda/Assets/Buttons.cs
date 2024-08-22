@@ -113,11 +113,6 @@ public class Buttons : MonoBehaviour {
 	
 	public void MudarTela(string tela)
 	{
-		if(tela=="JogoTutorial")
-		{
-			tela = "Nivel";
-			Informacoes.SetNivel(99);
-		}
 		SceneManager.LoadScene(tela);
 	}
 
@@ -200,7 +195,7 @@ public class Buttons : MonoBehaviour {
 				//SceneManager.LoadScene("Narrativa");
 				Informacoes.SetStatus(0);
 				Informacoes.SetNivel(0);
-				SceneManager.LoadScene("Nivel");
+				SceneManager.LoadScene("Narrativa");
 			}
 		}
 	}

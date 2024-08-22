@@ -64,6 +64,17 @@
 
     private static bool tutorial;
 
+    private static string telaChamou;
+
+    public static string getTelaChamou()
+    { 
+        return telaChamou; 
+    }
+
+    public static void setTelaChamou(string tela)
+    {
+        telaChamou = tela;
+    }
     public static bool getTutorial()
     { 
         return tutorial;
