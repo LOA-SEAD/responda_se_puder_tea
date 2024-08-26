@@ -59,6 +59,8 @@ public class Final : MonoBehaviour
 
     public AudioClip[] variantes_carta;
 
+    public Button button;
+
     // Start is called before the first frame update
 
     private void AtualizarAudios(){
@@ -78,6 +80,7 @@ public class Final : MonoBehaviour
         AtualizarAudios();
         PontuacaoIntervalos();
         CarregarTexto();
+        button.Select();
         canvasGroup.alpha = 1;
         fadeOut = true;
         pontuacao = Informacoes.GetPontos();
@@ -109,19 +112,15 @@ public class Final : MonoBehaviour
 
         canvasGroupCarta.alpha = 1;
 
-        if(pontuacao <= intervalos){
+        if(pontuacao_total < intervalos){
             final = 0;
-        }
-        if(pontuacao > intervalos && pontuacao <= 2*intervalos){
+        }else if(pontuacao_total >= intervalos && pontuacao_total < 2*intervalos){
             final = 1;
-        }
-        if(pontuacao > 2*intervalos && pontuacao <= 3*intervalos){
+        }else if(pontuacao_total >= 2*intervalos && pontuacao_total < 3*intervalos){
             final = 2;
-        }
-        if(pontuacao > 3*intervalos){
+        }else if(pontuacao_total >= 3*intervalos){
             final = 3;
         }
-
 
         if (final == 0)
         {

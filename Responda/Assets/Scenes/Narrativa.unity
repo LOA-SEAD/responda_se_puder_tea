@@ -476,6 +476,7 @@ MonoBehaviour:
   fim: 0
   transitionTime: 1
   pularaudio: {fileID: 1078002903}
+  botao: {fileID: 529983628}
 --- !u!114 &331647693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -784,7 +785,7 @@ MonoBehaviour:
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 932248345}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnLeft: {fileID: 932248345}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 0
   m_Colors:
@@ -1140,7 +1141,7 @@ MonoBehaviour:
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 529983628}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 529983628}
   m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}

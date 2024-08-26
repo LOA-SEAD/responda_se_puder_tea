@@ -124,7 +124,7 @@ public class FimJogo : MonoBehaviour
         pular.text = "Bônus por não usar a ajuda Pular: + " + bonus_pular.ToString() + " pontos!";
         pontuacao = pontuacao + bonus_pular;
 
-        pontos_final.text = "Pontuação Antes: " + pontuacao_aux + "    Final: " + pontuacao.ToString();
+        pontos_final.text = "Pontuação Final: " + pontuacao.ToString();
         Informacoes.SetPontos(pontuacao);
         
     }

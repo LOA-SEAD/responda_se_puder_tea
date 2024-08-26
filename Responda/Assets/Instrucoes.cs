@@ -289,9 +289,9 @@ public class Instrucoes : MonoBehaviour
         paginacao.text = "3/5";
         subtitulo.text = "Pontuação final";
         texto_instrucoes.text = "A cada questão certa, você ganhará os pontos referente ao nível. Nível Fácil será 10, Médio 15 e Difícil 20.\n\n";
-        texto_instrucoes.text += "A cada acerto consecutivo receberá 5 pontos extras. Ao errar uma questão, deixará de ganhar o bônus\n";
-        texto_instrucoes.text += "Caso volte a acertar, é possível voltar a ganhar a pontuação extra.\n";
-        texto_instrucoes.text += "Caso a resposta esteja errada, você não ganhará nenhum ponto.\n";
+        texto_instrucoes.text += "A cada acerto consecutivo receberá 5 pontos extras. Ao errar uma questão, deixará de ganhar o bônus\n\n";
+        texto_instrucoes.text += "Caso volte a acertar, é possível voltar a ganhar a pontuação extra.\n\n";
+        texto_instrucoes.text += "Caso a resposta esteja errada, você não ganhará nenhum ponto.\n\n";
         texto_instrucoes.text += "Caso chegue ao fim do jogo sem utilizar as ajudas 50 50 ou Pular, você ganhará um bônus para cada ajuda não utilizada.";
 
 
@@ -320,10 +320,11 @@ public class Instrucoes : MonoBehaviour
         paginacao.text = "5/5";
         subtitulo.text = "Créditos";
         texto_instrucoes.text = "Desenvolvido por:\n\n";
-        texto_instrucoes.text += "Gabriel Lourenço de Paula Graton\n";
-        texto_instrucoes.text += "Leandro Keller Salto\n";
-        texto_instrucoes.text += "Rhana Omolayo Pinheiro Oresotu\n";
-        texto_instrucoes.text += "Maria Clara Silva Azevedo\n";
+        texto_instrucoes.text += "Gabriel Lourenço de Paula Graton - Dev | Game Designer \n\n";
+        texto_instrucoes.text += "Leandro Keller Salto - Dev  \n\n";
+        texto_instrucoes.text += "Rhana Omolayo Pinheiro Oresotu - Game Designer \n\n";
+        texto_instrucoes.text += "Maria Clara Silva Azevedo - Artista \n\n";
+        
 
     }
 }

@@ -64,7 +64,11 @@ public class Menu : MonoBehaviour
     void Update()
     {
         roda.transform.Rotate(0, 0, 0.05f);   
-        fundo.color = new Color(1, 1, 0.5f + Mathf.PingPong(Time.time/3, 0.5f), 1);
+        Color startColor = new Color(1f, 1f, 1f, 1f); 
+        Color endColor = new Color(1f, 0.7f, 0.2f, 1f); 
+        //Color endColor = new Color(0.329f, 0.263f, 0.467f, 1f); // #544377
+        float t = Mathf.PingPong(Time.time / 3, 1f);
+        fundo.color = Color.Lerp(startColor, endColor, t);
     }
 
     public void HighlightMenu (int botao){

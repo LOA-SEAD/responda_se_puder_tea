@@ -48,6 +48,8 @@ public class Narrativa : MonoBehaviour
     public float transitionTime = 0.5f;
 
     public AudioSource pularaudio;
+
+    public Button botao;
     
     // Start is called before the first frame update
 
@@ -68,6 +70,7 @@ public class Narrativa : MonoBehaviour
     {
         AtualizarAudios();
         CarregarTexto();
+        botao.Select();
         StartCoroutine(TransitionSprite(UIs,UI));
         if(UIs_TV[num_texto] != null)
             StartCoroutine(TransitionSprite(UIs_TV,UI_TV));
