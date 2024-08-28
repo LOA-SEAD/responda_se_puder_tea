@@ -14,6 +14,7 @@ public class AudioStop : MonoBehaviour
             {
                 audio.volume = 0;
                 audio.Stop();
+                audio.Stop();
                 audio.time = 0;
                 StartCoroutine(RestoreVolumeAfterDelay(audio, 1f));
             }

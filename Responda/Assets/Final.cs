@@ -290,9 +290,5 @@ public class Final : MonoBehaviour
             nome.text = "Apresentador";
         }
 
-        if (Input.GetKeyDown(KeyCode.Return)) {
-            Prosseguir();
-            AtualizarAudios();
-        }
     }   
 }

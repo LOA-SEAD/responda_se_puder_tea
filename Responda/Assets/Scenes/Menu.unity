@@ -454,6 +454,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1166930542}
+          m_TargetAssemblyTypeName: audioManagerMenu, Assembly-CSharp
+          m_MethodName: StopAudio
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 0
     callback:
       m_PersistentCalls:
@@ -1100,6 +1112,18 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 1110261506}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1166930542}
+          m_TargetAssemblyTypeName: audioManagerMenu, Assembly-CSharp
+          m_MethodName: StopAudio
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -1935,8 +1959,8 @@ MonoBehaviour:
   - {fileID: 1492315808}
   - {fileID: 1712561596}
   - {fileID: 1110261506}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 916721864}
+  - {fileID: 916721864}
   - {fileID: 0}
 --- !u!114 &786270585
 MonoBehaviour:
@@ -2883,6 +2907,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1166930542}
+          m_TargetAssemblyTypeName: audioManagerMenu, Assembly-CSharp
+          m_MethodName: StopAudio
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 0
     callback:
       m_PersistentCalls:
@@ -3303,6 +3339,18 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 1492315808}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1166930542}
+          m_TargetAssemblyTypeName: audioManagerMenu, Assembly-CSharp
+          m_MethodName: StopAudio
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -4057,8 +4105,8 @@ MonoBehaviour:
   - {fileID: 916721864}
   - {fileID: 898222988}
   adClips:
-  - {fileID: 8300000, guid: ce3a3dcd062e8b442a0b3fc638305346, type: 3}
-  - {fileID: 8300000, guid: d75ae5459102cad4a99048e781f06a04, type: 3}
+  - {fileID: 8300000, guid: 5f5522289fb43e641949874f655e215e, type: 3}
+  - {fileID: 0}
   instrucoes: {fileID: 289329351}
 --- !u!4 &1166930543
 Transform:

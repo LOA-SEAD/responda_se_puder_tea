@@ -29,6 +29,8 @@ public class Narrativa : MonoBehaviour
 
     public Image UI;
 
+    public Image UI2;
+
     public Sprite[] UIs;
 
     public Image UI_TV;
@@ -50,6 +52,8 @@ public class Narrativa : MonoBehaviour
     public AudioSource pularaudio;
 
     public Button botao;
+
+    private int sumir;
     
     // Start is called before the first frame update
 
@@ -129,7 +133,7 @@ public class Narrativa : MonoBehaviour
     public void Pular(){
         Informacoes.SetStatus(0);
 		Informacoes.SetNivel(0);
-		SceneManager.LoadScene("Tutorial");
+		SceneManager.LoadScene("Nivel");
     }
 
     public void Prosseguir(){
@@ -209,23 +213,54 @@ public class Narrativa : MonoBehaviour
 
         }
     }
+
+    void Sumir(){
+        
+    
+        Color color1 = UI.color;
+        color1.a = Mathf.Clamp01(color1.a - Time.deltaTime );
+        UI.color = color1;
+
+        Color color2 = UI2.color;
+        color2.a = Mathf.Clamp01(color2.a - Time.deltaTime );
+        UI2.color = color2;
+
+        if(color1.a == 0){
+            UI.gameObject.SetActive(false);
+            UI2.gameObject.SetActive(false);
+        }
+
+    }
+
+    void Aparecer(){
+        Color color1 = UI.color;
+        color1.a = Mathf.Clamp01(color1.a + Time.deltaTime );
+        UI.color = color1;
+
+        Color color2 = UI2.color;
+        color2.a = Mathf.Clamp01(color2.a + Time.deltaTime );
+        UI2.color = color2;
+
+    }
     void Update()
     {
         if(fim == false){
             CarregaTextoNaTela();
         }
         
-        if (Input.GetKeyDown(KeyCode.Return)) {
-            Prosseguir();
-            AtualizarAudios();
-        }
+
 
          if(num_texto > 3 && num_texto < 8 || num_texto == 9){
             nome.text = "Apresentador";
+            Sumir();
+            
         }else if(num_texto == 8){
             nome.text = "Smartio";
         }else{
             nome.text = "Robs";
+            UI.gameObject.SetActive(true);
+            UI2.gameObject.SetActive(true);
+            Aparecer();
         }
         
     }

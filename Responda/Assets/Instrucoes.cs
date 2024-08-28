@@ -257,7 +257,7 @@ public class Instrucoes : MonoBehaviour
         AttAudios();
         paginacao.text = "1/5";
         subtitulo.text = "Regras do jogo";
-        texto_instrucoes.text = "Responda à pergunta selecionando a alternativa correta.Após selecionada, confirme sua escolha. \n\n";
+        texto_instrucoes.text = "Responda a pergunta selecionando a alternativa correta.Após selecionada, confirme sua escolha. \n\n";
         texto_instrucoes.text += "A cada resposta certa, você ganhará os pontos referentes ao nível. Nível Fácil será 10, Médio 15 e Difícil 20.\n\n";
         texto_instrucoes.text += "Você terá 3 tipos de ajuda caso tenha dificuldade em achar a solução.\n\n";
         texto_instrucoes.text += "Além disso, haverá bônus por acetos consecutivos e ajudas não usadas.";
