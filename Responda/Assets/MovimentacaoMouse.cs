@@ -17,7 +17,10 @@ public class MovimentacaoMouse : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab) && Informacoes.GetCursosBlock() != 2)
         {
+            if (EventSystem.current.currentSelectedGameObject == null)
+        {
             SelectInteractableButton(buttonsToSelect);
+        }
         }
     }
 
