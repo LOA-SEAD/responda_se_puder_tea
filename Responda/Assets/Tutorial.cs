@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Net.Security;
 
 public class Tutorial : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class Tutorial : MonoBehaviour
     [SerializeField] Text txtPergunta;
     [SerializeField] List<Button> Dica5050;
     [SerializeField] GameObject mask;
+    [SerializeField] List<Sprite> spriteCertoErrado;
+    [SerializeField] List<Image> imgPerguntas;
     Transform t;
     Transform b;
     public GameObject panelConfirma;
@@ -172,6 +175,7 @@ public class Tutorial : MonoBehaviour
 
     public int caminhos;
 
+    int escolha = 0;
 
     private void Start()
     {
@@ -182,7 +186,7 @@ public class Tutorial : MonoBehaviour
             b.GetComponent<Button>().interactable = false ;
         }
         Informacoes.setTutorial(true);
-
+        panel_text.text = "Um quilograma possui 1000 gramas!";
     }
 
 
@@ -190,7 +194,7 @@ public class Tutorial : MonoBehaviour
     {
         Panel_anim.SetBool("showPanel", true);
         panel_text.gameObject.SetActive(true);
-        panel_text.text = "Um quilograma possui 1000 gramas!";
+        
 
     }
 
@@ -218,7 +222,7 @@ public class Tutorial : MonoBehaviour
                 spotlight.transform.position = new Vector3(t.position.x, -1.2f, 0) ;
                 spotlight.transform.localScale = new Vector3(7.23f, 2f, 1);
                 
-                btn.transform.localScale = new Vector3(1, 1, 1);
+                //btn.transform.localScale = new Vector3(1, 1, 1);
                 //btn.transform.localPosition = new Vector3(320, -158, 0);
                 //btn.transform.localPosition = new Vector3(320, -124, 0);
                 txtPergunta.text = "Aqui estão as possíveis respostas para as perguntas.";
@@ -227,14 +231,14 @@ public class Tutorial : MonoBehaviour
             case 1:
                 txtPergunta.text = "Escolha a primeira opção clicando no quadrado.";
                 //btn.transform.position = checks[0].transform.position;
-                btn.transform.localScale = new Vector3(1, 1, 1);
+                //btn.transform.localScale = new Vector3(1, 1, 1);
                 btn.SetActive(false);
                 checks[0].GetComponent<Button>().interactable = true;
                 break;
 
             case 2:
                 txtPergunta.text = "Muito bem!";
-                btn.transform.localScale = new Vector3(1, 1, 1);
+                //btn.transform.localScale = new Vector3(1, 1, 1);
                 
                 btn.GetComponent<Image>().enabled = true;
                 btn.SetActive(true);
@@ -243,12 +247,12 @@ public class Tutorial : MonoBehaviour
             case 3:
                 spotlight.gameObject.SetActive(false);
 
-                btn.transform.localScale = new Vector3(1, 1, 1);
+                //btn.transform.localScale = new Vector3(1, 1, 1);
                 
                 //btn.transform.localPosition = new Vector3(320, -124, 0);
                 txtPergunta.text = "Leia a pergunta e escolha a que você acha que seja a resposta!\n";
                 txtPergunta.text = txtPergunta.text + "Quantos lados tem um triângulo?";
-                    
+
                 
                 foreach (GameObject b in checks)
                 {
@@ -263,6 +267,17 @@ public class Tutorial : MonoBehaviour
                 panel_text.gameObject.SetActive(true);
                 break;
             case 4:
+
+                if (escolha == 3)
+                {
+                    //imgPerguntas[0].sprite = spriteCertoErrado[1];
+                    imgPerguntas[0].color = Color.green;
+                }
+                else
+                {
+                    //imgPerguntas[0].sprite = spriteCertoErrado[0];
+                    imgPerguntas[0].color = Color.red;
+                }
                 foreach (GameObject b in checks)
                 {
                     b.GetComponent<Button>().interactable = false;
@@ -270,7 +285,7 @@ public class Tutorial : MonoBehaviour
                     l++;
                 }
                 txtPergunta.text = "Muito bem!\n Você já aprendeu a escolher a sua resposta!";
-                btn.transform.localScale = new Vector3(1, 1, 1);
+                //btn.transform.localScale = new Vector3(1, 1, 1);
                 
                 btn.SetActive(true);
                 break;
@@ -278,7 +293,7 @@ public class Tutorial : MonoBehaviour
             case 5:
                 spotlight.gameObject.SetActive(false);
 
-                btn.transform.localScale = new Vector3(1, 1, 1);
+                //btn.transform.localScale = new Vector3(1, 1, 1);
                 
                 txtPergunta.text = "Se tiver dúvidas, basta clicar nos botões de ajuda abaixo!\n";
 
@@ -305,11 +320,12 @@ public class Tutorial : MonoBehaviour
             case 6:
                 spotlight.gameObject.SetActive(false);
 
-                btn.transform.localScale = new Vector3(1, 1, 1);
+                //btn.transform.localScale = new Vector3(1, 1, 1);
 
                 txtPergunta.text = "- 50/50 irá eliminar duas alternativas erradas!\n";
-                txtPergunta.text = txtPergunta.text + "- Dica irá dar uma pista da resposta!";
-                //txtPergunta.text = txtPergunta.text + "- Se quiser, pode ir para a próxima pergunta com o 'Pular'!";
+                txtPergunta.text = txtPergunta.text + "- Dica irá dar uma pista da resposta!\n";
+                txtPergunta.text = txtPergunta.text + "- Se quiser, pode ir para a próxima pergunta com o 'Pular'!";
+
                 foreach (Button b in Dica5050)
                 {
                     b.gameObject.SetActive(true);
@@ -334,7 +350,7 @@ public class Tutorial : MonoBehaviour
 
                 spotlight.gameObject.SetActive(false);
 
-                btn.transform.localScale = new Vector3(1, 1, 1);
+                //btn.transform.localScale = new Vector3(1, 1, 1);
                 
                 //btn.transform.localPosition = new Vector3(320, -124, 0);
                 txtPergunta.text = "Quantos quilometros tem em um metro?";
@@ -346,8 +362,8 @@ public class Tutorial : MonoBehaviour
                     
                     l++;
                 }
-                checks[0].transform.GetChild(0).GetComponent<Text>().text = "60";
-                checks[1].transform.GetChild(0).GetComponent<Text>().text = "1.000";
+                checks[0].transform.GetChild(0).GetComponent<Text>().text = "1.000";
+                checks[1].transform.GetChild(0).GetComponent<Text>().text = "2.000";
                 checks[2].transform.GetChild(0).GetComponent<Text>().text = "1.024";
                 checks[3].transform.GetChild(0).GetComponent<Text>().text = "10.000";
                 mask.SetActive(false);
@@ -363,6 +379,60 @@ public class Tutorial : MonoBehaviour
                 break;
 
             case 8:
+                if (escolha == 1)
+                {
+                    //imgPerguntas[1].sprite = spriteCertoErrado[1];
+                    imgPerguntas[1].color = Color.green;
+                }
+                else
+                {
+                    //imgPerguntas[1].sprite = spriteCertoErrado[0];
+                    imgPerguntas[1].color = Color.red;
+                }
+
+
+                spotlight.gameObject.SetActive(false);
+
+                //btn.transform.localScale = new Vector3(1, 1, 1);
+
+                //btn.transform.localPosition = new Vector3(320, -124, 0);
+                txtPergunta.text = "Quantas faces tem um cubo?";
+                panel_text.text = "Uma sala com 4 paredes, tem também um teto e um chão!";
+
+                foreach (GameObject b in checks)
+                {
+                    b.GetComponent<Button>().interactable = true;
+
+                    l++;
+                }
+                checks[0].transform.GetChild(0).GetComponent<Text>().text = "4";
+                checks[1].transform.GetChild(0).GetComponent<Text>().text = "6";
+                checks[2].transform.GetChild(0).GetComponent<Text>().text = "8";
+                checks[3].transform.GetChild(0).GetComponent<Text>().text = "10";
+                mask.SetActive(false);
+                btn.SetActive(false);
+                spotlight.transform.localScale = new Vector3(17.23f, 12f, 1);
+
+                foreach (Button b in Dica5050)
+                {
+                    b.gameObject.SetActive(true);
+                    b.interactable = true;
+                }
+                panel_text.gameObject.SetActive(true);
+                break;
+
+            case 9:
+                if (escolha == 2)
+                {
+                    //imgPerguntas[2].sprite = spriteCertoErrado[1];
+                    imgPerguntas[2].color = Color.green;
+                }
+                else
+                {
+                    //imgPerguntas[2].sprite = spriteCertoErrado[0];
+                    imgPerguntas[2].color = Color.red;
+                }
+
                 foreach (Button b in Dica5050)
                 {
                     b.gameObject.SetActive(true);
@@ -380,7 +450,7 @@ public class Tutorial : MonoBehaviour
                 txtPergunta.text = "Ótimo! Você já pegou o jeito!\n Já pode finalizar o Tutorial!";
                 btn.SetActive(true);
                 break;
-            case 9:
+            case 10:
                 sairTutorial();
                 break;
         }
@@ -480,6 +550,11 @@ public class Tutorial : MonoBehaviour
     public void showConfirma(bool b)
     {
         panelConfirma.SetActive(b);
+    }
+
+    public void setEscolha(int i)
+    {
+        escolha = i;
     }
 
 }
