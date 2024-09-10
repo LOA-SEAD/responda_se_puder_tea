@@ -9,7 +9,7 @@ using System.Net.Security;
 public class Tutorial : MonoBehaviour
 {
     public Opcoes opt;
-    int step = 0;
+    public int step = 0;
     [SerializeField] GameObject spotlight;
     [SerializeField] GameObject btn;
     [SerializeField] TextMeshProUGUI txt;
@@ -176,7 +176,7 @@ public class Tutorial : MonoBehaviour
     public int caminhos;
 
     int escolha = 0;
-
+    Color initColor;
     private void Start()
     {
         t = spotlight.transform;
@@ -187,6 +187,8 @@ public class Tutorial : MonoBehaviour
         }
         Informacoes.setTutorial(true);
         panel_text.text = "Um quilograma possui 1000 gramas!";
+        initColor = checks[0].GetComponentInChildren<Text>().color ;
+        Debug.Log(initColor);
     }
 
 
@@ -203,12 +205,18 @@ public class Tutorial : MonoBehaviour
         Panel_anim.SetBool("showPanel", false);
     }
 
+    public void ResetEscolha()
+    {
+        escolha = -1;
+    }
+
     public void Mostrar5050()
     {
         for(int i = 2; i <= 3; i++)
         {
 
             checks[i].GetComponent<Button>().interactable = false;
+            checks[i].GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
 
         }
 
@@ -216,6 +224,7 @@ public class Tutorial : MonoBehaviour
     public void GoToNextStep()
     {
         int l = 1;
+        Debug.Log(step);
         switch (step)
         {
             case 0:
@@ -234,6 +243,7 @@ public class Tutorial : MonoBehaviour
                 //btn.transform.localScale = new Vector3(1, 1, 1);
                 btn.SetActive(false);
                 checks[0].GetComponent<Button>().interactable = true;
+                checks[0].GetComponentInChildren<Text>().color = initColor;
                 break;
 
             case 2:
@@ -243,6 +253,7 @@ public class Tutorial : MonoBehaviour
                 btn.GetComponent<Image>().enabled = true;
                 btn.SetActive(true);
                 checks[0].GetComponent<Button>().interactable = false;
+                checks[0].GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
                 break;
             case 3:
                 spotlight.gameObject.SetActive(false);
@@ -257,6 +268,7 @@ public class Tutorial : MonoBehaviour
                 foreach (GameObject b in checks)
                 {
                     b.GetComponent<Button>().interactable = true;
+                    b.GetComponentInChildren<Text>().color = initColor;
                     b.transform.GetChild(0).GetComponent<Text>().text = l.ToString() ;
                     l++;
                 }
@@ -281,6 +293,7 @@ public class Tutorial : MonoBehaviour
                 foreach (GameObject b in checks)
                 {
                     b.GetComponent<Button>().interactable = false;
+                    b.GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
                     b.transform.GetChild(0).GetComponent<Text>().text = l.ToString();
                     l++;
                 }
@@ -301,12 +314,14 @@ public class Tutorial : MonoBehaviour
                 {
                     b.gameObject.SetActive(true);
                     b.interactable = false;
+                    b.GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
                 }
 
 
                 foreach (GameObject b in checks)
                 {
                     b.GetComponent<Button>().interactable = false;
+                    b.GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
                     b.transform.GetChild(0).GetComponent<Text>().text = "";
                     
                 }
@@ -330,12 +345,14 @@ public class Tutorial : MonoBehaviour
                 {
                     b.gameObject.SetActive(true);
                     b.interactable = false;
+                    b.GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
                 }
 
 
                 foreach (GameObject b in checks)
                 {
                     b.GetComponent<Button>().interactable = false;
+                    b.GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
                     b.transform.GetChild(0).GetComponent<Text>().text = "";
 
                 }
@@ -347,23 +364,20 @@ public class Tutorial : MonoBehaviour
                 btn.SetActive(true);
                 break;
             case 7:
-
+                escolha = -1;
                 spotlight.gameObject.SetActive(false);
 
-                //btn.transform.localScale = new Vector3(1, 1, 1);
-                
-                //btn.transform.localPosition = new Vector3(320, -124, 0);
                 txtPergunta.text = "Quantos quilometros tem em um metro?";
-
 
                 foreach (GameObject b in checks)
                 {
                     b.GetComponent<Button>().interactable = true;
+                    b.GetComponentInChildren<Text>().color = initColor;
                     
                     l++;
                 }
-                checks[0].transform.GetChild(0).GetComponent<Text>().text = "1.000";
-                checks[1].transform.GetChild(0).GetComponent<Text>().text = "2.000";
+                checks[0].transform.GetChild(0).GetComponent<Text>().text = "500";
+                checks[1].transform.GetChild(0).GetComponent<Text>().text = "1.000";
                 checks[2].transform.GetChild(0).GetComponent<Text>().text = "1.024";
                 checks[3].transform.GetChild(0).GetComponent<Text>().text = "10.000";
                 mask.SetActive(false);
@@ -374,75 +388,126 @@ public class Tutorial : MonoBehaviour
                 {
                     b.gameObject.SetActive(true);
                     b.interactable = true;
+                    b.GetComponentInChildren<Text>().color = initColor;
                 }
                 panel_text.gameObject.SetActive(true);
                 break;
 
             case 8:
-                if (escolha == 1)
+                if (escolha == -1)
+                {
+                    spotlight.gameObject.SetActive(false);
+
+                    //btn.transform.localScale = new Vector3(1, 1, 1);
+
+                    //btn.transform.localPosition = new Vector3(320, -124, 0);
+                    txtPergunta.text = "Quantas faces tem um cubo?";
+                    panel_text.text = "Uma sala com 4 paredes, tem também um teto e um chão!";
+                    
+                    foreach (GameObject b in checks)
+                    {
+                        b.GetComponent<Button>().interactable = true;
+                        b.GetComponentInChildren<Text>().color = initColor;
+
+                        l++;
+                    }
+                    checks[0].transform.GetChild(0).GetComponent<Text>().text = "4";
+                    checks[1].transform.GetChild(0).GetComponent<Text>().text = "6";
+                    checks[2].transform.GetChild(0).GetComponent<Text>().text = "8";
+                    checks[3].transform.GetChild(0).GetComponent<Text>().text = "10";
+                    mask.SetActive(false);
+                    btn.SetActive(false);
+                    spotlight.transform.localScale = new Vector3(17.23f, 12f, 1);
+
+                    foreach (Button b in Dica5050)
+                    {
+                        b.gameObject.SetActive(true);
+                        b.interactable = true;
+                        b.GetComponentInChildren<Text>().color = initColor;
+                    }
+                    Dica5050[2].gameObject.GetComponent<Button>().interactable = false;
+                    Dica5050[2].gameObject.GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1); 
+                    panel_text.gameObject.SetActive(true);
+                }
+                else if (escolha == 2)
                 {
                     //imgPerguntas[1].sprite = spriteCertoErrado[1];
                     imgPerguntas[1].color = Color.green;
+                    txtPergunta.text = "Ótimo! Você já pegou o jeito!\n Já pode finalizar o Tutorial!";
+                    btn.SetActive(true);
+                    step = 9;
+
+                    foreach (Button b in Dica5050)
+                    {
+                        b.gameObject.SetActive(true);
+                        b.interactable = false;
+                        b.GetComponent<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
+                    }
+
+
+                    foreach (GameObject b in checks)
+                    {
+                        b.GetComponent<Button>().interactable = false;
+                        b.GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
+                        b.transform.GetChild(0).GetComponent<Text>().text = "";
+
+                    }
+                    break;
+                    
                 }
                 else
                 {
+
+                    txtPergunta.text = "Ótimo! Você já pegou o jeito!\n Já pode finalizar o Tutorial!";
+                    btn.SetActive(true);
                     //imgPerguntas[1].sprite = spriteCertoErrado[0];
                     imgPerguntas[1].color = Color.red;
+                    step = 9;
+
+                    foreach (Button b in Dica5050)
+                    {
+                        b.gameObject.SetActive(true);
+                        b.interactable = false;
+                        b.GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
+                    }
+
+
+                    foreach (GameObject b in checks)
+                    {
+                        b.GetComponent<Button>().interactable = false;
+                        b.GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
+                        b.transform.GetChild(0).GetComponent<Text>().text = "";
+
+                    }
+                    break;
                 }
 
 
-                spotlight.gameObject.SetActive(false);
-
-                //btn.transform.localScale = new Vector3(1, 1, 1);
-
-                //btn.transform.localPosition = new Vector3(320, -124, 0);
-                txtPergunta.text = "Quantas faces tem um cubo?";
-                panel_text.text = "Uma sala com 4 paredes, tem também um teto e um chão!";
-
-                foreach (GameObject b in checks)
-                {
-                    b.GetComponent<Button>().interactable = true;
-
-                    l++;
-                }
-                checks[0].transform.GetChild(0).GetComponent<Text>().text = "4";
-                checks[1].transform.GetChild(0).GetComponent<Text>().text = "6";
-                checks[2].transform.GetChild(0).GetComponent<Text>().text = "8";
-                checks[3].transform.GetChild(0).GetComponent<Text>().text = "10";
-                mask.SetActive(false);
-                btn.SetActive(false);
-                spotlight.transform.localScale = new Vector3(17.23f, 12f, 1);
-
-                foreach (Button b in Dica5050)
-                {
-                    b.gameObject.SetActive(true);
-                    b.interactable = true;
-                }
-                panel_text.gameObject.SetActive(true);
+               
                 break;
 
             case 9:
                 if (escolha == 2)
                 {
-                    //imgPerguntas[2].sprite = spriteCertoErrado[1];
-                    imgPerguntas[2].color = Color.green;
+                    imgPerguntas[1].color = Color.green;
                 }
                 else
                 {
-                    //imgPerguntas[2].sprite = spriteCertoErrado[0];
-                    imgPerguntas[2].color = Color.red;
+                    imgPerguntas[1].color = Color.red;
                 }
 
                 foreach (Button b in Dica5050)
                 {
                     b.gameObject.SetActive(true);
                     b.interactable = false;
+                    b.GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
                 }
 
 
                 foreach (GameObject b in checks)
                 {
                     b.GetComponent<Button>().interactable = false;
+                    b.GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
                     b.transform.GetChild(0).GetComponent<Text>().text = "";
 
                 }
