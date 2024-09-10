@@ -279,16 +279,16 @@ public class Tutorial : MonoBehaviour
                 panel_text.gameObject.SetActive(true);
                 break;
             case 4:
-
+                Debug.Log("ESCOLHA = " + escolha);
                 if (escolha == 3)
                 {
-                    //imgPerguntas[0].sprite = spriteCertoErrado[1];
-                    imgPerguntas[0].color = Color.green;
+                    imgPerguntas[0].sprite = spriteCertoErrado[1];
+                    //imgPerguntas[0].color = Color.green;
                 }
                 else
                 {
-                    //imgPerguntas[0].sprite = spriteCertoErrado[0];
-                    imgPerguntas[0].color = Color.red;
+                    imgPerguntas[0].sprite = spriteCertoErrado[0];
+                    //imgPerguntas[0].color = Color.red;
                 }
                 foreach (GameObject b in checks)
                 {
@@ -431,8 +431,8 @@ public class Tutorial : MonoBehaviour
                 }
                 else if (escolha == 2)
                 {
-                    //imgPerguntas[1].sprite = spriteCertoErrado[1];
-                    imgPerguntas[1].color = Color.green;
+                    imgPerguntas[1].sprite = spriteCertoErrado[1];
+                    //imgPerguntas[1].color = Color.green;
                     txtPergunta.text = "Ótimo! Você já pegou o jeito!\n Já pode finalizar o Tutorial!";
                     btn.SetActive(true);
                     step = 9;
@@ -441,7 +441,7 @@ public class Tutorial : MonoBehaviour
                     {
                         b.gameObject.SetActive(true);
                         b.interactable = false;
-                        b.GetComponent<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
+                        b.GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
                     }
 
 
@@ -460,8 +460,8 @@ public class Tutorial : MonoBehaviour
 
                     txtPergunta.text = "Ótimo! Você já pegou o jeito!\n Já pode finalizar o Tutorial!";
                     btn.SetActive(true);
-                    //imgPerguntas[1].sprite = spriteCertoErrado[0];
-                    imgPerguntas[1].color = Color.red;
+                    imgPerguntas[1].sprite = spriteCertoErrado[0];
+                    //imgPerguntas[1].color = Color.red;
                     step = 9;
 
                     foreach (Button b in Dica5050)
@@ -489,11 +489,13 @@ public class Tutorial : MonoBehaviour
             case 9:
                 if (escolha == 2)
                 {
-                    imgPerguntas[1].color = Color.green;
+                    imgPerguntas[1].sprite = spriteCertoErrado[1];
+                    //imgPerguntas[1].color = Color.green;
                 }
                 else
                 {
-                    imgPerguntas[1].color = Color.red;
+                    imgPerguntas[1].sprite = spriteCertoErrado[0];
+                    //imgPerguntas[1].color = Color.red;
                 }
 
                 foreach (Button b in Dica5050)
