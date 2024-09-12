@@ -511,7 +511,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Questao \nx de y"
+  m_Text: 'Etapa
+
+    1 de 9'
 --- !u!222 &64043396
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2688,11 +2690,16 @@ PrefabInstance:
     - target: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
@@ -2707,17 +2714,32 @@ PrefabInstance:
       objectReference: {fileID: 2128542531}
     - target: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 2128542531}
+    - target: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GoToNextStep
+      value: Pulou
       objectReference: {fileID: 0}
     - target: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: GoToNextStep
+      objectReference: {fileID: 0}
+    - target: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: ResetEscolha
       objectReference: {fileID: 0}
     - target: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
@@ -2732,7 +2754,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: Tutorial, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 570421369650086175, guid: d151bc655ea6b544799d19e374761bb0,
@@ -22215,7 +22252,7 @@ MonoBehaviour:
   quantidade_medio: 0
   quantidade_dificil: 0
   pular_agora: 0
-  questao_x_de_y: 0
+  questao_x_de_y: {fileID: 64043395}
   selecionou5050: 0
   quantidade_5050: 2
   selecionou_pular: 0
