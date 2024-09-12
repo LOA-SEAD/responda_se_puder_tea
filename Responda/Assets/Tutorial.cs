@@ -5,9 +5,12 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Net.Security;
+using System.Diagnostics;
 
 public class Tutorial : MonoBehaviour
 {
+    bool bPulou = false;
+    int etapa = 1;
     public Opcoes opt;
     public int step = 0;
     [SerializeField] GameObject spotlight;
@@ -113,7 +116,7 @@ public class Tutorial : MonoBehaviour
     int tirar_2;
     public int pular_agora;
 
-    public int questao_x_de_y;
+    public Text questao_x_de_y;
     public int selecionou5050 = NAO;
 
     public int quantidade_5050 = 2;
@@ -188,7 +191,7 @@ public class Tutorial : MonoBehaviour
         Informacoes.setTutorial(true);
         panel_text.text = "Um quilograma possui 1000 gramas!";
         initColor = checks[0].GetComponentInChildren<Text>().color ;
-        Debug.Log(initColor);
+        
     }
 
 
@@ -204,9 +207,13 @@ public class Tutorial : MonoBehaviour
     {
         Panel_anim.SetBool("showPanel", false);
     }
-
+    public void Pulou()
+    {
+        bPulou = true;
+    }
     public void ResetEscolha()
     {
+       
         escolha = -1;
     }
 
@@ -223,8 +230,12 @@ public class Tutorial : MonoBehaviour
     }
     public void GoToNextStep()
     {
+        if (!bPulou && step < 10)
+        {
+            etapa++;
+        }
+        questao_x_de_y.text = "Etapa\n" + (etapa).ToString() + " de 10";
         int l = 1;
-        Debug.Log(step);
         switch (step)
         {
             case 0:
@@ -279,7 +290,6 @@ public class Tutorial : MonoBehaviour
                 panel_text.gameObject.SetActive(true);
                 break;
             case 4:
-                Debug.Log("ESCOLHA = " + escolha);
                 if (escolha == 3)
                 {
                     imgPerguntas[0].sprite = spriteCertoErrado[1];
@@ -521,7 +531,7 @@ public class Tutorial : MonoBehaviour
                 sairTutorial();
                 break;
         }
-
+        bPulou = false;
         step++;
 
     }
@@ -586,7 +596,7 @@ public class Tutorial : MonoBehaviour
         Informacoes.SetQuantidadeAcertos(quantidade_acertos);
         Informacoes.SetPontosGanhos(pontos_ganhos);
 
-        Informacoes.SetNumeroQuestao(questao_x_de_y);
+        
         Informacoes.SetPerguntaAtual(pergunta_atual);
         Informacoes.SetPerguntasRespondidas(perguntas_bool);
         Informacoes.SetAjudasUsadas(ajudas_usadas);
