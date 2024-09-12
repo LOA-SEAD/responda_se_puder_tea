@@ -513,7 +513,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Etapa
 
-    1 de 9'
+    1 de 10'
 --- !u!222 &64043396
 CanvasRenderer:
   m_ObjectHideFlags: 0
