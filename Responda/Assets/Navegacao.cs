@@ -24,7 +24,9 @@ public class Navegacao : MonoBehaviour
 
     void Update()
     {
-        if(Informacoes.GetCursosBlock() != 2){
+        
+
+        if(Informacoes.GetCursosBlock() + 10 != 2 ){
             if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (EventSystem.current != null)
