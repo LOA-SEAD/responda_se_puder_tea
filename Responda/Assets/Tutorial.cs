@@ -13,6 +13,7 @@ public class Tutorial : MonoBehaviour
     int etapa = 1;
     public Opcoes opt;
     public int step = 0;
+    bool bErrou = false;
     [SerializeField] GameObject spotlight;
     [SerializeField] GameObject btn;
     [SerializeField] TextMeshProUGUI txt;
@@ -293,11 +294,13 @@ public class Tutorial : MonoBehaviour
                 if (escolha == 3)
                 {
                     imgPerguntas[0].sprite = spriteCertoErrado[1];
+                    txtPergunta.text = "Parabéns! Você acertou a resposta!";
                     //imgPerguntas[0].color = Color.green;
                 }
                 else
                 {
                     imgPerguntas[0].sprite = spriteCertoErrado[0];
+                    txtPergunta.text = "Não foi dessa vez, continue tentando!\n Um triângulo possui TRÊS lados!";
                     //imgPerguntas[0].color = Color.red;
                 }
                 foreach (GameObject b in checks)
@@ -307,7 +310,8 @@ public class Tutorial : MonoBehaviour
                     b.transform.GetChild(0).GetComponent<Text>().text = l.ToString();
                     l++;
                 }
-                txtPergunta.text = "Muito bem!\n Você já aprendeu a escolher a sua resposta!";
+
+                
                 //btn.transform.localScale = new Vector3(1, 1, 1);
                 
                 btn.SetActive(true);
@@ -442,8 +446,9 @@ public class Tutorial : MonoBehaviour
                 else if (escolha == 2)
                 {
                     imgPerguntas[1].sprite = spriteCertoErrado[1];
+                    bErrou = false;
                     //imgPerguntas[1].color = Color.green;
-                    txtPergunta.text = "Ótimo! Você já pegou o jeito!\n Já pode finalizar o Tutorial!";
+                    txtPergunta.text = "Parabéns! Você acertou!\n Já pode finalizar o Tutorial!";
                     btn.SetActive(true);
                     step = 9;
 
@@ -467,13 +472,28 @@ public class Tutorial : MonoBehaviour
                 }
                 else
                 {
-
-                    txtPergunta.text = "Ótimo! Você já pegou o jeito!\n Já pode finalizar o Tutorial!";
+                    bErrou = true;
                     btn.SetActive(true);
                     imgPerguntas[1].sprite = spriteCertoErrado[0];
                     //imgPerguntas[1].color = Color.red;
                     step = 9;
-
+                    if (!bErrou)
+                    {
+                        txtPergunta.text = "Parabéns, você acertou!";
+                    }
+                    else
+                    {
+                        txtPergunta.text = "Não foi dessa vez! Continue tentando!\n";
+                        if (bPulou)
+                        {
+                            txtPergunta.text = txtPergunta.text + "Um cubo tem 6 faces!";
+                        }
+                        else
+                        {
+                            txtPergunta.text = txtPergunta.text + "Um quilômetro tem 1000 metros!";
+                        }
+                    }
+                    txtPergunta.text = txtPergunta.text + "\nPor aqui finalizamos o Tutorial!";
                     foreach (Button b in Dica5050)
                     {
                         b.gameObject.SetActive(true);
@@ -491,23 +511,40 @@ public class Tutorial : MonoBehaviour
                     }
                     break;
                 }
+                
 
 
-               
                 break;
 
             case 9:
                 if (escolha == 2)
                 {
                     imgPerguntas[1].sprite = spriteCertoErrado[1];
+                    bErrou = false;
                     //imgPerguntas[1].color = Color.green;
                 }
                 else
                 {
                     imgPerguntas[1].sprite = spriteCertoErrado[0];
+                    bErrou = true;
                     //imgPerguntas[1].color = Color.red;
                 }
-
+                if (!bErrou)
+                {
+                    txtPergunta.text = "Parabéns, você acertou!";
+                }
+                else
+                {
+                    txtPergunta.text = "Não foi dessa vez! Continue tentando!\n";
+                    if (bPulou)
+                    {
+                        txtPergunta.text = txtPergunta.text + "Um cubo tem 6 faces!";
+                    }
+                    else
+                    {
+                        txtPergunta.text = txtPergunta.text + "Um quilômetro tem 1000 metros!";
+                    }
+                }
                 foreach (Button b in Dica5050)
                 {
                     b.gameObject.SetActive(true);
@@ -523,8 +560,12 @@ public class Tutorial : MonoBehaviour
                     b.transform.GetChild(0).GetComponent<Text>().text = "";
 
                 }
+                
 
-                txtPergunta.text = "Ótimo! Você já pegou o jeito!\n Já pode finalizar o Tutorial!";
+
+
+                txtPergunta.text = txtPergunta.text + "\nPor aqui finalizamos o Tutorial!";
+
                 btn.SetActive(true);
                 break;
             case 10:
