@@ -10,6 +10,7 @@ public class AudiosTutorial : MonoBehaviour
      public AudioSource alternativa2;
      public AudioSource alternativa3;
      public AudioSource alternativa4;
+     public AudioSource dica;
     public AudioClip[] adClips;
     void Start()
     {
