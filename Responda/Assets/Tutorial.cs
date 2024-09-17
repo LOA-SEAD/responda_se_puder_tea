@@ -183,16 +183,21 @@ public class Tutorial : MonoBehaviour
     Color initColor;
     private void Start()
     {
+        initColor = checks[0].GetComponentInChildren<Text>().color;
         t = spotlight.transform;
         b = btn.transform;
         foreach (GameObject b in checks)
         {
             b.GetComponent<Button>().interactable = false ;
+            b.GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
         }
         Informacoes.setTutorial(true);
         panel_text.text = "Um quilograma possui 1000 gramas!";
-        initColor = checks[0].GetComponentInChildren<Text>().color ;
         
+
+        
+
+
     }
 
 
@@ -242,17 +247,12 @@ public class Tutorial : MonoBehaviour
             case 0:
                 spotlight.transform.position = new Vector3(t.position.x, -1.2f, 0) ;
                 spotlight.transform.localScale = new Vector3(7.23f, 2f, 1);
-                
-                //btn.transform.localScale = new Vector3(1, 1, 1);
-                //btn.transform.localPosition = new Vector3(320, -158, 0);
-                //btn.transform.localPosition = new Vector3(320, -124, 0);
+
                 txtPergunta.text = "Aqui estão as possíveis respostas para as perguntas.";
                 
                 break;
             case 1:
                 txtPergunta.text = "Escolha a primeira opção clicando no quadrado.";
-                //btn.transform.position = checks[0].transform.position;
-                //btn.transform.localScale = new Vector3(1, 1, 1);
                 btn.SetActive(false);
                 checks[0].GetComponent<Button>().interactable = true;
                 checks[0].GetComponentInChildren<Text>().color = initColor;
@@ -260,19 +260,23 @@ public class Tutorial : MonoBehaviour
 
             case 2:
                 txtPergunta.text = "Muito bem!";
-                //btn.transform.localScale = new Vector3(1, 1, 1);
                 
                 btn.GetComponent<Image>().enabled = true;
                 btn.SetActive(true);
                 checks[0].GetComponent<Button>().interactable = false;
                 checks[0].GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
+
+                checks[1].GetComponent<Button>().interactable = false;
+                checks[1].GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
+
+                checks[2].GetComponent<Button>().interactable = false;
+                checks[2].GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
+
+                checks[3].GetComponent<Button>().interactable = false;
+                checks[3].GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
                 break;
             case 3:
                 spotlight.gameObject.SetActive(false);
-
-                //btn.transform.localScale = new Vector3(1, 1, 1);
-                
-                //btn.transform.localPosition = new Vector3(320, -124, 0);
                 txtPergunta.text = "Leia a pergunta e escolha a que você acha que seja a resposta!\n";
                 txtPergunta.text = txtPergunta.text + "Quantos lados tem um triângulo?";
 
@@ -295,13 +299,11 @@ public class Tutorial : MonoBehaviour
                 {
                     imgPerguntas[0].sprite = spriteCertoErrado[1];
                     txtPergunta.text = "Parabéns! Você acertou a resposta!";
-                    //imgPerguntas[0].color = Color.green;
                 }
                 else
                 {
                     imgPerguntas[0].sprite = spriteCertoErrado[0];
                     txtPergunta.text = "Não foi dessa vez, continue tentando!\n Um triângulo possui TRÊS lados!";
-                    //imgPerguntas[0].color = Color.red;
                 }
                 foreach (GameObject b in checks)
                 {
