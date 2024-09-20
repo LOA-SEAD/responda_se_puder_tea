@@ -2201,6 +2201,14 @@ MonoBehaviour:
   sim: {fileID: 0}
   nao: {fileID: 0}
   play: {fileID: 0}
+  opcoes: {fileID: 0}
+  intrucoes: {fileID: 0}
+  sair: {fileID: 0}
+  playAudio: {fileID: 0}
+  opcoesAudio: {fileID: 0}
+  intrucoesAudio: {fileID: 0}
+  sairAudio: {fileID: 0}
+  musica_inicial: {fileID: 0}
   voltarBotao: {fileID: 0}
   Panel_confirmar_anim: {fileID: 0}
 --- !u!114 &1126850060
@@ -2245,7 +2253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f59e0e24fa46a642b64452bfee21bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonToSelect: {fileID: 218057633}
+  buttonsToSelect: []
 --- !u!114 &1126850062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3684,8 +3692,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.6650004, y: 16.099993}
-  m_SizeDelta: {x: 172.22, y: 30}
+  m_AnchoredPosition: {x: -1.55, y: 15.675}
+  m_SizeDelta: {x: 179.99, y: 31.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1765213414
 MonoBehaviour:
