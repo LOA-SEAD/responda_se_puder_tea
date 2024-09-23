@@ -248,11 +248,11 @@ public class Tutorial : MonoBehaviour
                 spotlight.transform.position = new Vector3(t.position.x, -1.2f, 0) ;
                 spotlight.transform.localScale = new Vector3(7.23f, 2f, 1);
 
-                txtPergunta.text = "Aqui estão as possíveis respostas para as perguntas.";
+                txtPergunta.text = "Aqui estï¿½o as possï¿½veis respostas para as perguntas.";
                 
                 break;
             case 1:
-                txtPergunta.text = "Escolha a primeira opção clicando no quadrado.";
+                txtPergunta.text = "Escolha a primeira opï¿½ï¿½o clicando no quadrado.";
                 btn.SetActive(false);
                 checks[0].GetComponent<Button>().interactable = true;
                 checks[0].GetComponentInChildren<Text>().color = initColor;
@@ -277,8 +277,8 @@ public class Tutorial : MonoBehaviour
                 break;
             case 3:
                 spotlight.gameObject.SetActive(false);
-                txtPergunta.text = "Leia a pergunta e escolha a que você acha que seja a resposta!\n";
-                txtPergunta.text = txtPergunta.text + "Quantos lados tem um triângulo?";
+                txtPergunta.text = "Leia a pergunta e escolha a que vocï¿½ acha que seja a resposta!\n";
+                txtPergunta.text = txtPergunta.text + "Quantos lados tem um triï¿½ngulo?";
 
                 
                 foreach (GameObject b in checks)
@@ -298,12 +298,12 @@ public class Tutorial : MonoBehaviour
                 if (escolha == 3)
                 {
                     imgPerguntas[0].sprite = spriteCertoErrado[1];
-                    txtPergunta.text = "Parabéns! Você acertou a resposta!";
+                    txtPergunta.text = "Parabï¿½ns! Vocï¿½ acertou a resposta!";
                 }
                 else
                 {
                     imgPerguntas[0].sprite = spriteCertoErrado[0];
-                    txtPergunta.text = "Não foi dessa vez, continue tentando!\n Um triângulo possui TRÊS lados!";
+                    txtPergunta.text = "Nï¿½o foi dessa vez, continue tentando!\n Um triï¿½ngulo possui TRï¿½S lados!";
                 }
                 foreach (GameObject b in checks)
                 {
@@ -324,7 +324,7 @@ public class Tutorial : MonoBehaviour
 
                 //btn.transform.localScale = new Vector3(1, 1, 1);
                 
-                txtPergunta.text = "Se tiver dúvidas, basta clicar nos botões de ajuda abaixo!\n";
+                txtPergunta.text = "Se tiver dï¿½vidas, basta clicar nos botï¿½es de ajuda abaixo!\n";
 
                 foreach (Button b in Dica5050)
                 {
@@ -353,9 +353,9 @@ public class Tutorial : MonoBehaviour
 
                 //btn.transform.localScale = new Vector3(1, 1, 1);
 
-                txtPergunta.text = "- 50/50 irá eliminar duas alternativas erradas!\n";
-                txtPergunta.text = txtPergunta.text + "- Dica irá dar uma pista da resposta!\n";
-                txtPergunta.text = txtPergunta.text + "- Se quiser, pode ir para a próxima pergunta com o 'Pular'!";
+                txtPergunta.text = "- 50/50 irï¿½ eliminar duas alternativas erradas!\n";
+                txtPergunta.text = txtPergunta.text + "- Dica irï¿½ dar uma pista da resposta!\n";
+                txtPergunta.text = txtPergunta.text + "- Se quiser, pode ir para a prï¿½xima pergunta com o 'Pular'!";
 
                 foreach (Button b in Dica5050)
                 {
@@ -418,7 +418,7 @@ public class Tutorial : MonoBehaviour
 
                     //btn.transform.localPosition = new Vector3(320, -124, 0);
                     txtPergunta.text = "Quantas faces tem um cubo?";
-                    panel_text.text = "Uma sala com 4 paredes, tem também um teto e um chão!";
+                    panel_text.text = "Uma sala com 4 paredes, tem tambï¿½m um teto e um chï¿½o!";
                     
                     foreach (GameObject b in checks)
                     {
@@ -450,7 +450,7 @@ public class Tutorial : MonoBehaviour
                     imgPerguntas[1].sprite = spriteCertoErrado[1];
                     bErrou = false;
                     //imgPerguntas[1].color = Color.green;
-                    txtPergunta.text = "Parabéns! Você acertou!\n Já pode finalizar o Tutorial!";
+                    txtPergunta.text = "Parabï¿½ns! Vocï¿½ acertou!\n Jï¿½ pode finalizar o Tutorial!";
                     btn.SetActive(true);
                     step = 9;
 
@@ -481,18 +481,18 @@ public class Tutorial : MonoBehaviour
                     step = 9;
                     if (!bErrou)
                     {
-                        txtPergunta.text = "Parabéns, você acertou!";
+                        txtPergunta.text = "Parabï¿½ns, vocï¿½ acertou!";
                     }
                     else
                     {
-                        txtPergunta.text = "Não foi dessa vez! Continue tentando!\n";
+                        txtPergunta.text = "Nï¿½o foi dessa vez! Continue tentando!\n";
                         if (bPulou)
                         {
                             txtPergunta.text = txtPergunta.text + "Um cubo tem 6 faces!";
                         }
                         else
                         {
-                            txtPergunta.text = txtPergunta.text + "Um quilômetro tem 1000 metros!";
+                            txtPergunta.text = txtPergunta.text + "Um quilï¿½metro tem 1000 metros!";
                         }
                     }
                     txtPergunta.text = txtPergunta.text + "\nPor aqui finalizamos o Tutorial!";
@@ -533,18 +533,18 @@ public class Tutorial : MonoBehaviour
                 }
                 if (!bErrou)
                 {
-                    txtPergunta.text = "Parabéns, você acertou!";
+                    txtPergunta.text = "Parabï¿½ns, vocï¿½ acertou!";
                 }
                 else
                 {
-                    txtPergunta.text = "Não foi dessa vez! Continue tentando!\n";
+                    txtPergunta.text = "Nï¿½o foi dessa vez! Continue tentando!\n";
                     if (bPulou)
                     {
                         txtPergunta.text = txtPergunta.text + "Um cubo tem 6 faces!";
                     }
                     else
                     {
-                        txtPergunta.text = txtPergunta.text + "Um quilômetro tem 1000 metros!";
+                        txtPergunta.text = txtPergunta.text + "Um quilï¿½metro tem 1000 metros!";
                     }
                 }
                 foreach (Button b in Dica5050)
@@ -662,7 +662,7 @@ public class Tutorial : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("Instrucoes");
         }
         
     }
