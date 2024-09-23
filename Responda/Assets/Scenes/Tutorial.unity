@@ -2355,6 +2355,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1144039890}
+        m_TargetAssemblyTypeName: AudiosTutorial, Assembly-CSharp
+        m_MethodName: GetPergunta
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &240719763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8511,6 +8523,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1144039890}
+        m_TargetAssemblyTypeName: AudiosTutorial, Assembly-CSharp
+        m_MethodName: AttPergunta
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &801678381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10571,6 +10595,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1144039890}
+        m_TargetAssemblyTypeName: AudiosTutorial, Assembly-CSharp
+        m_MethodName: GetPergunta
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &995235708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11935,11 +11971,8 @@ GameObject:
   - component: {fileID: 1144039882}
   - component: {fileID: 1144039881}
   - component: {fileID: 1144039880}
-  - component: {fileID: 1144039889}
   - component: {fileID: 1144039888}
-  - component: {fileID: 1144039885}
-  - component: {fileID: 1144039884}
-  - component: {fileID: 1144039887}
+  - component: {fileID: 1144039890}
   - component: {fileID: 1144039886}
   m_Layer: 0
   m_Name: EventSystem
@@ -11998,43 +12031,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1144039884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144039879}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 858bbdb7b2db280458a470386515209f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  findFirstSelectable: 0
-  pergunta: {fileID: 1082518337}
-  alternativa1: {fileID: 1296274893}
-  alternativa2: {fileID: 1496623175}
-  alternativa3: {fileID: 995235707}
-  alternativa4: {fileID: 240719762}
-  dica: {fileID: 1946947053}
-  ajuda5050: {fileID: 2050714900}
-  pular: {fileID: 386458990}
-  confirmar: {fileID: 1490912044}
-  opcoes: {fileID: 1615383693}
-  btnAnim: {fileID: 0}
-  index: -1
---- !u!114 &1144039885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144039879}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 034af29562a5c004f85591c461bee9c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1144039886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12063,23 +12059,6 @@ MonoBehaviour:
   - {fileID: 1385056500}
   - {fileID: 195102136}
   - {fileID: 1424572188}
---- !u!114 &1144039887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144039879}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f59e0e24fa46a642b64452bfee21bff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonsToSelect:
-  - {fileID: 1082518337}
-  - {fileID: 1991555475}
-  - {fileID: 1490912044}
-  - {fileID: 1991555475}
 --- !u!114 &1144039888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12108,7 +12087,7 @@ MonoBehaviour:
   - {fileID: 1721925823}
   - {fileID: 215911405}
   sliders: []
---- !u!114 &1144039889
+--- !u!114 &1144039890
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12121,12 +12100,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pergunta: {fileID: 2051557316}
+  botao_pergunta: {fileID: 1082518337}
   alternativa1: {fileID: 2113572282}
   alternativa2: {fileID: 737475382}
   alternativa3: {fileID: 769862133}
   alternativa4: {fileID: 2023317507}
   dica: {fileID: 1313897333}
-  adClips: []
+  adClips:
+  - {fileID: 8300000, guid: ad206ff7fe93b21489ea9bf778601d7d, type: 3}
+  - {fileID: 8300000, guid: b8d59f25c479a794b9a6abf7037abf5f, type: 3}
+  - {fileID: 8300000, guid: f235f5f970bb557439d361370e8cfd68, type: 3}
+  - {fileID: 8300000, guid: f3c2895473725b64b99e4fc52e6b312c, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 05a4fe8d093a40b468093f4e2fc67a66, type: 3}
+  - {fileID: 8300000, guid: 18056b9149236514caa1a79a47af2dfd, type: 3}
+  - {fileID: 8300000, guid: 191c3b94d47710f478164f8e7fa949ab, type: 3}
+  - {fileID: 8300000, guid: fec5419289b8eae4baac0d9baf2ffe70, type: 3}
+  - {fileID: 8300000, guid: 38b22ca8dd7e25244a3ae1e3eab42162, type: 3}
+  - {fileID: 8300000, guid: f3c2895473725b64b99e4fc52e6b312c, type: 3}
+  - {fileID: 8300000, guid: a7141a2145dfca048935fbac25c5d54a, type: 3}
+  - {fileID: 8300000, guid: 3f90602bc429f3b44a278962312ce662, type: 3}
+  - {fileID: 8300000, guid: 97c84927a4e543a4a96c167890b43b64, type: 3}
+  - {fileID: 8300000, guid: 30cfe81a4d3e9274bbcb2c990c7b5b4a, type: 3}
+  perguntas:
+  - {fileID: 8300000, guid: c32390ac9da1f9b469ac18ec6533ae17, type: 3}
+  - {fileID: 8300000, guid: 7bad8656e1dc9fc4581ac2eb5d79a8a7, type: 3}
+  - {fileID: 8300000, guid: f5faa846c0bd6694280c84d616558b96, type: 3}
+  - {fileID: 8300000, guid: a1015ad6d0d5ca142897687bd76d0e03, type: 3}
+  - {fileID: 8300000, guid: 92decad4bfb4f444eb48115058b5bdcb, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 6e906cd95f39569488fe55162ab77c6e, type: 3}
+  - {fileID: 8300000, guid: 172b28ec284c7104794790d56174b067, type: 3}
+  - {fileID: 8300000, guid: 7710d5b3ad2523d4aa712fd2e5bf5cae, type: 3}
+  - {fileID: 0}
+  variacoes:
+  - {fileID: 8300000, guid: acb8b9714b99b7149a8cc38425882e6b, type: 3}
+  - {fileID: 8300000, guid: 3a9dab0b1b7ad7447b231c3bdf0ff0d1, type: 3}
+  - {fileID: 8300000, guid: a6475b6c89824a041afe4ccba6dfe395, type: 3}
+  - {fileID: 8300000, guid: 14cc24d0a3a2f994d93d3911a03f07f5, type: 3}
+  - {fileID: 8300000, guid: a6475b6c89824a041afe4ccba6dfe395, type: 3}
+  - {fileID: 8300000, guid: c24273f204cee6348b927a73018e3448, type: 3}
+  pergunta_2_fase: {fileID: 8300000, guid: 3c2086bfa07f00445906d0e7b80e7754, type: 3}
+  pcont: 0
+  questao: 0
+  guarda_pergunta: 0
 --- !u!1 &1148607136
 GameObject:
   m_ObjectHideFlags: 0
@@ -13846,6 +13863,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1144039890}
+        m_TargetAssemblyTypeName: AudiosTutorial, Assembly-CSharp
+        m_MethodName: GetPergunta
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -15925,6 +15954,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1144039890}
+        m_TargetAssemblyTypeName: AudiosTutorial, Assembly-CSharp
+        m_MethodName: GetPergunta
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -20066,18 +20107,6 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 322619410}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1946947053 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 570421369650086174, guid: d151bc655ea6b544799d19e374761bb0,
-    type: 3}
-  m_PrefabInstance: {fileID: 322619410}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1946947049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1946947055 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 570421369650086173, guid: d151bc655ea6b544799d19e374761bb0,
@@ -20490,6 +20519,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1296274893}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1966797726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20746,6 +20787,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
         m_MethodName: showConfirma
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1144039890}
+        m_TargetAssemblyTypeName: AudiosTutorial, Assembly-CSharp
+        m_MethodName: AttPergunta_botao
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -21582,7 +21635,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c32390ac9da1f9b469ac18ec6533ae17, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -22315,7 +22368,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 20ac0d66db0dd0a498ffbf4904b22e8a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
