@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+using UnityEngine.UI;
 public class SelectButtonOnHover : MonoBehaviour, IPointerEnterHandler
 {
     public AudioSource hoverSound; // Arraste o áudio desejado para este campo no Inspector
@@ -16,10 +16,13 @@ public class SelectButtonOnHover : MonoBehaviour, IPointerEnterHandler
     {
         // Reproduz o áudio quando o mouse está sobre o botão
         if (hoverSound != null)
-        {
-            audioSource = hoverSound;
-            audioSource.volume = Informacoes.GetValueLeituraTexto();
-            audioSource.Play();
+        {   if(GetComponent<Button>().IsInteractable())
+            {
+                audioSource = hoverSound;
+                audioSource.volume = Informacoes.GetValueLeituraTexto();
+                audioSource.Play();
+            }
+            
         }
 
         EventSystem.current.SetSelectedGameObject(gameObject);
