@@ -6,6 +6,15 @@ public class AudioStop : MonoBehaviour
 {
     public AudioSource[] audios;
 
+    void Start()
+    {
+        foreach (AudioSource audio in audios)
+        {
+            audio.volume = Informacoes.GetValueLeituraTexto();
+        }
+        
+    }
+
     public void PararAudios(AudioSource audi_button)
     {
        foreach (AudioSource audio in audios)

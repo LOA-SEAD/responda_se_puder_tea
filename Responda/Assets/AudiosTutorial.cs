@@ -19,6 +19,7 @@ public class AudiosTutorial : MonoBehaviour
     public AudioClip[] variacoes;
 
     public AudioClip pergunta_2_fase;
+    public AudioClip dica_2_fase;
 
     public int pcont = 0;
 
@@ -63,6 +64,7 @@ public class AudiosTutorial : MonoBehaviour
             AttPergunta();
         }
         questao++;
+        botao_pergunta.Select();
     }
 
     public void GetPergunta(int bot){
@@ -82,6 +84,8 @@ public class AudiosTutorial : MonoBehaviour
         dica.volume = Informacoes.GetValueLeituraTexto();
         pergunta.clip = pergunta_2_fase;
         pergunta.volume = Informacoes.GetValueLeituraTexto();
+        dica.clip = dica_2_fase;
+        dica.volume = Informacoes.GetValueLeituraTexto();
         botao_pergunta.Select();
         questao++;
 
