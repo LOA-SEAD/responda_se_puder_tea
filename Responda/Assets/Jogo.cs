@@ -176,6 +176,7 @@ public class Jogo : MonoBehaviour
 
     public int caminhos;
 
+    public Button[] btnAlt;
     void Start()
     {
         Debug.Log("[Jogo] Start - Inicio");
@@ -1914,5 +1915,14 @@ public class Jogo : MonoBehaviour
 
     public void TocarPergunta(){
         audio_pergunta.Play();
+    }
+
+    public void InteragirPerguntas(bool b)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            btnAlt[i].GetComponent<Button>().interactable = b;
+        }
+
     }
 }

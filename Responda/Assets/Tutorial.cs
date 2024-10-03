@@ -14,7 +14,7 @@ public class Tutorial : MonoBehaviour
     public Opcoes opt;
     public int step = 0;
     bool bErrou = false;
-    public int qtdPular = 2;
+    public int qtdPular = 1;
     public int qtd5050 = 2;
 
     [SerializeField] Text txtPular;
@@ -218,8 +218,9 @@ public class Tutorial : MonoBehaviour
     public void Pulou()
     {
         bPulou = true;
-        qtdPular -= 1;
-        txtPular.text = "x" + qtdPular.ToString();
+        qtdPular = qtdPular - 1;
+        
+        txtPular.text = "x0";
     }
     public void ResetEscolha()
     {
@@ -333,7 +334,7 @@ public class Tutorial : MonoBehaviour
                 spotlight.gameObject.SetActive(false);
 
                 //btn.transform.localScale = new Vector3(1, 1, 1);
-                
+                imgPerguntas[1].sprite = spriteCertoErrado[2];
                 txtPergunta.text = "Se tiver dúvidas, basta clicar nos botões de ajuda abaixo!\n";
 
                 foreach (Button b in Dica5050)
@@ -681,4 +682,12 @@ public class Tutorial : MonoBehaviour
         escolha = i;
     }
 
+    public void InteragirPerguntas(bool b)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            checks[i].GetComponent<Button>().interactable = b;
+        }
+
+    }
 }

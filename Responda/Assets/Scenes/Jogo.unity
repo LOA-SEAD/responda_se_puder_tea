@@ -1163,6 +1163,18 @@ MonoBehaviour:
           m_StringArgument: 1
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1144039883}
+        m_TargetAssemblyTypeName: Jogo, Assembly-CSharp
+        m_MethodName: InteragirPerguntas
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &130709368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9406,6 +9418,11 @@ MonoBehaviour:
   perguntas_bool: 
   ajudas_usadas: 
   caminhos: 0
+  btnAlt:
+  - {fileID: 1981316013}
+  - {fileID: 130709367}
+  - {fileID: 1716434943}
+  - {fileID: 1997640003}
   pergunta_trocar: 00000000000000000000000000000000
 --- !u!114 &1144039884
 MonoBehaviour:
@@ -13080,6 +13097,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1144039883}
+        m_TargetAssemblyTypeName: Jogo, Assembly-CSharp
+        m_MethodName: InteragirPerguntas
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1569739279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13844,6 +13873,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 2
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1144039883}
+        m_TargetAssemblyTypeName: Jogo, Assembly-CSharp
+        m_MethodName: InteragirPerguntas
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1716434944
@@ -15979,6 +16020,18 @@ MonoBehaviour:
           m_StringArgument: 0
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1144039883}
+        m_TargetAssemblyTypeName: Jogo, Assembly-CSharp
+        m_MethodName: InteragirPerguntas
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1981316014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16169,6 +16222,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 3
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1144039883}
+        m_TargetAssemblyTypeName: Jogo, Assembly-CSharp
+        m_MethodName: InteragirPerguntas
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1997640004

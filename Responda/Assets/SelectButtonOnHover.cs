@@ -16,15 +16,22 @@ public class SelectButtonOnHover : MonoBehaviour, IPointerEnterHandler
     {
         // Reproduz o áudio quando o mouse está sobre o botão
         if (hoverSound != null)
-        {   if(GetComponent<Button>().IsInteractable())
+        { 
+            if(GetComponent<Button>() != null)
             {
-                audioSource = hoverSound;
-                audioSource.volume = Informacoes.GetValueLeituraTexto();
-                audioSource.Play();
+                if (GetComponent<Button>().IsInteractable()) //Não reproduzir se estiver interactable = false
+                {
+                    audioSource = hoverSound;
+                    audioSource.volume = Informacoes.GetValueLeituraTexto();
+                    audioSource.Play();
+                }
             }
+           
             
         }
 
         EventSystem.current.SetSelectedGameObject(gameObject);
     }
+
+
 }
