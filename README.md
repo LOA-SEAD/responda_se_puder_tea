@@ -1,6 +1,4 @@
-Repositorio para o projeto de Iniciacao Cientifica
+Repository for the Scientific Initiation project
 
-Responda se Puder Inclusivo
-
-- Versao do Unity
-2021.3.12f1
+- Responda se Puder Inclusivo
+- Unity Version: 2021.3.12f1
