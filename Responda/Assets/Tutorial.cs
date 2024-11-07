@@ -9,6 +9,8 @@ using System.Diagnostics;
 
 public class Tutorial : MonoBehaviour
 {
+    public bool canUse = true;
+    public bool primeira = false;
     bool bPulou = false;
     int etapa = 1;
     public Opcoes opt;
@@ -193,6 +195,7 @@ public class Tutorial : MonoBehaviour
         b = btn.transform;
         foreach (GameObject b in checks)
         {
+            canUse = false;
             b.GetComponent<Button>().interactable = false ;
             
             b.GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
@@ -202,7 +205,25 @@ public class Tutorial : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if(!primeira)
+        {
+            foreach (GameObject b in checks)
+            {
 
+                b.GetComponent<Button>().interactable = canUse;
+
+                //b.GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
+            }
+            buttons[0].GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            checks[0].GetComponent<Button>().interactable = true;
+        }
+        
+    }
     public void MostrarDica()
     {
         Panel_anim.SetBool("showPanel", true);
@@ -260,20 +281,30 @@ public class Tutorial : MonoBehaviour
                 spotlight.transform.localScale = new Vector3(7.23f, 2f, 1);
 
                 txtPergunta.text = "Aqui estão as possíveis respostas para as perguntas.";
-                
+                canUse = false;
                 break;
             case 1:
                 txtPergunta.text = "Escolha a primeira opção clicando no quadrado.";
+                //canUse = true;
+                primeira = true;
                 btn.SetActive(false);
-                checks[0].GetComponent<Button>().interactable = true;
+                //checks[0].GetComponent<Button>().interactable = true;
                 checks[0].GetComponentInChildren<Text>().color = initColor;
+                checks[1].GetComponent<Button>().interactable = false;
+                checks[1].GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1); ;
+                checks[2].GetComponent<Button>().interactable = false;
+                checks[2].GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1); ;
+                checks[3].GetComponent<Button>().interactable = false;
+                checks[3].GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1); ;
                 break;
 
             case 2:
+                primeira = false;
                 txtPergunta.text = "Muito bem!";
-                
+                canUse = false;
                 btn.GetComponent<Image>().enabled = true;
                 btn.SetActive(true);
+                
                 checks[0].GetComponent<Button>().interactable = false;
                 checks[0].GetComponentInChildren<Text>().color = new Color(0.427451f, 0.427451f, 0.427451f, 1);
 
@@ -290,8 +321,8 @@ public class Tutorial : MonoBehaviour
                 spotlight.gameObject.SetActive(false);
                 txtPergunta.text = "Leia a pergunta e escolha a que você acha que seja a resposta!\n";
                 txtPergunta.text = txtPergunta.text + "Quantos lados tem um triângulo?";
+                canUse = true;
 
-                
                 foreach (GameObject b in checks)
                 {
                     b.GetComponent<Button>().interactable = true;
@@ -310,11 +341,13 @@ public class Tutorial : MonoBehaviour
                 {
                     imgPerguntas[0].sprite = spriteCertoErrado[1];
                     txtPergunta.text = "Parabéns! Você acertou a resposta!";
+                    canUse = false;
                 }
                 else
                 {
                     imgPerguntas[0].sprite = spriteCertoErrado[0];
                     txtPergunta.text = "Não foi dessa vez, continue tentando!\nUm triângulo possui TRÊS lados!";
+                    canUse = false;
                 }
                 foreach (GameObject b in checks)
                 {
@@ -336,6 +369,7 @@ public class Tutorial : MonoBehaviour
                 //btn.transform.localScale = new Vector3(1, 1, 1);
                 imgPerguntas[1].sprite = spriteCertoErrado[2];
                 txtPergunta.text = "Se tiver dúvidas, basta clicar nos botões de ajuda abaixo!\n";
+                canUse = false;
 
                 foreach (Button b in Dica5050)
                 {
@@ -361,7 +395,7 @@ public class Tutorial : MonoBehaviour
                 break;
             case 6:
                 spotlight.gameObject.SetActive(false);
-
+                canUse = false;
                 //btn.transform.localScale = new Vector3(1, 1, 1);
 
                 txtPergunta.text = "- 50/50 irá eliminar duas alternativas erradas!\n";
@@ -393,7 +427,7 @@ public class Tutorial : MonoBehaviour
             case 7:
                 escolha = -1;
                 spotlight.gameObject.SetActive(false);
-
+                canUse = true;
                 txtPergunta.text = "Quantos quilometros tem em um metro?";
 
                 foreach (GameObject b in checks)
@@ -430,7 +464,7 @@ public class Tutorial : MonoBehaviour
                     //btn.transform.localPosition = new Vector3(320, -124, 0);
                     txtPergunta.text = "Quantas faces tem um cubo?";
                     panel_text.text = "Uma sala com 4 paredes, tem também um teto e um chão!";
-                    
+                    canUse = true;
                     foreach (GameObject b in checks)
                     {
                         b.GetComponent<Button>().interactable = true;
@@ -462,6 +496,7 @@ public class Tutorial : MonoBehaviour
                     bErrou = false;
                     //imgPerguntas[1].color = Color.green;
                     txtPergunta.text = "Parabéns! Você acertou!\n Já pode finalizar o Tutorial!";
+                    canUse = false;
                     btn.SetActive(true);
                     step = 9;
 
@@ -493,10 +528,12 @@ public class Tutorial : MonoBehaviour
                     if (!bErrou)
                     {
                         txtPergunta.text = "Parabéns, você acertou!";
+                        canUse = false;
                     }
                     else
                     {
                         txtPergunta.text = "Não foi dessa vez! Continue tentando!\n";
+                        canUse = false;
                         if (bPulou)
                         {
                             txtPergunta.text = txtPergunta.text + "Um cubo tem 6 faces!";
@@ -507,6 +544,7 @@ public class Tutorial : MonoBehaviour
                         }
                     }
                     txtPergunta.text = txtPergunta.text + "\nPor aqui finalizamos o Tutorial!";
+                    canUse = false;
                     foreach (Button b in Dica5050)
                     {
                         b.gameObject.SetActive(true);
@@ -545,11 +583,13 @@ public class Tutorial : MonoBehaviour
                 if (!bErrou)
                 {
                     txtPergunta.text = "Parabéns, você acertou!";
+                    canUse = false;
                 }
                 else
                 {
                     txtPergunta.text = "Não foi dessa vez! Continue tentando!\n";
                     txtPergunta.text = txtPergunta.text + "Um cubo tem 6 faces!";
+                    canUse = false;
 
                 }
                 foreach (Button b in Dica5050)
@@ -572,7 +612,7 @@ public class Tutorial : MonoBehaviour
 
 
                 txtPergunta.text = txtPergunta.text + "\nPor aqui finalizamos o Tutorial!";
-
+                canUse = false;
                 btn.SetActive(true);
                 break;
             case 10:
@@ -581,7 +621,7 @@ public class Tutorial : MonoBehaviour
         }
         bPulou = false;
         step++;
-
+        UnityEngine.Debug.Log("Interact: " + checks[1].GetComponent<Button>().interactable);
     }
 
     private void OnDestroy()
