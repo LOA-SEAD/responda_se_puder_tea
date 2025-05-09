@@ -105,6 +105,9 @@ public class Jogo : MonoBehaviour
     int tirar_2;
     public int pular_agora;
 
+    //usada para enviar dados ao servidor
+    public static int contador = 0;
+
     public int questao_x_de_y;
     public int selecionou5050 = NAO;
 
@@ -1054,6 +1057,21 @@ public class Jogo : MonoBehaviour
         audio_opcoes.enabled = true;
     }
     
+    // usadas para enviar dados ao servidor
+    bool acertou_questão = false;
+
+    string[] choices = new string[4];
+    int levelId = 0;
+
+    string nivel_atual_API = "";
+
+    int levelSize = 0;
+
+    string pergunta_atualmente_exibida = "";
+    string alternativa_atualmente_correta = "";
+
+    
+
     public void ConfirmarAlternativa()
     {
         //confirmar.interactable = false;
@@ -1065,6 +1083,26 @@ public class Jogo : MonoBehaviour
         SomarPontuacao();
         ExibirCertoOuErrado();
         EsconderPanelConfirmar();
+        StartCoroutine(EnviarDados());
+        
+             
+    }
+
+    // <summary>
+    // Envia o numero da pergunta, a resposta correta e a resposta escolhida, o nivel atual, e se acertou ou não.
+    // ....
+    public  IEnumerator EnviarDados(){
+
+        
+        saveChallengeStatsMessage testing_saveChallengeStats = new saveChallengeStatsMessage(CarregaDados.exportedResourceId,pergunta_atualmente_exibida,alternativa_atualmente_correta,contador,choices,alternativa_escolhida,acertou_questão,levelSize,levelId ,nivel_atual_API,"multipleChoice");
+
+        // precisa ser static, pois o script esta se destruindo
+        contador++;
+
+
+        Debug.Log("enviando para http://localhost/stats/saveChallengeStats os dados : " + testing_saveChallengeStats.exportedResourceId);
+
+        yield return StartCoroutine(MessageSender.Instance.Send(testing_saveChallengeStats, CarregaDados.url +"/stats/saveChallengeStats"));
     }
 
     public void NaoConfirmarAlternativa(){
@@ -1298,6 +1336,7 @@ public class Jogo : MonoBehaviour
         }
     }
 
+    
     private void SomarPontuacao()
     {
 
@@ -1306,6 +1345,8 @@ public class Jogo : MonoBehaviour
             if(alternativa_escolhida == respostas_facil[questao_x_de_y])
             {
                 pontos_ganhos = 10;
+
+                acertou_questão = true;
 
                 if(Acerto_Consecutivo){
                     pontos_ganhos += 5;
@@ -1318,6 +1359,8 @@ public class Jogo : MonoBehaviour
             else
             {
                 pontos_ganhos = 0;
+
+                acertou_questão = false;
 
                 Acerto_Consecutivo = false;
             }
@@ -1328,6 +1371,8 @@ public class Jogo : MonoBehaviour
             {
                 pontos_ganhos = 15;
 
+                acertou_questão = true;
+
                 if(Acerto_Consecutivo){
                     pontos_ganhos += 5;
                     quantidade_acertos ++;
@@ -1339,6 +1384,8 @@ public class Jogo : MonoBehaviour
             else
             {
                 pontos_ganhos = 0;
+
+                acertou_questão = false;
 
                 Acerto_Consecutivo = false;
             }
@@ -1349,6 +1396,8 @@ public class Jogo : MonoBehaviour
             {
                 pontos_ganhos = 20;
 
+                acertou_questão = true;
+
                 if(Acerto_Consecutivo){
                     pontos_ganhos += 5;
                     quantidade_acertos ++;
@@ -1360,6 +1409,8 @@ public class Jogo : MonoBehaviour
             else
             {
                 pontos_ganhos = 0;
+
+                acertou_questão = false;
 
                 Acerto_Consecutivo = false;
             }
@@ -1455,6 +1506,7 @@ public class Jogo : MonoBehaviour
         }
     }
 
+    
     private void ExibirNaTelaFacil()
     {
         dificuldade_tela.text = "NÍVEL FÁCIL";
@@ -1463,7 +1515,15 @@ public class Jogo : MonoBehaviour
         else
             numero_questao_tela.text = "Questão " + (questao_x_de_y + 1).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
         pergunta_tela.text = perguntas_facil[questao_x_de_y];
+
+        //para enviar para o servidor
+        pergunta_atualmente_exibida = perguntas_facil[questao_x_de_y];
+
         alternativa_correta = respostas_facil[questao_x_de_y];
+
+        //para enviar para o servidor
+        alternativa_atualmente_correta = respostas_possiveis_facil[questao_x_de_y, alternativa_correta];
+
         
         //alternativas[0].Select();
         alternativa1_tela.text = respostas_possiveis_facil[questao_x_de_y, 0];
@@ -1492,7 +1552,14 @@ public class Jogo : MonoBehaviour
         else
             numero_questao_tela.text = "Questão " + (questao_x_de_y + 1 + quantidade_facil).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
         pergunta_tela.text = perguntas_medio[questao_x_de_y];
+
+        //para enviar para o servidor
+        pergunta_atualmente_exibida = perguntas_medio[questao_x_de_y];
+
         alternativa_correta = respostas_medio[questao_x_de_y];
+
+        //para enviar para o servidor
+        alternativa_atualmente_correta = respostas_possiveis_medio[questao_x_de_y, alternativa_correta];
 
         //alternativas[0].Select();
         alternativa1_tela.text = respostas_possiveis_medio[questao_x_de_y, 0];
@@ -1521,7 +1588,14 @@ public class Jogo : MonoBehaviour
         else
             numero_questao_tela.text = "Questão " + (questao_x_de_y + 1 + quantidade_facil + quantidade_medio).ToString() + " de " + (quantidade_facil + quantidade_medio + quantidade_dificil).ToString();
         pergunta_tela.text = perguntas_dificil[questao_x_de_y];
+
+        //para enviar para o servidor
+        pergunta_atualmente_exibida = perguntas_dificil[questao_x_de_y];
+
         alternativa_correta = respostas_dificil[questao_x_de_y];
+
+        //para enviar para o servidor
+        alternativa_atualmente_correta = respostas_possiveis_dificil[questao_x_de_y, alternativa_correta];
             
         //alternativas[0].Select();
         alternativa1_tela.text = respostas_possiveis_dificil[questao_x_de_y, 0];
@@ -1748,8 +1822,17 @@ public class Jogo : MonoBehaviour
         estado = JANELA;
         botao_panel.Select();
 
+
         if (nivel_atual == FACIL)
         {
+            //Dados para o servidor
+            nivel_atual_API = "FACIL";
+            levelId = 0;
+            levelSize = 3;
+            choices[0] = respostas_possiveis_facil[questao_x_de_y, 0];
+            choices[1] = respostas_possiveis_facil[questao_x_de_y, 1];
+            choices[2] = respostas_possiveis_facil[questao_x_de_y, 2];
+            choices[3] = respostas_possiveis_facil[questao_x_de_y, 3];
             if (alternativa_escolhida == respostas_facil[questao_x_de_y])
         {
             showCerto = true;
@@ -1770,6 +1853,14 @@ public class Jogo : MonoBehaviour
         }
         else if (nivel_atual == MEDIO)
         {
+            //Dados para o servidor
+            nivel_atual_API = "MEDIO";
+            levelId = 1;
+            levelSize = 3;
+            choices[0] = respostas_possiveis_medio[questao_x_de_y, 0];
+            choices[1] = respostas_possiveis_medio[questao_x_de_y, 1];
+            choices[2] = respostas_possiveis_medio[questao_x_de_y, 2];
+            choices[3] = respostas_possiveis_medio[questao_x_de_y, 3];
 
         if (alternativa_escolhida == respostas_medio[questao_x_de_y])
         {
@@ -1792,6 +1883,14 @@ public class Jogo : MonoBehaviour
         }
         else if(nivel_atual == DIFICIL)
         {
+            //Dados para o servidor
+            nivel_atual_API = "DIFICIL";
+            levelId = 2;
+            levelSize = 4;
+            choices[0] = respostas_possiveis_dificil[questao_x_de_y, 0];
+            choices[1] = respostas_possiveis_dificil[questao_x_de_y, 1];
+            choices[2] = respostas_possiveis_dificil[questao_x_de_y, 2];
+            choices[3] = respostas_possiveis_dificil[questao_x_de_y, 3];
 
         if (alternativa_escolhida == respostas_dificil[questao_x_de_y])
         {

@@ -8,6 +8,12 @@ using UnityEngine.Networking;
 public class CarregaDados : MonoBehaviour {
     private static string arquivo = "DadosResponda.json";
 
+    public static string url;
+
+    public static int exportedResourceId;
+
+    private static string arquivo_remar = "remar.json";
+
     private static string[] conteudo;
 
     public static List<DadosJogo> listaDados = new List<DadosJogo>();
@@ -33,6 +39,7 @@ public class CarregaDados : MonoBehaviour {
                 Debug.Log("[CarregaDados] - UNITY_WEBGL - Fim");
             #else
                 GetByBSA();
+                GetDataRemar();
             #endif
             Debug.Log("[CarregaDados] - Load() - Fim");
         }
@@ -102,6 +109,25 @@ public class CarregaDados : MonoBehaviour {
        isLoaded = true;
        Debug.Log("[CarregaDados] - GetByBSA() - Fim");
     }
+
+
+    // Método para carregar os dados do arquivo JSON "remar.json"
+    // Esse arquivo deve estar na pasta StreamingAssets
+    private static void GetDataRemar()
+    {
+        Debug.Log("[CarregaDados] - GetDataRemar() - Inicio");
+        BetterStreamingAssets.Initialize();
+        // Lê o arquivo inteiro como uma única string
+        string jsonText = BetterStreamingAssets.ReadAllText(arquivo_remar);
+        // Parse o JSON completo
+        DadosRemar dados = JsonUtility.FromJson<DadosRemar>(jsonText);
+    
+        url = dados.url;
+        exportedResourceId = dados.exportedResourceId;
+    
+        Debug.Log("[CarregaDados] - GetDataRemar() - Fim");
+        isLoaded = true;
+    }
 }
 
 [System.Serializable]
@@ -117,4 +143,11 @@ public class DadosJogo
     public string audio_pergunta;
     public string audio_dica;
     public string[] audio_alternativas = new string[4];
+}
+
+[System.Serializable]
+public class DadosRemar
+{
+    public string url;
+    public int exportedResourceId;
 }

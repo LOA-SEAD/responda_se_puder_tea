@@ -126,6 +126,12 @@ public class FimJogo : MonoBehaviour
 
         pontos_final.text = "Pontuação Antes: " + pontuacao_aux + "    Final: " + pontuacao.ToString();
         Informacoes.SetPontos(pontuacao);
+
+        //dados para o servidor
+        SaveRankingStatsMessage testing_saveRankingStats = new SaveRankingStatsMessage(CarregaDados.exportedResourceId, pontuacao);
+        StartCoroutine(MessageSender.Instance.Send(testing_saveRankingStats, "http://localhost/stats/saveRankingStats"));
+        //volta para 0 , caso o jogador queira jogar denovo
+        Jogo.contador = 0;
         
     }
 }

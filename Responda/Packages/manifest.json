@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.endel.nativewebsocket": "file:C:/Users/enzod/Desktop/NativeWebSocket-master/NativeWebSocket/Assets",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.collab-proxy": "1.17.2",
