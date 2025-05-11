@@ -1061,14 +1061,17 @@ public class Jogo : MonoBehaviour
     bool acertou_questão = false;
 
     string[] choices = new string[4];
+
     int levelId = 0;
 
-    string nivel_atual_API = "";
+    string nivel_atual_API = "FACIL";
 
     int levelSize = 0;
 
     string pergunta_atualmente_exibida = "";
     string alternativa_atualmente_correta = "";
+
+    double time_now;
 
     
 
@@ -1092,15 +1095,21 @@ public class Jogo : MonoBehaviour
     // Envia o numero da pergunta, a resposta correta e a resposta escolhida, o nivel atual, e se acertou ou não.
     // ....
     public  IEnumerator EnviarDados(){
-
         
         saveChallengeStatsMessage testing_saveChallengeStats = new saveChallengeStatsMessage(CarregaDados.exportedResourceId,pergunta_atualmente_exibida,alternativa_atualmente_correta,contador,choices,alternativa_escolhida,acertou_questão,levelSize,levelId ,nivel_atual_API,"multipleChoice");
+        
+        // pegar o tempo atual, ja em double
+        time_now = DateTime.UtcNow.ToOADate();
 
+        SaveTimeStatsMessage testing_saveTimeStats = new SaveTimeStatsMessage(CarregaDados.exportedResourceId,CarregaDados.gameId,time_now,2,levelId,nivel_atual_API,contador);
         // precisa ser static, pois o script esta se destruindo
         contador++;
 
 
         Debug.Log("enviando para http://localhost/stats/saveChallengeStats os dados : " + testing_saveChallengeStats.exportedResourceId);
+
+
+        StartCoroutine(MessageSender.Instance.Send(testing_saveTimeStats,CarregaDados.url + "/stats/saveTimeStats"));
 
         yield return StartCoroutine(MessageSender.Instance.Send(testing_saveChallengeStats, CarregaDados.url +"/stats/saveChallengeStats"));
     }
@@ -1491,7 +1500,9 @@ public class Jogo : MonoBehaviour
 
     private void ExibirNaTela()
     {
-
+        // pegar o tempo atual, ja em double
+        time_now = DateTime.UtcNow.ToOADate();
+        
         if (nivel_atual == FACIL)
         {
             ExibirNaTelaFacil();
@@ -1504,6 +1515,11 @@ public class Jogo : MonoBehaviour
         {
             ExibirNaTelaDificil();
         }
+
+        //Envia o tempo de inicio da pergunta
+        SaveTimeStatsMessage testing_saveTimeStats = new SaveTimeStatsMessage(CarregaDados.exportedResourceId,CarregaDados.gameId,time_now,1,levelId,nivel_atual_API,contador);
+        // enviando dados para o servidor
+        StartCoroutine(MessageSender.Instance.Send(testing_saveTimeStats, CarregaDados.url +"/stats/saveTimeStats"));
     }
 
     
@@ -1524,6 +1540,10 @@ public class Jogo : MonoBehaviour
         //para enviar para o servidor
         alternativa_atualmente_correta = respostas_possiveis_facil[questao_x_de_y, alternativa_correta];
 
+        //Dados para o servidor
+        nivel_atual_API = "FACIL";
+        levelId = 0;
+        levelSize = 3;
         
         //alternativas[0].Select();
         alternativa1_tela.text = respostas_possiveis_facil[questao_x_de_y, 0];
@@ -1561,6 +1581,12 @@ public class Jogo : MonoBehaviour
         //para enviar para o servidor
         alternativa_atualmente_correta = respostas_possiveis_medio[questao_x_de_y, alternativa_correta];
 
+
+        //Dados para o servidor
+        nivel_atual_API = "MEDIO";
+        levelId = 1;
+        levelSize = 3;
+
         //alternativas[0].Select();
         alternativa1_tela.text = respostas_possiveis_medio[questao_x_de_y, 0];
         alternativa2_tela.text = respostas_possiveis_medio[questao_x_de_y, 1];
@@ -1597,6 +1623,11 @@ public class Jogo : MonoBehaviour
         //para enviar para o servidor
         alternativa_atualmente_correta = respostas_possiveis_dificil[questao_x_de_y, alternativa_correta];
             
+        //Dados para o servidor
+        nivel_atual_API = "DIFICIL";
+        levelId = 2;
+        levelSize = 4;
+
         //alternativas[0].Select();
         alternativa1_tela.text = respostas_possiveis_dificil[questao_x_de_y, 0];
         alternativa2_tela.text = respostas_possiveis_dificil[questao_x_de_y, 1];
@@ -1825,10 +1856,7 @@ public class Jogo : MonoBehaviour
 
         if (nivel_atual == FACIL)
         {
-            //Dados para o servidor
-            nivel_atual_API = "FACIL";
-            levelId = 0;
-            levelSize = 3;
+            
             choices[0] = respostas_possiveis_facil[questao_x_de_y, 0];
             choices[1] = respostas_possiveis_facil[questao_x_de_y, 1];
             choices[2] = respostas_possiveis_facil[questao_x_de_y, 2];
@@ -1853,10 +1881,7 @@ public class Jogo : MonoBehaviour
         }
         else if (nivel_atual == MEDIO)
         {
-            //Dados para o servidor
-            nivel_atual_API = "MEDIO";
-            levelId = 1;
-            levelSize = 3;
+            
             choices[0] = respostas_possiveis_medio[questao_x_de_y, 0];
             choices[1] = respostas_possiveis_medio[questao_x_de_y, 1];
             choices[2] = respostas_possiveis_medio[questao_x_de_y, 2];
@@ -1883,10 +1908,7 @@ public class Jogo : MonoBehaviour
         }
         else if(nivel_atual == DIFICIL)
         {
-            //Dados para o servidor
-            nivel_atual_API = "DIFICIL";
-            levelId = 2;
-            levelSize = 4;
+
             choices[0] = respostas_possiveis_dificil[questao_x_de_y, 0];
             choices[1] = respostas_possiveis_dificil[questao_x_de_y, 1];
             choices[2] = respostas_possiveis_dificil[questao_x_de_y, 2];

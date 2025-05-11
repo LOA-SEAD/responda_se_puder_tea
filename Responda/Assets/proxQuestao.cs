@@ -42,8 +42,9 @@ public class proxQuestao : MonoBehaviour
             //carrega = 0;
             fadein = true;
         }
-        else 
+        else{ 
             anim.SetTrigger("zoom");
+        }
    }
 
    public void AttTexto(){

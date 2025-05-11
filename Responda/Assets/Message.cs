@@ -63,6 +63,30 @@ public class SaveRankingStatsMessage : Message
     }
 }
 
+[Serializable]
+public class SaveTimeStatsMessage : Message
+{
+    public int exportedResourceId;
+    public int gameId;
+    public double time;
+    public int timeType;
+    public int levelId;
+    public string levelName;
+    public int challengeId;
+    
+
+    public SaveTimeStatsMessage(int exportedResourceId, int gameId, double time, int timeType, int levelId, string levelName, int challengeId)
+    {
+        this.exportedResourceId = exportedResourceId;
+        this.gameId = gameId;
+        this.time = time;
+        this.timeType = timeType;
+        this.levelId = levelId;
+        this.levelName = levelName;
+        this.challengeId = challengeId;
+    }
+}
+
 
 
 [Serializable]

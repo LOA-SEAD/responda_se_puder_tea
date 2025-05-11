@@ -12,6 +12,8 @@ public class CarregaDados : MonoBehaviour {
 
     public static int exportedResourceId;
 
+    public static int gameId;
+
     private static string arquivo_remar = "remar.json";
 
     private static string[] conteudo;
@@ -112,7 +114,7 @@ public class CarregaDados : MonoBehaviour {
 
 
     // Método para carregar os dados do arquivo JSON "remar.json"
-    // Esse arquivo deve estar na pasta StreamingAssets
+    // Esse arquivo Json deve estar na pasta StreamingAssets
     private static void GetDataRemar()
     {
         Debug.Log("[CarregaDados] - GetDataRemar() - Inicio");
@@ -121,9 +123,16 @@ public class CarregaDados : MonoBehaviour {
         string jsonText = BetterStreamingAssets.ReadAllText(arquivo_remar);
         // Parse o JSON completo
         DadosRemar dados = JsonUtility.FromJson<DadosRemar>(jsonText);
+
+        if (dados == null)
+        {
+            Debug.LogError("Erro ao carregar dados do arquivo JSON: " + arquivo_remar);
+            return;
+        }
     
         url = dados.url;
         exportedResourceId = dados.exportedResourceId;
+        gameId = dados.gameId;
     
         Debug.Log("[CarregaDados] - GetDataRemar() - Fim");
         isLoaded = true;
@@ -150,4 +159,6 @@ public class DadosRemar
 {
     public string url;
     public int exportedResourceId;
+
+    public int gameId;
 }
