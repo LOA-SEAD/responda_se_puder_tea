@@ -132,7 +132,6 @@ public class CarregaDados : MonoBehaviour {
     
         url = dados.url;
         exportedResourceId = dados.exportedResourceId;
-        gameId = dados.gameId;
     
         Debug.Log("[CarregaDados] - GetDataRemar() - Fim");
         isLoaded = true;
@@ -160,5 +159,4 @@ public class DadosRemar
     public string url;
     public int exportedResourceId;
 
-    public int gameId;
 }

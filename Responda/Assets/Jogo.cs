@@ -1095,22 +1095,23 @@ public class Jogo : MonoBehaviour
     // Envia o numero da pergunta, a resposta correta e a resposta escolhida, o nivel atual, e se acertou ou não.
     // ....
     public  IEnumerator EnviarDados(){
-        
+        //envia o id do recurso, a pergunta, a resposta correta, a resposta escolhida, se acertou ou não, o nivel atual (facil, medio, dificil), o tamanho do level (quantidade de perguntas) e o id do level (0,1,2...)
         saveChallengeStatsMessage testing_saveChallengeStats = new saveChallengeStatsMessage(CarregaDados.exportedResourceId,pergunta_atualmente_exibida,alternativa_atualmente_correta,contador,choices,alternativa_escolhida,acertou_questão,levelSize,levelId ,nivel_atual_API,"multipleChoice");
         
         // pegar o tempo atual, ja em double
         time_now = DateTime.UtcNow.ToOADate();
 
-        SaveTimeStatsMessage testing_saveTimeStats = new SaveTimeStatsMessage(CarregaDados.exportedResourceId,CarregaDados.gameId,time_now,2,levelId,nivel_atual_API,contador);
+        // envia o id do recurso, o tempo que demorou para responder, o id do level (0,1,2...), o nivel atual (facil, medio, dificil) 
+        SaveTimeStatsMessage testing_saveTimeStats = new SaveTimeStatsMessage(CarregaDados.exportedResourceId,time_now,2,levelId,nivel_atual_API,contador);
         // precisa ser static, pois o script esta se destruindo
         contador++;
 
 
         Debug.Log("enviando para http://localhost/stats/saveChallengeStats os dados : " + testing_saveChallengeStats.exportedResourceId);
 
-
+        // envia os dados para o servidor
         StartCoroutine(MessageSender.Instance.Send(testing_saveTimeStats,CarregaDados.url + "/stats/saveTimeStats"));
-
+        // envia os dados para o servidor
         yield return StartCoroutine(MessageSender.Instance.Send(testing_saveChallengeStats, CarregaDados.url +"/stats/saveChallengeStats"));
     }
 
@@ -1517,9 +1518,9 @@ public class Jogo : MonoBehaviour
         }
 
         //Envia o tempo de inicio da pergunta
-        SaveTimeStatsMessage testing_saveTimeStats = new SaveTimeStatsMessage(CarregaDados.exportedResourceId,CarregaDados.gameId,time_now,1,levelId,nivel_atual_API,contador);
+        SaveTimeStatsMessage testing_saveTimeStats1 = new SaveTimeStatsMessage(CarregaDados.exportedResourceId,time_now,1,levelId,nivel_atual_API,contador);
         // enviando dados para o servidor
-        StartCoroutine(MessageSender.Instance.Send(testing_saveTimeStats, CarregaDados.url +"/stats/saveTimeStats"));
+        StartCoroutine(MessageSender.Instance.Send(testing_saveTimeStats1, CarregaDados.url +"/stats/saveTimeStats"));
     }
 
     
